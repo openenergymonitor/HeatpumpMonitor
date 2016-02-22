@@ -4,7 +4,7 @@ This is the technical github repository for the open hardware and software heat-
 
 This is a web-connected open source hardware heat-pump monitor that can measure heat-pump electrical input, heat output and system temperatures. Alongside open source web software for heat-pump data visualisation, analysis and sharing of open heat-pump data.
 
-![Heatpump monitor](images/topgraphic.png)
+![Heatpump monitor](images/topgraphic.jpg)
 
 ## Content
 
