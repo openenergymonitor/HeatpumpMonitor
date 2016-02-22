@@ -22,6 +22,11 @@ Testing is ongoing to verify the potential accuracy of heat measurement based on
 
 ### Electricity Meter Pulse Counting
 
+The pulse counting input on the heat pump monitor is just a interrupt enabled digital input on the atmega328.
+
+When using the pulse counting input with wired pulse output meters such as an Elster A100C or Ampy single phase meter two additional components are needed to provide reliable pulse counting. A pull down resistor is needed across the pulse input (100k) and ground and then a 100nf capacitor is needed to filter any high frequency pulses outside the expected range.
+
+![pulseinput.jpg](images/pulseinput.jpg)
 
 
 ### CT and AC-AC adapter power monitoring
