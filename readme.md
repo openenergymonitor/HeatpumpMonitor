@@ -39,6 +39,12 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 ## Firmware
 
+The Arduino firmware that runs on the atmega328 can be found here:
+
+[https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
+
+To upload the Arduino firmware follow the guide [setting up the Arduino programming environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
+
 ## Web dashboard
 
 ### Known Issues
