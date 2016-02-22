@@ -41,6 +41,23 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 ## Web dashboard
 
+## Known Issues
+
+- VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
+- Increase the thickness of the 3.3V supply lines to the ESP12 Wifi.
+
+## Further development
+
+- Invesigate possibility of adding small solid state relay for volts free heating system control
+- Invesigate SMT LCD options
+- Battery backed memory for kWh values
+- Real time clock
+- SD card, or on Pi Zero
+- Higher capacity microcontroller
+- Modbus or other electricity meter reader
+- Status LED's
+- Wiring up can currently be a little fiddly, a custom enclosure design could make installation and debugging easier.
+
 ## Licence
 
 This project is open source software and hardware.
