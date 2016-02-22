@@ -20,6 +20,8 @@ Heat-pumps are a key component of zero carbon energy systems making it possible 
 
 By monitoring a heat-pump its possible to see how well it is working, diagnose problems and get a better understanding of how a key potentially zero carbon heating solution works, data gathered and shared from well performing systems could help de-mystify heat-pump operation and help improve performance by diagnosing any problems early.
 
+## [Installation and setup](installation.md)
+
 ## Hardware
 
 ![Heatpump monitor](images/HPgraphic.png)
