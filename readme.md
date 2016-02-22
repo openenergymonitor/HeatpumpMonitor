@@ -45,6 +45,8 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 - VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
 - Increase the thickness of the 3.3V supply lines to the ESP12 Wifi.
+- RaspberryPi model B+ Ethernet port position overlaps board.
+- 
 
 ## Further development
 
@@ -57,6 +59,7 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 - Modbus or other electricity meter reader
 - Status LED's
 - Wiring up can currently be a little fiddly, a custom enclosure design could make installation and debugging easier.
+- Auto reset ESP12 on each upload stage
 
 ## Licence
 
