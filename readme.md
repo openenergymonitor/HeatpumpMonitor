@@ -47,11 +47,18 @@ To upload the Arduino firmware follow the guide [setting up the Arduino programm
 
 ## Web dashboard
 
+### Fixed in V2:
+
+
+- VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead. ###
+- Increase the thickness of the 3.3V supply lines to the ESP12 Wifi. ### added 100nf cap across esp supply too
+- RaspberryPi model B Ethernet port position overlaps board. ###
+- PUlse drop down ###
+- CT3 can now be selected seperatly from a3
+-- Auto reset ESP12 on each upload stage
+
 ### Known Issues
 
-- VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
-- Increase the thickness of the 3.3V supply lines to the ESP12 Wifi.
-- RaspberryPi model B Ethernet port position overlaps board.
 
 ### Further development
 
@@ -64,7 +71,6 @@ To upload the Arduino firmware follow the guide [setting up the Arduino programm
 - Modbus or other electricity meter reader
 - Status LED's
 - Wiring up can currently be a little fiddly, a custom enclosure design could make installation and debugging easier.
-- Auto reset ESP12 on each upload stage
 
 ## Licence
 
