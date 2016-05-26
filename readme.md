@@ -44,7 +44,7 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 ## Firmware
 
-#### Arduino Firmware
+**Arduino Firmware**
 
 The Arduino firmware that runs on the atmega328 can be found here:
 
@@ -52,7 +52,7 @@ The Arduino firmware that runs on the atmega328 can be found here:
 
 To upload the Arduino firmware follow the guide [setting up the Arduino programming environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
 
-#### ESP WIFI Firmware
+**ESP WIFI Firmware**
 
 The Firmware for the ESP module can be found here: 
 
@@ -62,12 +62,14 @@ It is written with the ESP Arduino tool kit, see installation and upload notes o
 
 ## Web dashboard
 
-### New in V2:
+## Hardware V2
+
+**New in V2:**
 
 - Footprint for small solid state relay for volts free heating system control - not tested yet.
 - Status LED
 
-### Fixed in V2:
+**Fixed in V2:**
 
 - VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
 - Increase the thickness of the 3.3V supply lines to the ESP12 Wifi. There is now an additional 100nf cap across esp supply too
@@ -75,9 +77,11 @@ It is written with the ESP Arduino tool kit, see installation and upload notes o
 - Pulse counting dropdown resistor footprint on the board
 - CT3 can now be selected seperatly from analog 3
 
-### Known Issues
+## Known Issues
 
-### Further development
+- There is still an issue with the ESP Wifi upload reset 
+
+## Further development
 
 **Short term**
 - Develop simpler heatpump dashboard
