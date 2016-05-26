@@ -62,6 +62,7 @@ byte mbus_scan()
         byte_id ++;
       }
     }
+    if (address==50 || address==100 || address==150) wdt_reset();
   }
   return 0;
 }
