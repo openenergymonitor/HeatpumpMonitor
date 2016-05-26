@@ -9,7 +9,9 @@
 #define FirmwareVersion = 2.0
 #define DEBUG 0
 #define emonTxV3 1
-#define SEND_RFM69_DATA 0
+#define SEND_RFM69_RX_DATA 0
+#define SEND_RFM69_TX_DATA 0
+#define ELSTER_IRDA_ENABLE 0
 
 // ------------------------------------------------------------------------------------------
 // Datastructure for data sent via RFM12 or RFM69 radio module - alternative path to ESP WIFI
@@ -70,6 +72,7 @@ typedef struct {                                                      // RFM12B 
 PayloadTH emonth;
 // ------------------------------------------------------------------------------------------
 
+#include "elster.h"
 #include "EmonLib.h"                   // Include Emon Library:  https://github.com/openenergymonitor/EmonLib
 EnergyMonitor ct1;                     // Create an instance
 EnergyMonitor ct2;                     // Create an instance
@@ -129,11 +132,13 @@ unsigned long CT2_Wh = 0;
 bool firstrun = true;
 unsigned long last_reading = 0;
 
+ElsterA100C meter(meter_reading);
+
 void setup() {
   wdt_enable(WDTO_8S);
   
   Serial.begin(115200);
-  Serial.println("Startup");
+  if (DEBUG) Serial.println("Startup");
   rf12_initialize(nodeID, RF_freq, networkGroup);
   sensors.begin();
 
@@ -163,19 +168,31 @@ void setup() {
   }
   wdt_reset();
   if (DEBUG) Serial.println("Attached Interrupt");
+  
   delay(100);
-  attachInterrupt(1, onPulse, FALLING);
+  if (!ELSTER_IRDA_ENABLE) {  
+    attachInterrupt(1, onPulse, FALLING);
+  } else {
+    meter.init(1);
+  }
 
   CT1_Wh = 0;
   CT2_Wh = 0;
+  wdt_reset();
   
+}
+
+void meter_reading(unsigned long r)
+{
+  //Serial.print(r);
+  //Serial.print("\r\n");
+  pulseCount = r;
 }
 
 void loop() {
   now = millis();
 
-  /*
-  if (rf12_recvDone() && rf12_crc == 0 && (rf12_hdr & RF12_HDR_CTL) == 0)
+  if (SEND_RFM69_RX_DATA && rf12_recvDone() && rf12_crc == 0 && (rf12_hdr & RF12_HDR_CTL) == 0)
   {
     int node_id = (rf12_hdr & 0x1F);
     byte n = rf12_len;
@@ -208,8 +225,7 @@ void loop() {
         Serial.print(num);
       }
     }
-  }*/
-  
+  }
   
   if ((now-last)>=9800 || firstrun) {
     wdt_reset();
@@ -369,7 +385,7 @@ void loop() {
     Serial.println();
     delay(100);
 
-    if (SEND_RFM69_DATA) {
+    if (SEND_RFM69_TX_DATA) {
       if (DEBUG) Serial.println("RFM send");
       // if ready to send + exit loop if it gets stuck as it seems too
       int rf = 0; while (!rf12_canSend() && rf<10) {rf12_recvDone(); rf++;}
@@ -386,6 +402,14 @@ void loop() {
   if ((millis()-lastwdtreset)>1000) {
     lastwdtreset = millis();
     wdt_reset();
+  }
+
+  if (ELSTER_IRDA_ENABLE) {
+    // Decode the meter stream
+    const int byte_data = meter.decode_bit_stream();
+    if (byte_data != -1) {
+      meter.on_data(byte_data);
+    }
   }
 }
 
