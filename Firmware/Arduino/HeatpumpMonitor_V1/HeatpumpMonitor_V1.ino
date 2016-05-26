@@ -157,14 +157,17 @@ void setup() {
     if (kamstrup_mbus_address) {
       if (DEBUG) Serial.print("Meter found, address: ");
       if (DEBUG) Serial.println(kamstrup_mbus_address);
+    } else {
+      if (DEBUG) Serial.println("No MBUS meter found");
     }
   }
+  wdt_reset();
+  if (DEBUG) Serial.println("Attached Interrupt");
   delay(100);
   attachInterrupt(1, onPulse, FALLING);
 
   CT1_Wh = 0;
   CT2_Wh = 0;
-  wdt_reset();
   
 }
 
