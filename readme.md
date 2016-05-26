@@ -20,6 +20,12 @@ Heat-pumps are a key component of zero carbon energy systems making it possible 
 
 By monitoring a heat-pump its possible to see how well it is working, diagnose problems and get a better understanding of how a key potentially zero carbon heating solution works, data gathered and shared from well performing systems could help de-mystify heat-pump operation and help improve performance by diagnosing any problems early.
 
+## Blogs
+
+- [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
+- [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
+- [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
+
 ## [Installation and setup](installation.md)
 
 ## Hardware
@@ -39,26 +45,33 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 ## Firmware
 
+### Arduino Firmware
+
 The Arduino firmware that runs on the atmega328 can be found here:
 
 [https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
 
 To upload the Arduino firmware follow the guide [setting up the Arduino programming environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
 
+### ESP WIFI Firmware
+
+The Firmware for the ESP module can be found here: 
+
+[https://github.com/trystanlea/emonesp](https://github.com/trystanlea/emonesp)
+
+It is written with the ESP Arduino tool kit, see installation and upload notes on the EmonESP github.
+
 ## Web dashboard
 
 ### Fixed in V2:
 
-
-- VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead. ###
-- Increase the thickness of the 3.3V supply lines to the ESP12 Wifi. ### added 100nf cap across esp supply too
-- RaspberryPi model B Ethernet port position overlaps board. ###
-- PUlse drop down ###
-- CT3 can now be selected seperatly from a3
--- Auto reset ESP12 on each upload stage
+- VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
+- Increase the thickness of the 3.3V supply lines to the ESP12 Wifi. There is now an additional 100nf cap across esp supply too
+- RaspberryPi model B Ethernet port position adjusted
+- Pulse counting dropdown resistor footprint on the board
+- CT3 can now be selected seperatly from analog 3
 
 ### Known Issues
-
 
 ### Further development
 
