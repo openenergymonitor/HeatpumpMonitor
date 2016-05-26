@@ -4,7 +4,9 @@
 // 2x DS18B20 flow + return sensors
 // All sending via RFM12/69.
 // Licence: GPLv3
-#define FirmwareVersion = 1.01
+#include <avr/wdt.h>  
+
+#define FirmwareVersion = 2.0
 #define DEBUG 0
 #define emonTxV3 1
 #define SEND_RFM69_DATA 0
@@ -51,6 +53,7 @@ typedef struct {
   // Long data types:
     long KSkWh;
     long pulseCount;
+    long KSpulse;
 } PayloadTX;         // neat way of packaging data for RF comms
 PayloadTX emontx;
 // ------------------------------------------------------------------------------------------
@@ -98,14 +101,15 @@ CustomSoftwareSerial* customSerial;               // Declare serial
 
 unsigned long last = 0;
 unsigned long now = 0;
+unsigned long lastwdtreset = 0;
 
 int bid = 0;
 byte bytes[120];
 byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
-const int nodeID = 16;                                                  // emonTx RFM12B node ID
-const int networkGroup = 105;                                           // emonTx RFM12B wireless network group - needs to be same as emonBase and emonGLCD needs to be same as emonBase and emonGLCD
+const int nodeID = 1;                                                   // emonTx RFM12B node ID
+const int networkGroup = 210;                                           // emonTx RFM12B wireless network group - needs to be same as emonBase and emonGLCD needs to be same as emonBase and emonGLCD
 
 #define RF69_COMPAT 1 // set to 1 to use RFM69CW 
 #include <JeeLib.h>   // make sure V12 (latest) is used if using RFM69CW
@@ -126,6 +130,8 @@ bool firstrun = true;
 unsigned long last_reading = 0;
 
 void setup() {
+  wdt_enable(WDTO_8S);
+  
   Serial.begin(115200);
   Serial.println("Startup");
   rf12_initialize(nodeID, RF_freq, networkGroup);
@@ -141,6 +147,8 @@ void setup() {
   // MBUS
   customSerial = new CustomSoftwareSerial(4, 5); // rx, tx
   customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
+
+  wdt_reset();
   
   mbus_normalize();
   if (kamstrup_mbus_address==0) {
@@ -156,11 +164,14 @@ void setup() {
 
   CT1_Wh = 0;
   CT2_Wh = 0;
+  wdt_reset();
+  
 }
 
 void loop() {
   now = millis();
 
+  /*
   if (rf12_recvDone() && rf12_crc == 0 && (rf12_hdr & RF12_HDR_CTL) == 0)
   {
     int node_id = (rf12_hdr & 0x1F);
@@ -194,10 +205,12 @@ void loop() {
         Serial.print(num);
       }
     }
-  }
+  }*/
   
   
   if ((now-last)>=9800 || firstrun) {
+    wdt_reset();
+    
     last = now; firstrun = false;
 
     // 1) KAMSTRUP HEAT METER REQUEST: 
@@ -210,6 +223,7 @@ void loop() {
         if (DEBUG) Serial.println("Mbus scan start");
         kamstrup_mbus_address = mbus_scan();
         kamstrup_failures = 0;
+        wdt_reset();
       }
     }
     bid = 0;
@@ -217,7 +231,7 @@ void loop() {
     bool kamstrup_reply_received = false;
     int kamstrup_timeout = 1000;
     unsigned long timer_start = millis();
-    while (!kamstrup_reply_received && millis()-timer_start<kamstrup_timeout)
+    while (!kamstrup_reply_received && (millis()-timer_start)<kamstrup_timeout)
     {
       if (customSerial->available())
       {
@@ -250,6 +264,8 @@ void loop() {
     if (kamstrup_reply_received==false) {
       kamstrup_failures++;
     }
+
+    wdt_reset();
 
     delay(200);
     // DS18B20 temp sensors
@@ -286,6 +302,8 @@ void loop() {
     double deltaT = (1.0*emontx.DSflowT-emontx.DSreturnT)*0.01;
     double VFSheat = ((VFSflow/60.0)*4181.0) * deltaT;
     emontx.VFSheat = VFSheat;
+
+    wdt_reset();
     
     // Reading of CT sensors needs to go here for stability 
     // need to double check the reason for this.
@@ -341,6 +359,7 @@ void loop() {
       Serial.print(",KSflowrate:"); Serial.print(emontx.KSflowrate);
       Serial.print(",KSheat:"); Serial.print(emontx.KSheat);
       Serial.print(",KSkWh:"); Serial.print(emontx.KSkWh);
+      Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
     }
 
     Serial.print(",PulseCount:"); Serial.print(emontx.pulseCount);
@@ -357,7 +376,13 @@ void loop() {
       rf12_sendWait(2);
     
       delay(100);
+      wdt_reset();
     }
+  }
+
+  if ((millis()-lastwdtreset)>1000) {
+    lastwdtreset = millis();
+    wdt_reset();
   }
 }
 
@@ -373,7 +398,8 @@ void parse()
   emontx.KSheat = decodeval(i)*100; i+=6;
   int maxpower = decodeval(i)*100; i+=6;
   emontx.KSflowrate = decodeval(i); i+=6;
-  int maxflow = decodeval(i); i+=6;
+  int maxflow = decodeval(i); i+=18;
+  emontx.KSpulse = decodeval(i);
 }
 
 long decodeval(long i) {
