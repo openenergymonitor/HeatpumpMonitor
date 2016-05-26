@@ -44,7 +44,7 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 ## Firmware
 
-### Arduino Firmware
+#### Arduino Firmware
 
 The Arduino firmware that runs on the atmega328 can be found here:
 
@@ -52,7 +52,7 @@ The Arduino firmware that runs on the atmega328 can be found here:
 
 To upload the Arduino firmware follow the guide [setting up the Arduino programming environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
 
-### ESP WIFI Firmware
+#### ESP WIFI Firmware
 
 The Firmware for the ESP module can be found here: 
 
@@ -79,6 +79,14 @@ It is written with the ESP Arduino tool kit, see installation and upload notes o
 
 ### Further development
 
+**Short term**
+- Develop simpler heatpump dashboard
+- Test and document use of SIKA flow meters
+- Establish reliability of WIFI Connectivity
+- Develop packaging for IRDA infra-red sensor
+- Convert to SMT
+
+**Longer term**
 - Battery backed memory for kWh values
 - Real time clock
 - SD card, or on Pi Zero
