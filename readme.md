@@ -36,12 +36,11 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 - MBUS reader for kamstrup heat meters
 - CT current and ACAC voltage based electricity monitoring 
-- Pulse counting 
+- Pulse counting or IRDA Elster meter reader
 - Analog inputs for Vortex Flow Sensor (VFS) option (e.g Grundfos, Sika) 
-- 6x individually broken out DS18B20 temperature sensor connections 
+- 4x individually broken out DS18B20 temperature sensor connections 
 - Arduino ATmega328 core 
-- Connectivity options: ESP-12 WIFI, RaspberryPI header, RFM69 
-- LCD display connector.
+- Connectivity options: ESP-12 WIFI, RaspberryPI header, RFM69
 
 ## Firmware
 
@@ -63,6 +62,11 @@ It is written with the ESP Arduino tool kit, see installation and upload notes o
 
 ## Web dashboard
 
+### New in V2:
+
+- Footprint for small solid state relay for volts free heating system control - not tested yet.
+- Status LED
+
 ### Fixed in V2:
 
 - VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
@@ -75,14 +79,11 @@ It is written with the ESP Arduino tool kit, see installation and upload notes o
 
 ### Further development
 
-- Invesigate possibility of adding small solid state relay for volts free heating system control
-- Invesigate SMT LCD options
 - Battery backed memory for kWh values
 - Real time clock
 - SD card, or on Pi Zero
 - Higher capacity microcontroller
 - Modbus or other electricity meter reader
-- Status LED's
 - Wiring up can currently be a little fiddly, a custom enclosure design could make installation and debugging easier.
 
 ## Licence
