@@ -9,9 +9,13 @@
 #define FirmwareVersion = 2.0
 #define DEBUG 0
 #define emonTxV3 1
+#define RFM69_ENABLE 0
 #define SEND_RFM69_RX_DATA 0
 #define SEND_RFM69_TX_DATA 0
-#define ELSTER_IRDA_ENABLE 0
+
+#define VFS_ENABLE 0
+#define ELSTER_IRDA_ENABLE 1
+#define MBUS_ENABLE 1
 
 // ------------------------------------------------------------------------------------------
 // Datastructure for data sent via RFM12 or RFM69 radio module - alternative path to ESP WIFI
@@ -139,7 +143,7 @@ void setup() {
   
   Serial.begin(115200);
   if (DEBUG) Serial.println("Startup");
-  rf12_initialize(nodeID, RF_freq, networkGroup);
+  if (RFM69_ENABLE) rf12_initialize(nodeID, RF_freq, networkGroup);
   sensors.begin();
 
   ct1.voltage(0, 262.0, 1.7);
@@ -184,13 +188,19 @@ void setup() {
 
 void meter_reading(unsigned long r)
 {
-  //Serial.print(r);
-  //Serial.print("\r\n");
   pulseCount = r;
 }
 
 void loop() {
   now = millis();
+
+  if (ELSTER_IRDA_ENABLE) {
+    // Decode the meter stream
+    const int byte_data = meter.decode_bit_stream();
+    if (byte_data != -1) {
+      meter.on_data(byte_data);
+    }
+  }
 
   if (SEND_RFM69_RX_DATA && rf12_recvDone() && rf12_crc == 0 && (rf12_hdr & RF12_HDR_CTL) == 0)
   {
@@ -234,54 +244,56 @@ void loop() {
 
     // 1) KAMSTRUP HEAT METER REQUEST: 
 
-    if (DEBUG) Serial.println("mbus_request_data");
-    if (kamstrup_mbus_address>0) {
-      mbus_request_data(kamstrup_mbus_address);
-    } else {
-      if (kamstrup_failures>10) {
-        if (DEBUG) Serial.println("Mbus scan start");
-        kamstrup_mbus_address = mbus_scan();
-        kamstrup_failures = 0;
-        wdt_reset();
-      }
-    }
-    bid = 0;
-
     bool kamstrup_reply_received = false;
-    int kamstrup_timeout = 1000;
-    unsigned long timer_start = millis();
-    while (!kamstrup_reply_received && (millis()-timer_start)<kamstrup_timeout)
-    {
-      if (customSerial->available())
-      {
-        
-        byte val = (byte) customSerial->read();
-    
-        bytes[bid] = val;
-        bid++;
-        
-        if (bytes[0]!=104) {
-          bid = 0;
+    if (MBUS_ENABLE) {
+      if (DEBUG) Serial.println("mbus_request_data");
+      if (kamstrup_mbus_address>0) {
+        mbus_request_data(kamstrup_mbus_address);
+      } else {
+        if (kamstrup_failures>10) {
+          if (DEBUG) Serial.println("Mbus scan start");
+          kamstrup_mbus_address = mbus_scan();
+          kamstrup_failures = 0;
+          wdt_reset();
         }
-        
-        if (bid==3) {
-          if (bytes[1]==bytes[2]) {
-            dlen = bytes[1];
-          } else {
+      }
+      bid = 0;
+  
+      int kamstrup_timeout = 1000;
+      unsigned long timer_start = millis();
+      while (!kamstrup_reply_received && (millis()-timer_start)<kamstrup_timeout)
+      {
+        if (customSerial->available())
+        {
+          
+          byte val = (byte) customSerial->read();
+      
+          bytes[bid] = val;
+          bid++;
+          
+          if (bytes[0]!=104) {
+            bid = 0;
+          }
+          
+          if (bid==3) {
+            if (bytes[1]==bytes[2]) {
+              dlen = bytes[1];
+            } else {
+              bid = 0;
+            }
+          }
+          
+          if (bid==100)
+          {
+            kamstrup_reply_received = true;
             bid = 0;
           }
         }
-        
-        if (bid==100)
-        {
-          kamstrup_reply_received = true;
-          bid = 0;
-        }
       }
-    }
-
-    if (kamstrup_reply_received==false) {
-      kamstrup_failures++;
+  
+      if (kamstrup_reply_received==false) {
+        kamstrup_failures++;
+      }
     }
 
     wdt_reset();
@@ -362,10 +374,12 @@ void loop() {
     Serial.print(",DSairinT:"); Serial.print(emontx.DSairinT*0.01,2);
     Serial.print(",DSflowT:"); Serial.print(emontx.DSflowT*0.01,2);
     Serial.print(",DSreturnT:"); Serial.print(emontx.DSreturnT*0.01,2);
-    
-    Serial.print(",VFSflowT:"); Serial.print(emontx.VFSflowT*0.01);
-    Serial.print(",VFSflowrate:"); Serial.print(emontx.VFSflowrate);
-    Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
+
+    if (VFS_ENABLE) {
+      Serial.print(",VFSflowT:"); Serial.print(emontx.VFSflowT*0.01);
+      Serial.print(",VFSflowrate:"); Serial.print(emontx.VFSflowrate);
+      Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
+    }
     
     if (kamstrup_reply_received) {
       // Parse kamstrup mbus data reply
@@ -402,14 +416,6 @@ void loop() {
   if ((millis()-lastwdtreset)>1000) {
     lastwdtreset = millis();
     wdt_reset();
-  }
-
-  if (ELSTER_IRDA_ENABLE) {
-    // Decode the meter stream
-    const int byte_data = meter.decode_bit_stream();
-    if (byte_data != -1) {
-      meter.on_data(byte_data);
-    }
   }
 }
 
