@@ -9,9 +9,9 @@
 #define FirmwareVersion = 2.0
 #define DEBUG 0
 #define emonTxV3 1
-#define RFM69_ENABLE 0
+#define RFM69_ENABLE 1
 #define SEND_RFM69_RX_DATA 0
-#define SEND_RFM69_TX_DATA 0
+#define SEND_RFM69_TX_DATA 1
 
 #define VFS_ENABLE 0
 #define ELSTER_IRDA_ENABLE 1
@@ -29,7 +29,7 @@ Copy this node decoder to your emonhub.conf file to decode the heatpump monitor 
     firmware = v0.1
     hardware = v0.1
     [[[rx]]]
-       names = OEMct1,OEMct2,DSairoutT,DSairinT,DSflowT,DSreturnT,VFSflowT,VFSflowrate,VFSheat,KSflowT,KSreturnT,KSdeltaT,KSflowrate,KSheat,KSkWh,pulseCount
+       names = OEMct1,OEMct2,DSflowT,DSreturnT,DSairoutT,DSairinT,VFSflowT,VFSflowrate,VFSheat,KSflowT,KSreturnT,KSdeltaT,KSflowrate,KSheat,KSkWh,pulseCount
        datacodes = h,h,h,h,h,h,h,h,h,h,h,h,h,h,L,L
        scales = 1,1,0.01,0.01,0.01,0.01,0.01,1,1,0.01,0.01,0.01,1,1,1,1
        units = W,W,C,C,C,C,C,L/h,W,C,C,K,L/h,W,kWh,Wh
@@ -42,10 +42,10 @@ typedef struct {
       int OEMct1;
       int OEMct2;
     // DS18B20 temperatures:
-      int DSairoutT;
-      int DSairinT;
       int DSflowT;
       int DSreturnT;
+      int DSairoutT;
+      int DSairinT;
     // Grundfos VFS flow meter
       int VFSflowT;
       int VFSflowrate;
@@ -56,10 +56,10 @@ typedef struct {
       int KSdeltaT;
       int KSflowrate;
       int KSheat;
-  // Long data types:
-    long KSkWh;
-    long pulseCount;
-    long KSpulse;
+    // Long data types:
+      long KSkWh;
+      long pulseCount;
+      // long KSpulse;
 } PayloadTX;         // neat way of packaging data for RF comms
 PayloadTX emontx;
 // ------------------------------------------------------------------------------------------
@@ -301,11 +301,11 @@ void loop() {
     delay(200);
     // DS18B20 temp sensors
     sensors.requestTemperatures();
+    emontx.DSflowT = sensors.getTempCByIndex(0)*100;
+    emontx.DSreturnT = sensors.getTempCByIndex(1)*100;
+    emontx.DSairinT = sensors.getTempCByIndex(2)*100;
+    emontx.DSairoutT = sensors.getTempCByIndex(3)*100;
     
-    emontx.DSairinT = sensors.getTempCByIndex(0)*100;
-    emontx.DSairoutT = sensors.getTempCByIndex(1)*100;
-    emontx.DSflowT = sensors.getTempCByIndex(2)*100;
-    emontx.DSreturnT = sensors.getTempCByIndex(3)*100;
     // -----------------------------------------------------
     // Analog read for grundfos vortex flow sensor
     // -----------------------------------------------------
@@ -370,11 +370,22 @@ void loop() {
     Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
     Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);    
 
-    Serial.print(",DSairoutT:"); Serial.print(emontx.DSairoutT*0.01,2);
-    Serial.print(",DSairinT:"); Serial.print(emontx.DSairinT*0.01,2);
-    Serial.print(",DSflowT:"); Serial.print(emontx.DSflowT*0.01,2);
-    Serial.print(",DSreturnT:"); Serial.print(emontx.DSreturnT*0.01,2);
+    if (emontx.DSairoutT*0.01!=-127) {
+        Serial.print(",DSairoutT:"); Serial.print(emontx.DSairoutT*0.01,2);
+    }
 
+    if (emontx.DSairinT*0.01!=-127) {
+        Serial.print(",DSairinT:"); Serial.print(emontx.DSairinT*0.01,2);
+    }
+
+    if (emontx.DSflowT*0.01!=-127) {
+        Serial.print(",DSflowT:"); Serial.print(emontx.DSflowT*0.01,2);
+    }
+
+    if (emontx.DSreturnT*0.01!=-127) {
+        Serial.print(",DSreturnT:"); Serial.print(emontx.DSreturnT*0.01,2);
+    }
+    
     if (VFS_ENABLE) {
       Serial.print(",VFSflowT:"); Serial.print(emontx.VFSflowT*0.01);
       Serial.print(",VFSflowrate:"); Serial.print(emontx.VFSflowrate);
@@ -392,15 +403,17 @@ void loop() {
       Serial.print(",KSflowrate:"); Serial.print(emontx.KSflowrate);
       Serial.print(",KSheat:"); Serial.print(emontx.KSheat);
       Serial.print(",KSkWh:"); Serial.print(emontx.KSkWh);
-      Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
+      // Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
     }
 
     Serial.print(",PulseCount:"); Serial.print(emontx.pulseCount);
     Serial.println();
     delay(100);
 
+    wdt_reset();
+
     if (SEND_RFM69_TX_DATA) {
-      if (DEBUG) Serial.println("RFM send");
+      if (DEBUG) { Serial.println("RFM send"); delay(100); }
       // if ready to send + exit loop if it gets stuck as it seems too
       int rf = 0; while (!rf12_canSend() && rf<10) {rf12_recvDone(); rf++;}
       rf12_sendStart(0, &emontx, sizeof emontx);
@@ -432,7 +445,7 @@ void parse()
   int maxpower = decodeval(i)*100; i+=6;
   emontx.KSflowrate = decodeval(i); i+=6;
   int maxflow = decodeval(i); i+=18;
-  emontx.KSpulse = decodeval(i);
+  // emontx.KSpulse = decodeval(i);
 }
 
 long decodeval(long i) {
