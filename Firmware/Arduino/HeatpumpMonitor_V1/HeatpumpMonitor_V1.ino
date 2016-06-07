@@ -13,7 +13,7 @@
 #define SEND_RFM69_RX_DATA 0
 #define SEND_RFM69_TX_DATA 1
 
-#define VFS_ENABLE 0
+#define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
 
@@ -92,7 +92,7 @@ DeviceAddress sensor;
 // --------------------------------------------------
 // Grundfos VFS config
 // --------------------------------------------------
-double VFS_maxflow          = 100.0;  // Litres/minute
+double VFS_maxflow          = 40.0;  // Litres/minute
 double VFS_maxflow_voltage  = 3.5;   // Volts
 double VFS_zeroflow_voltage = 0.25;  // Volts
 double VFS_maxtemp          = 100;   // Celcius
@@ -111,7 +111,7 @@ unsigned long now = 0;
 unsigned long lastwdtreset = 0;
 
 int bid = 0;
-byte bytes[120];
+byte bytes[81];
 byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
@@ -135,6 +135,9 @@ unsigned long CT2_Wh = 0;
 
 bool firstrun = true;
 unsigned long last_reading = 0;
+
+double VFS_Flow_Cal = 0;
+double VFS_Temp_Cal = 0;
 
 ElsterA100C meter(meter_reading);
 
@@ -183,7 +186,9 @@ void setup() {
   CT1_Wh = 0;
   CT2_Wh = 0;
   wdt_reset();
-  
+
+  VFS_Flow_Cal = ((VFS_maxflow_voltage-VFS_zeroflow_voltage)/VFS_maxflow);
+  VFS_Temp_Cal = ((VFS_maxtemp_voltage-VFS_zerotemp_voltage)/VFS_maxtemp);
 }
 
 void meter_reading(unsigned long r)
@@ -283,7 +288,7 @@ void loop() {
             }
           }
           
-          if (bid==100)
+          if (bid==80)
           {
             kamstrup_reply_received = true;
             bid = 0;
@@ -316,17 +321,18 @@ void loop() {
       sumA3 += analogRead(3);
       sumA4 += analogRead(4);
     }
-    double A3 = (sumA3 / 100.0);
-    double A4 = (sumA4 / 100.0);
+    int A3 = (int)(sumA3 / 100);
+    int A4 = (int)(sumA4 / 100);
     double A3_voltage = 3.3*(A3/1023.0);
     double A4_voltage = 3.3*(A4/1023.0);
-    double VFSflow = (A4_voltage - VFS_zeroflow_voltage) / ((VFS_maxflow_voltage-VFS_zeroflow_voltage)/VFS_maxflow);
-    if (VFSflow<0) VFSflow = 0;
-    if (A4_voltage<0.4) VFSflow = 0;  // Minimum voltage to accept flow reading, datasheet recommends 0.5V
     
-    double VFStemp = (A3_voltage - VFS_zerotemp_voltage) / ((VFS_maxtemp_voltage-VFS_zerotemp_voltage)/VFS_maxtemp);
+    double VFStemp = (A3_voltage - VFS_zerotemp_voltage) / VFS_Temp_Cal;
     if (VFStemp<0) VFStemp = 0;
 
+    double VFSflow = (A4_voltage - VFS_zeroflow_voltage) / VFS_Flow_Cal;
+    if (VFSflow<0) VFSflow = 0;
+    if ((1*A4_voltage)<0.4) VFSflow = 0;  // Minimum voltage to accept flow reading, datasheet recommends 0.5V
+    
     emontx.VFSflowT = VFStemp*100;
     emontx.VFSflowrate = VFSflow*60;
 
@@ -444,7 +450,7 @@ void parse()
   emontx.KSheat = decodeval(i)*100; i+=6;
   int maxpower = decodeval(i)*100; i+=6;
   emontx.KSflowrate = decodeval(i); i+=6;
-  int maxflow = decodeval(i); i+=18;
+  int maxflow = decodeval(i); i+=6;
   // emontx.KSpulse = decodeval(i);
 }
 
