@@ -1,24 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
-<html>
-<head>
-	
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<title></title>
-	<meta name="generator" content="LibreOffice 4.2.8.2 (Linux)">
-	<meta name="created" content="20151217;103850197961230">
-	<meta name="changed" content="20160622;113330473441272">
-	
-	<style type="text/css"><!-- 
-		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:x-small }
-		 -->
-	</style>
-	
-</head>
-
-<body text="#000000">
-
-<h2>Example one off prototype costing and BOM for Heatpump Monitor</h2>
+## Example one off prototype costing and BOM for Heatpump Monitor
 
 <table cellspacing="0" border="0">
 	<colgroup width="273"></colgroup>
@@ -1024,7 +1004,3 @@
 		<td align="left"><br></td>
 	</tr>
 </table>
-<!-- ************************************************************************** -->
-</body>
-
-</html>
