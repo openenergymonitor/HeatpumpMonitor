@@ -46,7 +46,7 @@ The following outlines example one-off or low volume cost price costing for the 
 	<tr>
 		<td height="17" align="left"><b>Heatpump monitor PCB</b></td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center" sdval="28.93" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£34.72</td>
+		<td align="center" sdval="28.93" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£28.93</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center">Ragworm</td>
@@ -998,7 +998,7 @@ The following outlines example one-off or low volume cost price costing for the 
 	<tr>
 		<td height="17" align="left"><b>Cost price (components, case and PCB)</b></td>
 		<td align="center"><b><br></b></td>
-		<td align="center" sdval="53.22" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00"><b>£59.01</b></td>
+		<td align="center" sdval="53.22" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00"><b>£53.22</b></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
