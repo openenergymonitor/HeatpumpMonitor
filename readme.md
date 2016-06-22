@@ -44,23 +44,23 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 ## Firmware
 
-**Arduino Firmware**
+### Arduino Firmware
 
-The Arduino firmware that runs on the atmega328 can be found here:
-
-[https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
+- [Arduino firmware that runs on the atmega328](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
 
 To upload the Arduino firmware follow the guide [setting up the Arduino programming environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
 
-**ESP WIFI Firmware**
+### ESP WIFI Firmware
 
-The Firmware for the ESP module can be found here: 
+ - [EmonESP Firmware for the ESP module](https://github.com/openenergymonitor/EmonESP)
 
-[https://github.com/trystanlea/emonesp](https://github.com/trystanlea/emonesp)
-
-It is written with the ESP Arduino tool kit, see installation and upload notes on the EmonESP github.
+Uses ESP8688 Arduino tool kit, see installation and upload notes on the EmonESP github.
 
 ## Web dashboard
+
+Connect to `ESP` WiFi AP then browse to:
+
+http://192.168.4.1
 
 ## Hardware V2
 
