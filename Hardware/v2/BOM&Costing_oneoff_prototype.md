@@ -2,7 +2,7 @@
 
 The following outlines example one-off or low volume cost price costing for the Heatpump Monitor. 
 
-**Total £59.01 ex VAT** including **£34.72** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off). Total £70.81 including VAT (20%).
+**Total £53.22 ex VAT** including **£28.93 ex VAT** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off - £34.72 inc VAT). Total £63.86 including VAT (20%).
 
 **All pricing below is ex VAT**
 
@@ -46,7 +46,7 @@ The following outlines example one-off or low volume cost price costing for the 
 	<tr>
 		<td height="17" align="left"><b>Heatpump monitor PCB</b></td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center" sdval="34.72" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£34.72</td>
+		<td align="center" sdval="28.93" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£34.72</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center">Ragworm</td>
@@ -872,7 +872,7 @@ The following outlines example one-off or low volume cost price costing for the 
 	<tr>
 		<td height="17" align="left"><b>PCB cost</b></td>
 		<td align="center"><b><br></b></td>
-		<td align="center" sdval="34.72" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00"><b>£34.72</b></td>
+		<td align="center" sdval="34.72" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00"><b>£28.93</b></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
@@ -998,7 +998,7 @@ The following outlines example one-off or low volume cost price costing for the 
 	<tr>
 		<td height="17" align="left"><b>Cost price (components, case and PCB)</b></td>
 		<td align="center"><b><br></b></td>
-		<td align="center" sdval="59.00902" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00"><b>£59.01</b></td>
+		<td align="center" sdval="53.22" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00"><b>£59.01</b></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
