@@ -2,7 +2,7 @@
 
 The following outlines example one-off or low volume cost price costing for the Heatpump Monitor. 
 
-**Total £59.01** including **£34.72** prototype one-off PCB from [Ragworm](http://ragworm.eu).
+**Total £59.01** including **£34.72** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off).
 
 <table cellspacing="0" border="0">
 	<colgroup width="273"></colgroup>
