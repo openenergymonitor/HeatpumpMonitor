@@ -1,10 +1,12 @@
-// Heatpump monitor example with:
+// Swift, 1bird Heatpump monitor example with:
 // MBUS meter reader for kampstrup multical 402
 // Grundfos vortex flow sensor on analog 0 and 1
-// 2x DS18B20 flow + return sensors
-// All sending via RFM12/69.
+// several x DS18B20 flow + return sensors
+// All sending via RFM12/69 to group 219, then converted to 217
 // Licence: GPLv3
-#define FirmwareVersion = 1.01
+#include <avr/wdt.h>  
+
+#define FirmwareVersion = 1.02
 #define DEBUG 0
 #define emonTxV3 1
 #define SEND_RFM69_DATA 1
@@ -21,10 +23,10 @@ Copy this node decoder to your emonhub.conf file to decode the heatpump monitor 
     firmware = v0.1
     hardware = v0.1
     [[[rx]]]
-       names = OEMct1,OEMct2,DSairoutT,DSairinT,DSflowT,DSreturnT,VFSflowT,VFSflowrate,VFSheat,KSflowT,KSreturnT,KSdeltaT,KSflowrate,KSheat,KSkWh,pulseCount
-       datacodes = h,h,h,h,h,h,h,h,h,h,h,h,h,h,L,L
-       scales = 1,1,0.01,0.01,0.01,0.01,0.01,1,1,0.01,0.01,0.01,1,1,1,1
-       units = W,W,C,C,C,C,C,L/h,W,C,C,K,L/h,W,kWh,Wh
+       names = OEMct1,OEMct2,DSairoutT,DSairinT,DSflowT,DSreturnT,VFSflowT,VFSflowrate,VFSheat,KSflowT,KSreturnT,KSdeltaT,KSflowrate,KSheat,KSheat2,KSkWh,pulseCount,T1,T2,T3
+       datacodes = h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,L,L,h,h,h
+       scales = 1,1,0.01,0.01,0.01,0.01,0.01,1,1,0.01,0.01,0.01,1,1,1,1,1,0.01,0.01,0.01
+       units = W,W,C,C,C,C,C,L/h,W,C,C,K,L/h,W,W,kWh,Wh,C,C,C
 */
 
 // RFM Packet structure
@@ -48,11 +50,30 @@ typedef struct {
       int KSdeltaT;
       int KSflowrate;
       int KSheat;
+      int KSheat2;            // have added this as a corrected value to allow for defrosts.  It makes heat during defrost as a negative value.
+        
   // Long data types:
     long KSkWh;
     long pulseCount;
+    long KSpulse;
+
+      int T1;    /// added to test pockets
+      int T2;
+      int T3;
 } PayloadTX;         // neat way of packaging data for RF comms
 PayloadTX emontx;
+// ------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+// EmonTH packet
+typedef struct {                                                      // RFM12B RF payload datastructure
+  int temp;
+  int temp_external;
+  int humidity;    
+  int battery;
+  unsigned long pulsecount;                                             
+} PayloadTH;
+PayloadTH emonth;
 // ------------------------------------------------------------------------------------------
 
 #include "EmonLib.h"                   // Include Emon Library:  https://github.com/openenergymonitor/EmonLib
@@ -70,8 +91,8 @@ DeviceAddress sensor;
 // --------------------------------------------------
 // Grundfos VFS config
 // --------------------------------------------------
-double VFS_maxflow          = 100.0;  // Litres/minute
-double VFS_maxflow_voltage  = 3.5;   // Volts
+double VFS_maxflow          = 40.0;  // Litres/minute (replace old Grundfoss 100 for Sika 40, 25th May 2016)
+double VFS_maxflow_voltage  = 3.5;   // Volts   (0.5 v at 2 lit/min equates to 0.35v at zero flow
 double VFS_zeroflow_voltage = 0.35;  // Volts
 double VFS_maxtemp          = 100;   // Celcius
 double VFS_maxtemp_voltage  = 3.5;   // Volts
@@ -86,30 +107,40 @@ CustomSoftwareSerial* customSerial;               // Declare serial
 
 unsigned long last = 0;
 unsigned long now = 0;
+unsigned long lastwdtreset = 0;
 
 int bid = 0;
 byte bytes[120];
 byte dlen = 0;
 
-#define RF_freq RF12_433MHZ                                                // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
-const int nodeID = 1;                                                  // emonTx RFM12B node ID
+#define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
+const int nodeID = 13;                                                   // emonTx RFM12B node ID
 const int networkGroup = 219;                                           // emonTx RFM12B wireless network group - needs to be same as emonBase and emonGLCD needs to be same as emonBase and emonGLCD
 
 #define RF69_COMPAT 1 // set to 1 to use RFM69CW 
 #include <JeeLib.h>   // make sure V12 (latest) is used if using RFM69CW
 ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 
+// pulseCounting   WHY IS BELOW COMMENTED OUT?
 // pulseCounting
 long pulseCount = 0;
 //unsigned long pulseTime,lastTime; // Used to measure time between pulses
 //double power;
 //int ppwh = 1;                     // pulses per watt hour - found or set on the meter.
 
+int joules_CT1 = 0;
+int joules_CT2 = 0;
+unsigned long CT1_Wh = 0;
+unsigned long CT2_Wh = 0;
 
 bool firstrun = true;
+unsigned long last_reading = 0;
 
 void setup() {
+  wdt_enable(WDTO_8S);
+  
   Serial.begin(115200);
+  Serial.println("Startup");
   rf12_initialize(nodeID, RF_freq, networkGroup);
   sensors.begin();
 
@@ -123,6 +154,8 @@ void setup() {
   // MBUS
   customSerial = new CustomSoftwareSerial(4, 5); // rx, tx
   customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
+
+  wdt_reset();
   
   mbus_normalize();
   if (kamstrup_mbus_address==0) {
@@ -131,16 +164,25 @@ void setup() {
     if (kamstrup_mbus_address) {
       if (DEBUG) Serial.print("Meter found, address: ");
       if (DEBUG) Serial.println(kamstrup_mbus_address);
+    } else {
+      if (DEBUG) Serial.println("No MBUS meter found");
     }
   }
+  wdt_reset();
+  if (DEBUG) Serial.println("Attached Interrupt");
   delay(100);
   attachInterrupt(1, onPulse, FALLING);
+
+  CT1_Wh = 0;
+  CT2_Wh = 0;
 }
 
 void loop() {
   now = millis();
   
   if ((now-last)>=9800 || firstrun) {
+    wdt_reset();
+    
     last = now; firstrun = false;
 
     // 1) KAMSTRUP HEAT METER REQUEST: 
@@ -150,8 +192,10 @@ void loop() {
       mbus_request_data(kamstrup_mbus_address);
     } else {
       if (kamstrup_failures>10) {
+        if (DEBUG) Serial.println("Mbus scan start");
         kamstrup_mbus_address = mbus_scan();
         kamstrup_failures = 0;
+        wdt_reset();
       }
     }
     bid = 0;
@@ -159,7 +203,7 @@ void loop() {
     bool kamstrup_reply_received = false;
     int kamstrup_timeout = 1000;
     unsigned long timer_start = millis();
-    while (!kamstrup_reply_received && millis()-timer_start<kamstrup_timeout)
+    while (!kamstrup_reply_received && (millis()-timer_start)<kamstrup_timeout)
     {
       if (customSerial->available())
       {
@@ -193,14 +237,20 @@ void loop() {
       kamstrup_failures++;
     }
 
+    wdt_reset();
+
     delay(200);
     // DS18B20 temp sensors
     sensors.requestTemperatures();
     
     emontx.DSairinT = sensors.getTempCByIndex(0)*100;
     emontx.DSairoutT = sensors.getTempCByIndex(1)*100;
-    emontx.DSflowT = sensors.getTempCByIndex(2)*100;
-    emontx.DSreturnT = sensors.getTempCByIndex(3)*100;
+    emontx.DSflowT = (sensors.getTempCByIndex(2) + 0.356)*100 ;    // .35 epoxy march 2016  sensor calibration for testing sensor fixing methods
+    emontx.DSreturnT = sensors.getTempCByIndex(5)*100;             //was3
+    emontx.T1 = (sensors.getTempCByIndex(4) + 0.305 )*100;        // .40 T1 short               //march 2016  sensor calibration for testing sensor fixing methods 
+    emontx.T2 = (sensors.getTempCByIndex(3) + 0.294 )*100;   //  .29 long was5                     //march 2016  sensor calibration for testing sensor fixing methods
+    emontx.T3 = (sensors.getTempCByIndex(6)  + 0.199 )*100;   // .15 return
+    
     // -----------------------------------------------------
     // Analog read for grundfos vortex flow sensor
     // -----------------------------------------------------
@@ -227,7 +277,9 @@ void loop() {
 
     double deltaT = (1.0*emontx.DSflowT-emontx.DSreturnT)*0.01;
     double VFSheat = ((VFSflow/60.0)*4181.0) * deltaT;
-    emontx.VFSheat = VFSheat;
+    emontx.VFSheat = VFSheat;     // do we need to cap/limit the heat values here??
+
+    wdt_reset();
     
     // Reading of CT sensors needs to go here for stability 
     // need to double check the reason for this.
@@ -240,10 +292,28 @@ void loop() {
     ct2.calcVI(30,2000);
     emontx.OEMct2 = ct2.realPower;
 
+    // Accumulating Watt hours
+    int interval = millis() - last_reading;
+    last_reading = millis();
+
+    if (ct1.realPower>0) {
+        joules_CT1 += (ct1.realPower * interval * 0.001);
+        CT1_Wh += joules_CT1 / 3600;
+        joules_CT1 = joules_CT1 % 3600;
+    }
+
+    if (ct2.realPower>0) {
+        joules_CT2 += (ct2.realPower * interval * 0.001);
+        CT2_Wh += joules_CT2 / 3600;
+        joules_CT2 = joules_CT2 % 3600;
+    }
+
     emontx.pulseCount = pulseCount;
 
     Serial.print("OEMct1:"); Serial.print(emontx.OEMct1);
     Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
+    Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
+    Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);    
 
     Serial.print(",DSairoutT:"); Serial.print(emontx.DSairoutT*0.01,2);
     Serial.print(",DSairinT:"); Serial.print(emontx.DSairinT*0.01,2);
@@ -253,7 +323,11 @@ void loop() {
     Serial.print(",VFSflowT:"); Serial.print(emontx.VFSflowT*0.01);
     Serial.print(",VFSflowrate:"); Serial.print(emontx.VFSflowrate);
     Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
-    
+
+    // Serial.print(",T1:"); Serial.print(emontx.T1*0.01,2);   // temporary temperures for testing pipe pockets etc
+    //  Serial.print(",T2:"); Serial.print(emontx.T2*0.01,2);
+    //  Serial.print(",T3:"); Serial.println(emontx.T3*0.01,2);
+  
     if (kamstrup_reply_received) {
       // Parse kamstrup mbus data reply
       parse();
@@ -265,20 +339,30 @@ void loop() {
       Serial.print(",KSflowrate:"); Serial.print(emontx.KSflowrate);
       Serial.print(",KSheat:"); Serial.print(emontx.KSheat);
       Serial.print(",KSkWh:"); Serial.print(emontx.KSkWh);
+      Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
     }
 
     Serial.print(",PulseCount:"); Serial.print(emontx.pulseCount);
     Serial.println();
     delay(100);
 
-    // if ready to send + exit loop if it gets stuck as it seems too
-    int rf = 0; while (!rf12_canSend() && rf<10) {rf12_recvDone(); rf++;}
-    rf12_sendStart(0, &emontx, sizeof emontx);
-    // set the sync mode to 2 if the fuses are still the Arduino default
-    // mode 3 (full powerdown) can only be used with 258 CK startup fuses
-    rf12_sendWait(2);
+    if (SEND_RFM69_DATA) {
+      if (DEBUG) Serial.println("RFM send");
+      // if ready to send + exit loop if it gets stuck as it seems too
+      int rf = 0; while (!rf12_canSend() && rf<10) {rf12_recvDone(); rf++;}
+      rf12_sendStart(0, &emontx, sizeof emontx);
+      // set the sync mode to 2 if the fuses are still the Arduino default
+      // mode 3 (full powerdown) can only be used with 258 CK startup fuses
+      rf12_sendWait(2);
     
-    delay(100);
+      delay(100);
+      wdt_reset();
+    }
+  }
+
+  if ((millis()-lastwdtreset)>1000) {
+    lastwdtreset = millis();
+    wdt_reset();
   }
 }
 
@@ -294,7 +378,12 @@ void parse()
   emontx.KSheat = decodeval(i)*100; i+=6;
   int maxpower = decodeval(i)*100; i+=6;
   emontx.KSflowrate = decodeval(i); i+=6;
-  int maxflow = decodeval(i); i+=6;
+  int maxflow = decodeval(i); i+=18;
+  emontx.KSpulse = decodeval(i);
+  
+  // Correction for ASHP defrosts. Kamstrup normally show 'cooling' as a positive number.  
+  //If dt is positive, KSheat2 = KSheat, BUT if dt is -ve (defrost), KSheat2 is a negative number.
+  if (emontx.KSflowT>emontx.KSreturnT) emontx.KSheat2 = emontx.KSheat; else  emontx.KSheat2 = -1 * emontx.KSheat;
 }
 
 long decodeval(long i) {

@@ -1,8 +1,32 @@
-## Example one off prototype costing and BOM for Heatpump Monitor
+## Example costing and BOM for Heatpump Monitor
+
+### One off prototype
 
 The following outlines example one-off or low volume cost price costing for the Heatpump Monitor. 
 
-**Total £53.22 ex VAT** including **£28.93 ex VAT** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off - £34.72 inc VAT). Total £63.86 including VAT (20%).
+**Total £53.22 ex VAT** including **£28.93 ex VAT** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off - £34.72 inc VAT). Total £63.86 including VAT (20%) + misc shipping costs to do one-off prototype/DIY.
+
+See [BOM&Costing_1x.ods](BOM&Costing_1x.ods) 
+
+### 20x batch
+
+A batch of 20x heatpump monitor boards start to give significant savings on the PCB cost and a couple of the other components, the cost price drops to £29.61 ex VAT in these quantities. 
+
+See [BOM&Costing_20x.ods](BOM&Costing_20x.ods) 
+
+### Custom OEM
+
+Some of the components in the heatpump monitor are shared with other OpenEnergyMonitor units. Because we order these in much larger quantities we are able to get a lower price on some items. This drops the cost price to near £26 ex VAT.
+
+The cost price of the heatpump monitor would be less if the PCB was ordered in larger quantities. Ordering in 50x would reduce the cost price by about £3, ordering in several hundred would reduce the cost price by about £6.
+
+### Sale price
+
+Following the advice of other open hardware projects the sale price we typically charge is around 2.0-2.3x the cost price for OpenEnergyMonitor's main products. There's a good series of articles on pricing and other key considerations for maker businesses here: http://blog.ponoko.com/2010/11/16/ten-rules-for-maker-businesses-by-wireds-chris-anderson-%E2%80%94-rule-1.
+
+At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = £52 ex VAT (£62.40 inc VAT). Its perhaps interesting that this price is very similar to the one off prototype cost.
+
+### One off prototype example:
 
 **All pricing below is ex VAT**
 

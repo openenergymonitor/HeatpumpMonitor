@@ -1,9 +1,10 @@
+// Licence: GPL v3
 #define MBUS_FRAME_SHORT_START          0x10
 #define MBUS_FRAME_STOP                 0x16
 #define MBUS_CONTROL_MASK_SND_NKE       0x40
 #define MBUS_CONTROL_MASK_DIR_M2S       0x40
 #define MBUS_ADDRESS_NETWORK_LAYER      0xFD
-// Licence: GPLv3
+
 void mbus_send_ping(byte address) {
   byte data[5];
   
@@ -61,6 +62,7 @@ byte mbus_scan()
         byte_id ++;
       }
     }
+    if (address==50 || address==100 || address==150) wdt_reset();
   }
   return 0;
 }
