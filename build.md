@@ -6,8 +6,27 @@ BOM:
 
 ![heatpump_monitor_v2_components.JPG](images/heatpump_monitor_v2_components.JPG)
 
-The following image can be used as a reference of component locations.
+Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to match the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg). The following image can also be used as a reference of component locations. 
 
+Several of the resistors only have a reference name printed:
+
+    VDT: Voltage Divider Top (for AC-AC Voltage sensor) value: 470k (yellow, purple, yellow)
+    VDB: Voltage Divider Bottom (for AC-AC Voltage sensor) value: 470k (yellow, purple, yellow)
+    VDT1: Voltage Divider Top 1 (for CT sensor 1) value: 470k (yellow, purple, yellow)
+    VDB1: Voltage Divider Bottom 1 (for CT sensor 1) value: 470k (yellow, purple, yellow)
+    VDT2: Voltage Divider Top 2 (for CT sensor 2) value: 470k (yellow, purple, yellow)
+    VDB2: Voltage Divider Bottom 2 (for CT sensor 2) value: 470k (yellow, purple, yellow)
+    VDT3: Voltage Divider Top 3 (for CT sensor 3) value: 470k (yellow, purple, yellow)
+    VDB3: Voltage Divider Bottom 3 (for CT sensor 3) value: 470k (yellow, purple, yellow)
+
+CT Burden resistors:
+
+    BUR1: Burden resistor 1 (for CT sensor 1) value: 100R
+    BUR2: Burden resistor 2 (for CT sensor 2) value: 100R
+    BUR3: Burden resistor 3 (for CT sensor 3) value: 100R
+    
+Capacitors: C11, C13, C12, C19 all 10uF
+    
 ![heatpump_monitor_v2.JPG](images/heatpump_monitor_v2.JPG)
 
 **Tip 1:** It is usually easier to start by soldering the lower profile components first such as the resistors and to build up to the taller components. 
