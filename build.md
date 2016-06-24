@@ -6,7 +6,7 @@ BOM:
 
 ![heatpump_monitor_v2_components.JPG](images/heatpump_monitor_v2_components.JPG)
 
-Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to match the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg). The following image can also be used as a reference of component locations. 
+Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to match the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg).
 
 Several of the resistors only have a reference name printed:
 
@@ -26,6 +26,8 @@ CT Burden resistors:
     BUR3: Burden resistor 3 (for CT sensor 3) value: 100R
     
 Capacitors: C11, C13, C12, C19 all 10uF
+
+The following image can also be used as a reference of component locations. 
     
 ![heatpump_monitor_v2.JPG](images/heatpump_monitor_v2.JPG)
 
