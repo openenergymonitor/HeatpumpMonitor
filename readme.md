@@ -20,17 +20,18 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 
 <table>
 <tr><td>
-![Heatpump monitor](images/HPgraphic.png)
+<img style="width:40%" src="images/HPgraphic.png">
 </td><td>
-**Main Features:**
-
-- CT current and ACAC voltage based electricity monitoring 
-- Pulse counting or IRDA Elster meter reader
-- Analog inputs for Vortex Flow Sensor (VFS) option (e.g Sika, Grundfos) 
-- MBUS reader for kamstrup heat meters
-- 4x individually broken out DS18B20 temperature sensor connections 
-- Arduino ATmega328 core 
-- Connectivity options: ESP-12 WIFI, RaspberryPI header, RFM69
+<b>Main Features:</b><br>
+<ul>
+<li>CT current and ACAC voltage based electricity monitoring</li>
+<li>Pulse counting or IRDA Elster meter reader</li>
+<li>Analog inputs for Vortex Flow Sensor (VFS) option (e.g Sika, Grundfos)</li>
+<li>MBUS reader for kamstrup heat meters</li>
+<li>4x individually broken out DS18B20 temperature sensor connections</li>
+<li>Arduino ATmega328 core</li>
+<li>Connectivity options: ESP-12 WIFI, RaspberryPI header, RFM69</li>
+</ul>
 </td>
 </tr>
 </table>
@@ -43,6 +44,7 @@ There are two build options for the heatpump monitor board, the first is the ful
 - [Cut down energy monitor kit build guide](energymonitor_build.md)
 
 **ATmega328 Arduino Firmware:** [HeatpumpMonitor_V1.ino](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
+
 **ESP WIFI Firmware:** [EmonESP git repository](https://github.com/openenergymonitor/EmonESP)
 
 ## Installation and setup
