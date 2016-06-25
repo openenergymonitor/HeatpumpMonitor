@@ -62,7 +62,7 @@ The following guide details how to setup the heatpump monitor including interfac
 A case study in open hardware development
 
 - Exporting gerbers from EAGLE, getting a PCB made with a PCB manufacturer such as Ragworm
-- Heatpump Monitor and cut down energy monitor kit costing
+- [Heatpump Monitor and cut down energy monitor kit costing](costingexample.md)
 
 ## Licence
 
