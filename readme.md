@@ -55,39 +55,14 @@ The following guide details how to setup the heatpump monitor including interfac
 
 ## Development
 
-**New in V2:**
+- [Development discussion and change log](development.md)
 
-- Footprint for small solid state relay for volts free heating system control - not tested yet.
-- Status LED
+## Open Hardware ++
 
-**Fixed in V2:**
+A case study in open hardware development
 
-- VFS requires 5V power supply, current terminals break out 3.3V, next revision needs 5V routed instead.
-- Increase the thickness of the 3.3V supply lines to the ESP12 Wifi. There is now an additional 100nf cap across esp supply too
-- RaspberryPi model B Ethernet port position adjusted
-- Pulse counting dropdown resistor footprint on the board
-- CT3 can now be selected seperatly from analog 3
-
-BOM and example prototype costing: [BOM&Costing_oneoff_prototype.md](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Hardware/v2/BOM&Costing_oneoff_prototype.md)
-
-**Known Issues**
-
-- There is still an issue with the ESP Wifi upload reset
-
-**Further development: Short term**
-- Develop simpler heatpump dashboard
-- Test and document use of SIKA flow meters
-- Establish reliability of WIFI Connectivity
-- Develop packaging for IRDA infra-red sensor
-- Convert to SMT
-
-**Further development: Longer term**
-- Battery backed memory for kWh values
-- Real time clock
-- SD card, or on Pi Zero
-- Higher capacity microcontroller
-- Modbus or other electricity meter reader
-- Wiring up can currently be a little fiddly, a custom enclosure design could make installation and debugging easier.
+- Exporting gerbers from EAGLE, getting a PCB made with a PCB manufacturer such as Ragworm
+- Heatpump Monitor and cut down energy monitor kit costing
 
 ## Licence
 
