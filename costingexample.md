@@ -749,7 +749,7 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 	</tr>
 	<tr>
-		<td height="17" align="left"><br></td>
+		<td height="17" align="left"><b>Cost price no case</b></td>
 		<td align="center"><br></td>
 		<td align="center" sdval="45.4495533333333" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£45.45</td>
 		<td align="center"><br></td>
