@@ -39,7 +39,7 @@ The following image can also be used as a reference of component locations.
 
 Check that the power supply voltages are all as expected before inserting the ATmega328 in the 28pin holder.
 
-**ESP8266 Supply capacitor:** An additional 10uF is required across the supply to the ESP8266 module. The ground is top-left and 3.3v top-right.
+**ESP8266 Supply capacitor:** An additional 10uF may be required across the supply to the ESP8266 module. The ground is top-left and 3.3v top-right. Adding this capacitor solved an issue with the unit resetting regularly - indicating a power supply issue.
 
 ### Uploading the ATmega328 Firmware
 
