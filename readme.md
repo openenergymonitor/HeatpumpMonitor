@@ -6,63 +6,52 @@ This is a web-connected open source hardware heat-pump monitor that can measure 
 
 ![Heatpump monitor](images/topgraphic.jpg)
 
-## Content
-
-- Monitoring a heatpump
-- System setup
-- Hardware
-- Firmware
-- Web Dashboard
-
 ## Rationale
 
 Heat-pumps are a key component of zero carbon energy systems making it possible to provide heating efficiently from renewable energy, they are featured in many zero carbon energy scenarios such as ZeroCarbonBritain developed by the Centre for Alternative Technology and are also highlighted in David MacKay's book Sustainable Energy without the hot air.
 
 By monitoring a heat-pump its possible to see how well it is working, diagnose problems and get a better understanding of how a key potentially zero carbon heating solution works, data gathered and shared from well performing systems could help de-mystify heat-pump operation and help improve performance by diagnosing any problems early.
 
-## Blogs
-
 - [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
 - [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
 - [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
 
-## [Installation and setup](installation.md)
+## Overview
 
-## Hardware
-
+<table>
+<tr><td>
 ![Heatpump monitor](images/HPgraphic.png)
-
+</td><td>
 **Main Features:**
 
-- MBUS reader for kamstrup heat meters
 - CT current and ACAC voltage based electricity monitoring 
 - Pulse counting or IRDA Elster meter reader
-- Analog inputs for Vortex Flow Sensor (VFS) option (e.g Grundfos, Sika) 
+- Analog inputs for Vortex Flow Sensor (VFS) option (e.g Sika, Grundfos) 
+- MBUS reader for kamstrup heat meters
 - 4x individually broken out DS18B20 temperature sensor connections 
 - Arduino ATmega328 core 
 - Connectivity options: ESP-12 WIFI, RaspberryPI header, RFM69
+</td>
+</tr>
+</table>
 
-## Firmware
+## Build Guides
 
-### Arduino Firmware
+There are two build options for the heatpump monitor board, the first is the full heatpump monitor build with components for the MBUS heat meter reader, DS18B20 temperature sensing plus other interfaces. The second is a cut-down WIFI electricity monitor only build where the additional components for heat metering are not soldered in.
 
-- [Arduino firmware that runs on the atmega328](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
+- [Heatpump monitor kit build guide](heatpumpmonitor_build.md)
+- [Cut down energy monitor kit build guide](energymonitor_build.md)
 
-To upload the Arduino firmware follow the guide [setting up the Arduino programming environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
+**ATmega328 Arduino Firmware:** [HeatpumpMonitor_V1.ino](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
+**ESP WIFI Firmware:** [EmonESP git repository](https://github.com/openenergymonitor/EmonESP)
 
-### ESP WIFI Firmware
+## Installation and setup
 
- - [EmonESP Firmware for the ESP module](https://github.com/openenergymonitor/EmonESP)
+The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a Kamstrup MBUS heat meter.
 
-Uses ESP8688 Arduino tool kit, see installation and upload notes on the EmonESP github.
+- [Installation and setup](installation.md)
 
-## Web dashboard
-
-Connect to `ESP` WiFi AP then browse to:
-
-http://192.168.4.1
-
-## Hardware V2
+## Development
 
 **New in V2:**
 
@@ -79,20 +68,18 @@ http://192.168.4.1
 
 BOM and example prototype costing: [BOM&Costing_oneoff_prototype.md](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Hardware/v2/BOM&Costing_oneoff_prototype.md)
 
-## Known Issues
+**Known Issues**
 
 - There is still an issue with the ESP Wifi upload reset
 
-## Further development
-
-**Short term**
+**Further development: Short term**
 - Develop simpler heatpump dashboard
 - Test and document use of SIKA flow meters
 - Establish reliability of WIFI Connectivity
 - Develop packaging for IRDA infra-red sensor
 - Convert to SMT
 
-**Longer term**
+**Further development: Longer term**
 - Battery backed memory for kWh values
 - Real time clock
 - SD card, or on Pi Zero
