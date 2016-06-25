@@ -8,18 +8,18 @@ BOM:
 
 Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to help with matching the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg).
 
-Several of the resistors only have a reference name printed, the following are all part of the CT sensor and ACAC sensor biasing circuits and are all 470k resistors (470k was historically choosen to increase battery lifespan in battery powered nodes - lower values down to around 10k could be choosen instead here for a more stable biasing voltage):
+Several of the resistors only have a reference name printed, the following are all part of the CT sensor and ACAC sensor biasing circuits and are all 470k resistors (470k (yellow-purple-yellow) was historically choosen to increase battery lifespan in battery powered nodes - lower values down to around 10k could be choosen instead here for a more stable biasing voltage):
 
-    VDT: Voltage Divider Top (for AC-AC Voltage sensor) value: 470k (yellow, purple, yellow)
-    VDB: Voltage Divider Bottom (for AC-AC Voltage sensor) value: 470k (yellow, purple, yellow)
-    VDT1: Voltage Divider Top 1 (for CT sensor 1) value: 470k (yellow, purple, yellow)
-    VDB1: Voltage Divider Bottom 1 (for CT sensor 1) value: 470k (yellow, purple, yellow)
-    VDT2: Voltage Divider Top 2 (for CT sensor 2) value: 470k (yellow, purple, yellow)
-    VDB2: Voltage Divider Bottom 2 (for CT sensor 2) value: 470k (yellow, purple, yellow)
-    VDT3: Voltage Divider Top 3 (for CT sensor 3) value: 470k (yellow, purple, yellow)
-    VDB3: Voltage Divider Bottom 3 (for CT sensor 3) value: 470k (yellow, purple, yellow)
+    VDT: Voltage Divider Top (for AC-AC Voltage sensor)
+    VDB: Voltage Divider Bottom (for AC-AC Voltage sensor)
+    VDT1: Voltage Divider Top 1 (for CT sensor 1)
+    VDB1: Voltage Divider Bottom 1 (for CT sensor 1)
+    VDT2: Voltage Divider Top 2 (for CT sensor 2)
+    VDB2: Voltage Divider Bottom 2 (for CT sensor 2)
+    VDT3: Voltage Divider Top 3 (for CT sensor 3)
+    VDB3: Voltage Divider Bottom 3 (for CT sensor 3)
 
-CT Burden resistors:
+**CT Burden resistors:**
 
 The included burden resistor is 100 Ohms, this provides a AC power measurement range of **0 - 5.4 kW**. This provides ample range for many small domestic heatpumps. A smaller burden resistor can be used instead for larger measurement range at lower resolution. See Building Blocks guide [CT sensors - interfacing with arduino](https://openenergymonitor.org/emon/buildingblocks/ct-sensors-interface)
 
