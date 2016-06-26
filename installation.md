@@ -96,7 +96,7 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 <tr><th>Input name</th><th>Input processing and feeds</th></tr>
 <tr><td>KSflowT</td><td>Flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>KSreturnT</td><td>Return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>KSdeltaT</td><td>Difference beteween flow and return temperature (Kelvin)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSdeltaT</td><td>Difference between flow and return temperature (Kelvin)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>KSheat</td><td>Heatpump heat output (Watts)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to generate a higher resolution kWh feed from the kamstrup power data to be used in parallel with the kWh reading from the kamstrup meter.</td></tr>
 <tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
@@ -147,3 +147,28 @@ Testing is ongoing to verify the potential accuracy of heat measurement based on
 <tr><td>DSflowT</td><td>Water flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>DSreturnT</td><td>Water return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 </table>
+
+## Power up
+
+With the sensors connected as above and ATmega firmware configured as needed, the final step is to power up the unit and configure the WIFI.
+
+**ATmega to ESP8266 jumper link** For data to be transfered from the ATmega microcontroller across to the ESP8266 module the jumper link labeled TX between both 6way UART headers needs to be linked across. This creates a serial link between both units. This jumper needs to be removed before programming either the ESP8266 module or the ATmega328.
+
+### EmonESP Config
+
+On first power up the ESP WIFI module will create a WIFI access point. Connect to this directly and once connected navigate to ip address 192.168.4.1 in your browser.
+
+The EmonESP interface which looks much like this should appear:
+
+![EmonESP](images/EmonESP.png)
+
+Use this interface to scan and connect to the WIFI network you wish to connect to. Once connected the IP address of the heatpump monitor will be shown. Navigate to this IP address and switch over from the WIFI access point to your local network. 
+
+Next enter you emoncms.org account apikey. If data is appearing in the Latest data values pane and the emoncms apikey is set you should now see a set of inputs appear on your emoncms.org inputs page.
+
+### Emoncms Inputs
+
+The input list will look much like this but without the configured feeds. Use the emoncms configuration details above to configure emoncms to record the heatpump monitor data.
+
+![emoncms_inputs.png](images/emoncms_inputs.png)
+
