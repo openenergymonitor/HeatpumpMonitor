@@ -10,11 +10,13 @@ The Heatpump Monitor supports reading from the Irda port on Elster A100C energy 
 
 ![IRDA Reader](images/Irdaconnection.jpg)
 
-Selection and use of the IRDA reader over pulse counting is done in the Heatpump Monitor firmware here: [https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17)
+Selection and use of the IRDA reader over pulse counting is done in the Heatpump Monitor firmware here: [Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17)
 
 Set ELSTER_IRDA_ENABLE to 1:
 
     #define ELSTER_IRDA_ENABLE 1
+
+The watt-hour reading from the elster meter will be labeled *PulseCount* on the emoncms inputs page.
 
 ### Electricity monitoring: Pulse counting
 
