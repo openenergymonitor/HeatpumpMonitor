@@ -87,8 +87,8 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 <tr><td>KSflowT</td><td>Flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>KSreturnT</td><td>Return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>KSdeltaT</td><td>Difference beteween flow and return temperature (Kelvin)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to generate a higher resolution kWh feed from the kamstrup power data to be used in parallel with the kWh feed created from the kamstrup kWh record it self.</td></tr>
-<tr><td>KSheat</td><td>Heatpump heat output (Watts)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSheat</td><td>Heatpump heat output (Watts)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to generate a higher resolution kWh feed from the kamstrup power data to be used in parallel with the kWh reading from the kamstrup meter.</td></tr>
 <tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 </table>
 
