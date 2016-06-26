@@ -4,6 +4,14 @@ First remove the front and rear fascia from the heat pump monitor enclosure so t
 
 ![heatpump_monitor_v2_connections.JPG](images/heatpump_monitor_v2_connections.JPG)
 
+### Electricity Monitoring: Elster A100C Irda Watt hour reader
+
+### Electricity Meter Pulse Counting
+
+The pulse counting input on the heat pump monitor is just a interrupt enabled digital input on the atmega328.
+
+When using the pulse counting input with wired pulse output meters such as an Elster A100C or Ampy single phase meter two additional components are needed to provide reliable pulse counting. A pull down resistor is needed across the pulse input (100k) and ground and then a 100nf capacitor is needed to filter any high frequency pulses outside the expected range. 
+
 ### Kamstrup heat meter
 
 Ensure the heat pump monitor is un-powered before connection. Connect using 2-core wire the MBUS reader terminals (top-right) with the MBUS connection of your kamstrup heat meter. The polarity does not matter but care needs to be taken not to short the two wires as this may cause damage to the MBUS interface or card.
@@ -19,15 +27,6 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS range or Sika VFS range can be connected to the VFS terminals, top-right next to the MBUS reader terminals. There are two analog inputs on the VFS terminal that map to two 10bit ADC Channels on the Atmega328. For standard configuration use A3 for flowrate measurement and A4 for temperature measurement.
 
 Testing is ongoing to verify the potential accuracy of heat measurement based on the VFS flowrate and DS18B20 based flow and return temperature readings.
-
-### Electricity Meter Pulse Counting
-
-The pulse counting input on the heat pump monitor is just a interrupt enabled digital input on the atmega328.
-
-When using the pulse counting input with wired pulse output meters such as an Elster A100C or Ampy single phase meter two additional components are needed to provide reliable pulse counting. A pull down resistor is needed across the pulse input (100k) and ground and then a 100nf capacitor is needed to filter any high frequency pulses outside the expected range.
-
-![pulseinput.jpg](images/pulseinput.jpg)
-
 
 ### CT and AC-AC adapter power monitoring
 
