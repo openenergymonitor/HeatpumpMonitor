@@ -762,7 +762,9 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 
 ### Heatpump Monitor
 
-Costing summaries for different options & volumes
+Costing summaries for different options & volumes.
+
+First figure: cost price, second figure sale price (cost price x 2.0). See above.
 
 With case: 
 
@@ -776,10 +778,14 @@ Without case:
 - 20x £23.26, £46.52
 - OEM £20.30, £40.6
 
+Spreadsheets:
+
 - [HeatpumpMonitor/BOM&Costing_1x.ods](files/heatpumpmonitor/BOM&Costing_1x.ods)
 - [HeatpumpMonitor/BOM&Costing_20x.ods](files/heatpumpmonitor/BOM&Costing_20x.ods)
 
 ### Energy Monitor
+
+First figure: cost price, second figure sale price (cost price x 2.0). See above.
 
 With case:
 
@@ -792,6 +798,8 @@ Without case:
 - 1x £38.31
 - 20x £16.61, £33.22
 - OEM £15.10, £30.20
+
+Spreadsheets:
 
 - [EnergyMonitor/BOM&Costing_1x.ods](files/energymonitor/BOM&Costing_1x.ods)
 - [EnergyMonitor/BOM&Costing_20x.ods](files/energymonitor/BOM&Costing_20x.ods)
