@@ -76,7 +76,7 @@ See [Building Blocks: Sources of error in the emontx voltage and current inputs]
 
 ### Heat metering: MBUS Kamstrup heat meter
 
-[kamstrup.jpg](images/kamstrup.jpg)
+![kamstrup.jpg](images/kamstrup.jpg)
 
 A core feature of the heatpump monitor board is the MBUS meter reader and integrated firmware for reading heat metering data from Kamstrup Multical 402 heat meters. [https://www.kamstrup.com/en-en/products-solutions/thermal-energy-meters/multical-403](https://www.kamstrup.com/en-en/products-solutions/thermal-energy-meters/multical-403)
 
@@ -102,7 +102,7 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 
 ### Heat metering: VFS Flow meter (Sika or Grundfos)
 
-[vfsflowmeter.jpg](images/vfsflowmeter.jpg)
+![vfsflowmeter.jpg](images/vfsflowmeter.jpg)
 
 A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS range or Sika VFS range can be connected to the VFS terminals, top-right next to the MBUS reader terminals. There are two analog inputs on the VFS terminal that map to two 10bit ADC Channels on the Atmega328. For standard configuration use A3 for flowrate measurement and A4 for temperature measurement.
 
