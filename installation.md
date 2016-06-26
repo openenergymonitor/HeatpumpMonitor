@@ -26,7 +26,7 @@ The CT and AC-AC power measurement circuitry was designed for indicative power m
 
 In order to confirm the accuracy of the heat pump monitor electricity measurement note down a manual meter reading from the heat pump kwh meter when the heat pump monitor is first powered up, note down the date and time of this reading. After a measurement period of around 1 week check the accumulated electricity consumption recorded by the heat pump monitor both from the pulse counting input, the CT sensors against the consumption as read manually on the kwh meter.
 
-### Kamstrup heat meter
+### Heat metering: MBUS Kamstrup heat meter
 
 Ensure the heat pump monitor is un-powered before connection. Connect using 2-core wire the MBUS reader terminals (top-right) with the MBUS connection of your kamstrup heat meter. The polarity does not matter but care needs to be taken not to short the two wires as this may cause damage to the MBUS interface or card.
 
@@ -36,7 +36,7 @@ Once connected the heat pump monitor will auto detect the Kamstrup heat meter ad
 
 Troubleshooting: If the kamstrup meter data does not appear straight away, wait several minutes for the reader to rescan. The voltage across the MBUS reader terminals should be close to 24V.
 
-### VFS Flow meter (Sika or Grundfos)
+### Heat metering: VFS Flow meter (Sika or Grundfos)
 
 A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS range or Sika VFS range can be connected to the VFS terminals, top-right next to the MBUS reader terminals. There are two analog inputs on the VFS terminal that map to two 10bit ADC Channels on the Atmega328. For standard configuration use A3 for flowrate measurement and A4 for temperature measurement.
 
