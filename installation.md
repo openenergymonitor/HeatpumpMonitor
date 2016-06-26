@@ -18,12 +18,10 @@ Set ELSTER_IRDA_ENABLE to 1:
 
     #define ELSTER_IRDA_ENABLE 1
 
-The watt-hour reading from the elster meter will be labeled *PulseCount* on the emoncms inputs page.
-
 **Emoncms configuration**
 
 <table>
-<tr><th style="width:40%">Input name</th><th>Input processing and feeds</th></tr>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
 <tr><td>PulseCount</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
 </table>
 
@@ -43,6 +41,13 @@ For more information on pulse counting see the Building Blocks page: [Introducti
 
 The pulse counting input on the heatpump monitor is just a interrupt enabled digital input on the atmega328.
 
+**Emoncms configuration**
+
+<table>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>PulseCount</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+</table>
+
 ### Electricity monitoring: CT and AC-AC adapter
 
 In addition to the elster irda meter reader and pulse counting options the heatpump monitor also supports standard OpenEnergyMonitor CT and AC-AC Adapter based electricity monitoring. The AC-AC Adapter is required for voltage signal measurement and real power calculation which gives greater measurement accuracy.
@@ -54,6 +59,16 @@ CT Burden resistor sizing: The current range measurable by the CT based measurem
 The CT and AC-AC power measurement circuitry was designed for indicative power measurement, better than many home energy monitors available but less accurate than billing grade class 1 or 2 electricity meters. In order to draw reliable conclusions on heat pump COP performance it is recommended to use the pulse counting input in conjunction with a class 1 or 2 electricity meter for accumulated electricity consumption measurement. This can be in parallel with the CT based measurement which has the advantage of providing higher temporal resolution power readings useful when analysing heating runs in detail.
 
 In order to confirm the accuracy of the heat pump monitor electricity measurement note down a manual meter reading from the heat pump kwh meter when the heat pump monitor is first powered up, note down the date and time of this reading. After a measurement period of around 1 week check the accumulated electricity consumption recorded by the heat pump monitor both from the pulse counting input, the CT sensors against the consumption as read manually on the kwh meter.
+
+**Emoncms configuration**
+
+<table>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>OEMct1</td><td><b>Log to feed</b> record one standard power feed with 'log to feed'.<br><b>power to kWh</b> record a second feed with the power to kwh process, this process creates a cumulative kWh feed from the power input.</td></tr>
+<tr><td>OEMct2</td><td><b>Log to feed</b> record one standard power feed with 'log to feed'.<br><b>power to kWh</b> record a second feed with the power to kwh process, this process creates a cumulative kWh feed from the power input.</td></tr>
+<tr><td>OEMct1Wh</td><td><b>Wh accumulator</b> use the wh accumulator process to record the cumulative watt hour data in a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><td>OEMct2Wh</td><td><b>Wh accumulator</b> use the wh accumulator process to record the cumulative watt hour data in a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+</table>
 
 ### Heat metering: MBUS Kamstrup heat meter
 
