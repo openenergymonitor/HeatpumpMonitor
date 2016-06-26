@@ -762,7 +762,7 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs Â£26 x 2.0 = Â
 
 ### Heatpump Monitor
 
-Costing summaries for different options & volumes.
+Costing summaries for different options & volumes. All prices are for unassembled kits.
 
 First figure: cost price, second figure sale price (cost price x 2.0). See above.
 
