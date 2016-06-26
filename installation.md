@@ -20,6 +20,13 @@ Set ELSTER_IRDA_ENABLE to 1:
 
 The watt-hour reading from the elster meter will be labeled *PulseCount* on the emoncms inputs page.
 
+**Emoncms configuration**
+
+<table>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>PulseCount</td><td>**Log to feed** record one standard feed with 'log to feed'.<br>**Wh accumulator** record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+</table>
+
 ### Electricity monitoring: Pulse counting
 
 Many meters have pulse outputs, examples include: single phase and three phase electrical energy meters, Gas meters, Water meters. The pulse output may be a flashing LED or a switching relay (usually solid state) or both.
