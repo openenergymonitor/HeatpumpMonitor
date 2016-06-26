@@ -76,6 +76,8 @@ See [Building Blocks: Sources of error in the emontx voltage and current inputs]
 
 ### Heat metering: MBUS Kamstrup heat meter
 
+<img src="images/kamstrup.jpg" style="width:300px; float:right">
+
 A core feature of the heatpump monitor board is the MBUS meter reader and integrated firmware for reading heat metering data from Kamstrup Multical 402 heat meters. [https://www.kamstrup.com/en-en/products-solutions/thermal-energy-meters/multical-403](https://www.kamstrup.com/en-en/products-solutions/thermal-energy-meters/multical-403)
 
 Ensure the heat pump monitor is un-powered before connection. Connect using 2-core wire the MBUS reader terminals (top-right) with the MBUS connection of your kamstrup heat meter. The polarity does not matter but care needs to be taken not to short the two wires as this may cause damage to the MBUS interface or card.
