@@ -84,12 +84,12 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 
 <table>
 <tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>KSflowT</td><td>Flow temperature (Celcius)</td></tr>
-<tr><td>KSreturnT</td><td>Return temperature (Celcius)</td></tr>
-<tr><td>KSdeltaT</td><td></td>Difference beteween flow and return temperature (Kelvin)</tr>
-<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)</td></tr>
-<tr><td>KSheat</td><td>Heatpump heat output (Watts)</td></tr>
-<tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)</td></tr>
+<tr><td>KSflowT</td><td>Flow temperature (Celcius)<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSreturnT</td><td>Return temperature (Celcius)<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSdeltaT</td><td>Difference beteween flow and return temperature (Kelvin)<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Power to kWh</b> use the power to kwh process to generate a higher resolution kWh feed from the kamstrup power data to be used in parallel with the kWh feed created from the kamstrup kWh record it self.</td></tr>
+<tr><td>KSheat</td><td>Heatpump heat output (Watts)<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)<br><br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 </table>
 
 ### Heat metering: VFS Flow meter (Sika or Grundfos)
