@@ -80,6 +80,18 @@ Once connected the heat pump monitor will auto detect the Kamstrup heat meter ad
 
 Troubleshooting: If the kamstrup meter data does not appear straight away, wait several minutes for the reader to rescan. The voltage across the MBUS reader terminals should be close to 24V.
 
+**Emoncms configuration**
+
+<table>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>KSflowT</td><td>Flow temperature (Celcius)</td></tr>
+<tr><td>KSreturnT</td><td>Return temperature (Celcius)</td></tr>
+<tr><td>KSdeltaT</td><td></td>Difference beteween flow and return temperature (Kelvin)</tr>
+<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)</td></tr>
+<tr><td>KSheat</td><td>Heatpump heat output (Watts)</td></tr>
+<tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)</td></tr>
+</table>
+
 ### Heat metering: VFS Flow meter (Sika or Grundfos)
 
 A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS range or Sika VFS range can be connected to the VFS terminals, top-right next to the MBUS reader terminals. There are two analog inputs on the VFS terminal that map to two 10bit ADC Channels on the Atmega328. For standard configuration use A3 for flowrate measurement and A4 for temperature measurement.
