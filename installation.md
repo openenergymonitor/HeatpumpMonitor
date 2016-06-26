@@ -6,7 +6,15 @@ First remove the front and rear fascia from the heat pump monitor enclosure so t
 
 ### Electricity monitoring: IRDA Elster A100C Watt Hour reader
 
+The Heatpump Monitor supports reading from the Irda port on Elster A100C energy meters using the [OpenEnergyMonitor pulse sensor](https://shop.openenergymonitor.com/optical-utility-meter-led-pulse-sensor/). This provides a convenient way of reading the actual watt hours as recorded on the meter avoiding errors that may be caused by a multitude of sources via the other optional methods.
+
 ![IRDA Reader](images/Irdaconnection.jpg)
+
+Selection and use of the IRDA reader over pulse counting is done in the Heatpump Monitor firmware here: [https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17)
+
+Set ELSTER_IRDA_ENABLE to 1:
+
+    #define ELSTER_IRDA_ENABLE 1
 
 ### Electricity monitoring: Pulse counting
 
