@@ -2,7 +2,7 @@
 
 First remove the front and rear fascia from the heat pump monitor enclosure so that the terminal connections are accessible. The following image shows the function of each connector:
 
-![terminal_connections.jpg](images/terminal_connections.jpg)
+![heatpump_monitor_v2_connections.JPG](images/heatpump_monitor_v2_connections.JPG)
 
 ### Kamstrup heat meter
 
