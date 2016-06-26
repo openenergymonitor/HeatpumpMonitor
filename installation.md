@@ -50,6 +50,8 @@ The pulse counting input on the heatpump monitor is just a interrupt enabled dig
 
 ### Electricity monitoring: CT and AC-AC adapter
 
+![CTenergymonitoring.jpg](images/CTenergymonitoring.jpg)
+
 In addition to the elster irda meter reader and pulse counting options the heatpump monitor also supports standard OpenEnergyMonitor CT and AC-AC Adapter based electricity monitoring. The AC-AC Adapter is required for voltage signal measurement and real power calculation which gives greater measurement accuracy.
 
 CT Burden resistor sizing: The current range measurable by the CT based measurement is dependent on both the CT sensor used and the burden resistor size on the heat pump monitoring board. In order to obtain higher measurement resolution it is recommended to size the burden resistor to match closely the maximum rated electrical power input of the heat pump.
