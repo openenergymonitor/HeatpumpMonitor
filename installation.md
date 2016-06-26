@@ -98,4 +98,24 @@ A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS rang
 
 Testing is ongoing to verify the potential accuracy of heat measurement based on the VFS flowrate and DS18B20 based flow and return temperature readings.
 
+**Emoncms configuration**
+
+<table>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>VFSflowT</td><td>Flow temperature measured by temperature sensor in VFS flow meter.<br><b>Log to feed</b> record to PHPFina feed at 10s interval</td></tr>
+<tr><td>VFSflowrate</td><td>Flow rate in Litres/hour.<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>VFSheat</td><td>Heat output measured in Watts by VFS<br><b>Log to feed</b> record power to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to calculate cumulative kWh feed</td></tr>
+</table>
+
+
 ### DS18B20 Temperature sensors
+
+**Emoncms configuration**
+
+<table>
+<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>DSairoutT</td><td>Air out temperature off air-source heatpump (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>DSairinT</td><td>Air in temperature into air-source heatpump (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>DSflowT</td><td>Water flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><td>DSreturnT</td><td>Water return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+</table>
