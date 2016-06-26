@@ -22,9 +22,19 @@ The watt-hour reading from the elster meter will be labeled *PulseCount* on the 
 
 ### Electricity monitoring: Pulse counting
 
-The pulse counting input on the heat pump monitor is just a interrupt enabled digital input on the atmega328.
+Many meters have pulse outputs, examples include: single phase and three phase electrical energy meters, Gas meters, Water meters. The pulse output may be a flashing LED or a switching relay (usually solid state) or both.
+
+In the case of an electricity meter, a pulse output corresponds to a defined amount of energy passing through the meter (kWh/Wh). For single-phase domestic electricity meters (e.g. the Elster A100c) each pulse usually equals one Wh (1000 pulses per kWh).  With higher power meters (often three-phase), each pulse corresponds to a greater amount of energy e.g. 2, or even 10, Wh per pulse. 
+
+The connection of the pulse counting sensor is exactly the same as in the Elster Irda meter reader connection above. The same OpenEnergyMonitor pulse sensor used for the Irda can be used for optical pulse counting when attached over the flashing red LED present on most meters. 
+
+Alternatively wired pulse counting is also an option. For wired pulse counting two wires are needed one from the 3.3V supply terminal going to the meter and another switched pulse output coming back to the PULSE input terminal on the heatpump monitor.
 
 When using the pulse counting input with wired pulse output meters such as an Elster A100C or Ampy single phase meter two additional components are needed to provide reliable pulse counting. A pull down resistor is needed across the pulse input (100k) and ground and then a 100nf capacitor is needed to filter any high frequency pulses outside the expected range. The footprint for these are now on the PCB just below the terminals.
+
+For more information on pulse counting see the Building Blocks page: [Introduction to Pulse Counting](https://openenergymonitor.org/emon/buildingblocks/introduction-to-pulse-counting)
+
+The pulse counting input on the heatpump monitor is just a interrupt enabled digital input on the atmega328.
 
 ### Electricity monitoring: CT and AC-AC adapter
 
