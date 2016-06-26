@@ -23,8 +23,8 @@ The watt-hour reading from the elster meter will be labeled *PulseCount* on the 
 **Emoncms configuration**
 
 <table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>PulseCount</td><td>**Log to feed** record one standard feed with 'log to feed'.<br>**Wh accumulator** record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><th style="width:40%">Input name</th><th>Input processing and feeds</th></tr>
+<tr><td>PulseCount</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
 </table>
 
 ### Electricity monitoring: Pulse counting
