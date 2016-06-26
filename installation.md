@@ -54,11 +54,15 @@ In addition to the elster irda meter reader and pulse counting options the heatp
 
 CT Burden resistor sizing: The current range measurable by the CT based measurement is dependent on both the CT sensor used and the burden resistor size on the heat pump monitoring board. In order to obtain higher measurement resolution it is recommended to size the burden resistor to match closely the maximum rated electrical power input of the heat pump.
 
+The included burden resistor in the heatpump monitor kit is 100 Ohms, this provides a AC power measurement range of **0 - 5.4 kW**. This provides ample range for many small domestic heatpumps. A smaller burden resistor can be used instead for larger measurement range at lower resolution. See Building Blocks guide [CT sensors - interfacing with arduino](https://openenergymonitor.org/emon/buildingblocks/ct-sensors-interface)
+
 **Calibration and Accuracy**
 
-The CT and AC-AC power measurement circuitry was designed for indicative power measurement, better than many home energy monitors available but less accurate than billing grade class 1 or 2 electricity meters. In order to draw reliable conclusions on heat pump COP performance it is recommended to use the pulse counting input in conjunction with a class 1 or 2 electricity meter for accumulated electricity consumption measurement. This can be in parallel with the CT based measurement which has the advantage of providing higher temporal resolution power readings useful when analysing heating runs in detail.
+The CT and AC-AC power measurement circuitry was designed for indicative power measurement, better than many home energy monitors available but less accurate than billing grade class 1 or 2 electricity meters. In order to draw reliable conclusions on heat pump COP performance it is recommended to use the Elster Irda Watt hour reader or pulse counting input in conjunction with a class 1 or 2 electricity meter for accumulated electricity consumption measurement. This can be in parallel with the CT based measurement which has the advantage of providing higher temporal resolution power readings useful when analysing heating runs in detail.
 
 In order to confirm the accuracy of the heat pump monitor electricity measurement note down a manual meter reading from the heat pump kwh meter when the heat pump monitor is first powered up, note down the date and time of this reading. After a measurement period of around 1 week check the accumulated electricity consumption recorded by the heat pump monitor both from the pulse counting input, the CT sensors against the consumption as read manually on the kwh meter.
+
+See [Building Blocks: Sources of error in the emontx voltage and current inputs](https://openenergymonitor.org/emon/buildingblocks/emontx-error-sources)
 
 **Emoncms configuration**
 
@@ -71,6 +75,8 @@ In order to confirm the accuracy of the heat pump monitor electricity measuremen
 </table>
 
 ### Heat metering: MBUS Kamstrup heat meter
+
+A core feature of the heatpump monitor board is the MBUS meter reader and integrated firmware for reading heat metering data from Kamstrup Multical 402 heat meters. 
 
 Ensure the heat pump monitor is un-powered before connection. Connect using 2-core wire the MBUS reader terminals (top-right) with the MBUS connection of your kamstrup heat meter. The polarity does not matter but care needs to be taken not to short the two wires as this may cause damage to the MBUS interface or card.
 
@@ -95,6 +101,22 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 ### Heat metering: VFS Flow meter (Sika or Grundfos)
 
 A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS range or Sika VFS range can be connected to the VFS terminals, top-right next to the MBUS reader terminals. There are two analog inputs on the VFS terminal that map to two 10bit ADC Channels on the Atmega328. For standard configuration use A3 for flowrate measurement and A4 for temperature measurement.
+
+There are a multitude of VFS flow sensors each catering for different flow ranges, the calibration for the VFS sensor is set in the Heatpump monitor firmware here:
+
+[Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L92](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L92)
+
+    // --------------------------------------------------
+    // VFS config
+    // --------------------------------------------------
+    double VFS_maxflow          = 40.0;  // Litres/minute
+    double VFS_maxflow_voltage  = 3.5;   // Volts
+    double VFS_zeroflow_voltage = 0.25;  // Volts
+    double VFS_maxtemp          = 100;   // Celcius
+    double VFS_maxtemp_voltage  = 3.5;   // Volts
+    double VFS_zerotemp_voltage = 0.5; // Volts
+    
+The calibration values to use here can be found the VFS sensor datasheet.
 
 Testing is ongoing to verify the potential accuracy of heat measurement based on the VFS flowrate and DS18B20 based flow and return temperature readings.
 
