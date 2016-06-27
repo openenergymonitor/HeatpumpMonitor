@@ -6,6 +6,66 @@ BOM:
 
 ![energymonitor_v2_components.JPG](images/energymonitor_v2_components.JPG)
 
+**Resistor reference**
+
+The following resistors are included in the kit.
+
+<table cellspacing="0" border="0">
+	<colgroup width="63"></colgroup>
+	<colgroup width="219"></colgroup>
+	<colgroup width="148"></colgroup>
+	<tr>
+		<td height="17" align="center"><b>Quantity</b></td>
+		<td align="left"><b>Resistance</b></td>
+		<td align="left"><b>Colour code</b></td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="8" sdnum="2057;">8</td>
+		<td align="left">470k (5%)</td>
+		<td align="left">Yellow-purple-yellow</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="4" sdnum="2057;">4</td>
+		<td align="left">10k (5%)</td>
+		<td align="left">Brown-black-orange</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">4.7k (5%)</td>
+		<td align="left">Yellow-purple-red</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">100k</td>
+		<td align="left">Brown-black-yellow</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">100R 5%</td>
+		<td align="left">Brown-black-brown</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">120K (blue)</td>
+		<td align="left">Brown-red-black-orange</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">5k6</td>
+		<td align="left">Green-blue-red</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">56r</td>
+		<td align="left">Green-blue-black</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="3" sdnum="2057;">3</td>
+		<td align="left">CT burden resistors</td>
+		<td align="left">see note</td>
+	</tr>
+</table>
+
 Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to match the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg).
 
 Several of the resistors only have a reference name printed, the following are all part of the CT sensor and ACAC sensor biasing circuits and are all 470k resistors (470k (yellow-purple-yellow) was historically choosen to increase battery lifespan in battery powered nodes - lower values down to around 10k could be choosen instead here for a more stable biasing voltage):
