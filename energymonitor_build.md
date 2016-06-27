@@ -31,13 +31,13 @@ The following resistors are included in the kit.
 		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="left">120k (blue, 1%)</td>
 		<td align="left">Brown-red-black-orange</td>
-		<td align="left">ACAC voltage divider</td>
+		<td align="left">ACAC voltage divider top</td>
 	</tr>
 	<tr>
 		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="left">10k (blue, 1%)</td>
 		<td align="left">Brown-black-black-red</td>
-		<td align="left">ACAC voltage divider</td>
+		<td align="left">ACAC voltage divider bottom</td>
 	</tr>
 	<tr>
 		<td height="17" align="center" sdval="1" sdnum="2057;">3</td>
