@@ -40,7 +40,7 @@ The following resistors are included in the kit.
 		<td align="left">ACAC voltage divider</td>
 	</tr>
 	<tr>
-		<td height="17" align="center" sdval="4" sdnum="2057;">4</td>
+		<td height="17" align="center" sdval="1" sdnum="2057;">4</td>
 		<td align="left">10k (5%)</td>
 		<td align="left">Brown-black-orange</td>
 		<td align="left">Mixed use</td>
