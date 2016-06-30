@@ -90,10 +90,14 @@
 <dimension x1="73.3" y1="20.6" x2="82.8" y2="20.6" x3="78.05" y3="26.1" textsize="1.778" layer="100"/>
 <dimension x1="95.3" y1="13.4" x2="86.4" y2="12.8" x3="90.85" y3="20" textsize="1.778" layer="100" dtype="horizontal"/>
 <dimension x1="86.4" y1="13.4" x2="104.5" y2="11.8" x3="95.45" y3="22.5" textsize="1.778" layer="100" dtype="horizontal"/>
-<wire x1="7" y1="20.1" x2="101.5" y2="20.1" width="0.1" layer="20"/>
-<wire x1="101.5" y1="20.1" x2="101.5" y2="8.7" width="0.1" layer="20"/>
-<wire x1="101.5" y1="8.7" x2="7" y2="8.7" width="0.1" layer="20"/>
-<wire x1="7" y1="8.7" x2="7" y2="20.1" width="0.1" layer="20"/>
+<wire x1="7" y1="21.1" x2="101.5" y2="21.1" width="0.1" layer="20"/>
+<wire x1="101.5" y1="21.1" x2="101.5" y2="8.7" width="0.1" layer="20"/>
+<wire x1="101.5" y1="8.7" x2="83.5" y2="8.7" width="0.1" layer="20"/>
+<wire x1="83.5" y1="8.7" x2="83.5" y2="5.7" width="0.1" layer="20"/>
+<wire x1="83.5" y1="5.7" x2="68.5" y2="5.7" width="0.1" layer="20"/>
+<wire x1="68.5" y1="5.7" x2="68.5" y2="8.7" width="0.1" layer="20"/>
+<wire x1="68.5" y1="8.7" x2="7" y2="8.7" width="0.1" layer="20"/>
+<wire x1="7" y1="8.7" x2="7" y2="21.1" width="0.1" layer="20"/>
 </plain>
 <libraries>
 </libraries>
