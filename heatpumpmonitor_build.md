@@ -68,6 +68,12 @@ The following resistors are included in the kit.
 		<td align="left">Serial 5V to 3.3V level converter</td>
 	</tr>
 	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">56R (5%)</td>
+		<td align="left">Green-blue-black</td>
+		<td align="left">Unused for powering from ACAC*</td>
+	</tr>
+	<tr>
 		<td height="17" align="center" sdval="3" sdnum="2057;">3</td>
 		<td align="left">CT burden resistors (1%)</td>
 		<td align="left">see note</td>
