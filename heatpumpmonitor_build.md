@@ -1,10 +1,79 @@
 # Heatpump Monitor Build
 
-The heatpump monitor comes as a component kit with all the resistors, capacitors, connectors, IC's and other parts required to complete the build. The full Bill of Materials can be found here:
-
-BOM:
+The heatpump monitor comes as a component kit with all the resistors, capacitors, connectors, IC's and other parts required to complete the build. The full Bill of Materials can be found [here](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/costingexample.md)
 
 ![heatpump_monitor_v2_components.JPG](images/heatpump_monitor_v2_components.JPG)
+
+**Resistor reference**
+
+The following resistors are included in the kit.
+
+<table cellspacing="0" border="0">
+	<colgroup width="63"></colgroup>
+	<colgroup width="219"></colgroup>
+	<colgroup width="162"></colgroup>
+	<colgroup width="245"></colgroup>
+	<tr>
+		<td height="17" align="center"><b>Quantity</b></td>
+		<td align="left"><b>Resistance</b></td>
+		<td align="left"><b>Colour code</b></td>
+		<td align="left"><b>Function</b></td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="8" sdnum="2057;">8</td>
+		<td align="left">470k (5%)</td>
+		<td align="left">Yellow-purple-yellow</td>
+		<td align="left">CT + ACAC Voltage dividers</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">120k (blue, 1%)</td>
+		<td align="left">Brown-red-black-orange</td>
+		<td align="left">ACAC voltage divider top</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">10k (blue, 1%)</td>
+		<td align="left">Brown-black-black-red</td>
+		<td align="left">ACAC voltage divider bottom</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">3</td>
+		<td align="left">10k (5%)</td>
+		<td align="left">Brown-black-orange</td>
+		<td align="left">Mixed use</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">4.7k (5%)</td>
+		<td align="left">Yellow-purple-red</td>
+		<td align="left">DS18B20 Temperature sensing</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">100k (5%)</td>
+		<td align="left">Brown-black-yellow</td>
+		<td align="left">Pulse counting dropdown</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">100R (5%)</td>
+		<td align="left">Brown-black-brown</td>
+		<td align="left">LED current limiting resistor</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">5.6k (5%)</td>
+		<td align="left">Green-blue-red</td>
+		<td align="left">Serial 5V to 3.3V level converter</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="3" sdnum="2057;">3</td>
+		<td align="left">CT burden resistors (1%)</td>
+		<td align="left">see note</td>
+		<td align="left"><br></td>
+	</tr>
+</table>
 
 Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to help with matching the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg).
 
