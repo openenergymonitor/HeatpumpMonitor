@@ -132,11 +132,19 @@ Several of the resistors only have a reference name printed, the following are a
 
 **CT Burden resistors:**
 
-The included burden resistor is 100 Ohms, this provides a AC power measurement range of **0 - 5.4 kW**. This provides ample range for many small domestic heatpumps. A smaller burden resistor can be used instead for larger measurement range at lower resolution. See Building Blocks guide [CT sensors - interfacing with arduino](https://openenergymonitor.org/emon/buildingblocks/ct-sensors-interface)
+The included burden resistor is 100 Ohms, this provides a AC power measurement range of **0 - 5.4 kW**. A smaller burden resistor can be used instead for larger measurement range at lower resolution, 22 Ohms would provide 0 - 24 kW range. See Building Blocks guide [CT sensors - interfacing with arduino](https://openenergymonitor.org/emon/buildingblocks/ct-sensors-interface)
 
-    BUR1: Burden resistor 1 (for CT sensor 1) value: 100R
-    BUR2: Burden resistor 2 (for CT sensor 2) value: 100R
-    BUR3: Burden resistor 3 (for CT sensor 3) value: 100R
+Example calculation:
+
+    Max Power = (((VREF ÷ 2) ÷ Burden resistance) × CT turns) × 230V ÷ sqrt(2)
+    Max Power = (((3.3V ÷ 2) ÷ 100R) × 2000 turns) × 230V ÷ sqrt(2) 
+    Copy into calculator: (((3.3÷2)÷100)×2000)×230÷sqrt(2) 
+
+Burden resistor PCB name reference:
+
+    BUR1: Burden resistor 1 (for CT sensor 1)
+    BUR2: Burden resistor 2 (for CT sensor 2)
+    BUR3: Burden resistor 3 (for CT sensor 3)
     
 Capacitors: C11, C13, C12, C19 all 10uF
 
