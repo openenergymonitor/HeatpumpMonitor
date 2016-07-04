@@ -73,6 +73,48 @@ The following resistors are included in the kit.
 		<td align="left">see note</td>
 		<td align="left"><br></td>
 	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">220k (5%)</td>
+		<td align="left">Red-red-yellow</td>
+		<td align="left">MBUS Reader</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">33k (5%)</td>
+		<td align="left">Orange-orange-orange</td>
+		<td align="left">MBUS Reader</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">39k (5%)</td>
+		<td align="left">Orange-purple-orange</td>
+		<td align="left">MBUS Reader</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">22k (5%)</td>
+		<td align="left">Red-red-orange</td>
+		<td align="left">MBUS Reader</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">3k3 (5%)</td>
+		<td align="left">Orange-orange-red</td>
+		<td align="left">MBUS Reader</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
+		<td align="left">82R (5%)</td>
+		<td align="left"></td>
+		<td align="left">MBUS Reader</td>
+	</tr>
+	<tr>
+		<td height="17" align="center" sdval="2" sdnum="2057;">2</td>
+		<td align="left">1k (5%)</td>
+		<td align="left">Brown-black-red</td>
+		<td align="left">MBUS Reader</td>
+	</tr>
 </table>
 
 Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to help with matching the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg).
