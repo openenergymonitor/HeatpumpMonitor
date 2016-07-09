@@ -378,7 +378,7 @@ void loop() {
 
     msgnum++;
     Serial.print("Msg:"); Serial.print(msgnum);
-    Serial.print("OEMct1:"); Serial.print(emontx.OEMct1);
+    Serial.print(",OEMct1:"); Serial.print(emontx.OEMct1);
     Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
     Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
     Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);    
