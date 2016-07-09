@@ -70,15 +70,17 @@ void loop() {
     // Accumulating Watt hours
     int interval = millis() - last_reading;
     last_reading = millis();
-
-    if (ct1.realPower > 0) {
-      joules_CT1 += (ct1.realPower * interval * 0.001);
+    
+    if (ct1.realPower > 0 && interval>0) {
+      int jouleinc = ct1.realPower * interval *0.001;
+      joules_CT1 += jouleinc;
       CT1_Wh += joules_CT1 / 3600;
       joules_CT1 = joules_CT1 % 3600;
     }
 
-    if (ct2.realPower > 0) {
-      joules_CT2 += (ct2.realPower * interval * 0.001);
+    if (ct2.realPower > 0 && interval>0) {
+      int jouleinc = ct2.realPower * interval *0.001;
+      joules_CT2 += jouleinc;
       CT2_Wh += joules_CT2 / 3600;
       joules_CT2 = joules_CT2 % 3600;
     }

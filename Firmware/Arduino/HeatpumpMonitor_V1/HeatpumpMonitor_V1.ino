@@ -139,6 +139,8 @@ unsigned long last_reading = 0;
 double VFS_Flow_Cal = 0;
 double VFS_Temp_Cal = 0;
 
+unsigned long msgnum = 0;
+
 ElsterA100C meter(meter_reading);
 
 void setup() {
@@ -357,20 +359,25 @@ void loop() {
     int interval = millis() - last_reading;
     last_reading = millis();
 
-    if (ct1.realPower>0) {
-        joules_CT1 += (ct1.realPower * interval * 0.001);
-        CT1_Wh += joules_CT1 / 3600;
-        joules_CT1 = joules_CT1 % 3600;
+    if (ct1.realPower > 0 && interval>0) {
+      int jouleinc = ct1.realPower * interval *0.001;
+      joules_CT1 += jouleinc;
+      CT1_Wh += joules_CT1 / 3600;
+      joules_CT1 = joules_CT1 % 3600;
     }
 
-    if (ct2.realPower>0) {
-        joules_CT2 += (ct2.realPower * interval * 0.001);
-        CT2_Wh += joules_CT2 / 3600;
-        joules_CT2 = joules_CT2 % 3600;
+    if (ct2.realPower > 0 && interval>0) {
+      int jouleinc = ct2.realPower * interval *0.001;
+      joules_CT2 += jouleinc;
+      CT2_Wh += joules_CT2 / 3600;
+      joules_CT2 = joules_CT2 % 3600;
     }
+    wdt_reset();
 
     emontx.pulseCount = pulseCount;
 
+    msgnum++;
+    Serial.print("Msg:"); Serial.print(msgnum);
     Serial.print("OEMct1:"); Serial.print(emontx.OEMct1);
     Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
     Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
@@ -412,7 +419,11 @@ void loop() {
       // Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
     }
 
-    Serial.print(",PulseCount:"); Serial.print(emontx.pulseCount);
+    if (ELSTER_IRDA_ENABLE) {
+      Serial.print(",WattHours:"); Serial.print(emontx.pulseCount);
+    } else {
+      Serial.print(",PulseCount:"); Serial.print(emontx.pulseCount);
+    }
     Serial.println();
     delay(100);
 
