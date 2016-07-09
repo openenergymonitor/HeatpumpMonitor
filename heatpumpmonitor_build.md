@@ -112,7 +112,7 @@ The following resistors are included in the kit.
 	<tr>
 		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="left">82R (5%)</td>
-		<td align="left"></td>
+		<td align="left">Grey-red-black</td>
 		<td align="left">MBUS Reader</td>
 	</tr>
 	<tr>
