@@ -66,6 +66,15 @@ A case study in open hardware development
 - Exporting gerbers from EAGLE, getting a PCB made with a PCB manufacturer such as Ragworm
 - [Heatpump Monitor and cut down energy monitor kit costing](costingexample.md)
 
+
+## Heatpump dashboard
+
+Source code for the heatpump dashboard can be found as part of the front end emoncms energy site:
+
+[http://github.com/emoncms/energy](http://github.com/emoncms/energy)
+
+Emoncms energy uses emoncms as the data backend.
+
 ## Licence
 
 This project is open source software and hardware.

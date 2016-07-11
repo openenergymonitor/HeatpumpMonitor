@@ -418,12 +418,7 @@ void loop() {
       Serial.print(",KSkWh:"); Serial.print(emontx.KSkWh);
       // Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
     }
-
-    if (ELSTER_IRDA_ENABLE) {
-      Serial.print(",WattHours:"); Serial.print(emontx.pulseCount);
-    } else {
-      Serial.print(",PulseCount:"); Serial.print(emontx.pulseCount);
-    }
+    Serial.print(",PulseIRDA:"); Serial.print(emontx.pulseCount);
     Serial.println();
     delay(100);
 
