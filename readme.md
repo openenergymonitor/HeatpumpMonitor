@@ -54,6 +54,7 @@ There are two build options for the heatpump monitor board, the first is the ful
 The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a Kamstrup MBUS heat meter.
 
 - [Installation and setup](installation.md)
+- [Software Setup](software_setup.md)
 
 ## Development
 
@@ -68,6 +69,8 @@ A case study in open hardware development
 
 
 ## Heatpump dashboard
+
+**Login and explore:** [https://openenergymonitor.org/dev/energy](https://openenergymonitor.org/dev/energy)
 
 Source code for the heatpump dashboard can be found as part of the front end emoncms energy site:
 
