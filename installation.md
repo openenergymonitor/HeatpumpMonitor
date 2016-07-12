@@ -1,6 +1,6 @@
 # Installation and setup
 
-First remove the front and rear fascia from the heat pump monitor enclosure so that the terminal connections are accessible. The following image shows the function of each connector:
+The following image shows the function of each connector:
 
 ![heatpump_monitor_v2_connections.JPG](images/heatpump_monitor_v2_connections.JPG)
 
@@ -20,9 +20,11 @@ Set ELSTER_IRDA_ENABLE to 1:
 
 **Emoncms configuration**
 
+See the [Software setup guide](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/software_setup.md) for automated setup method.
+
 <table>
 <tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>PulseCount</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><td>PulseIRDA</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
 </table>
 
 ### Electricity monitoring: Pulse counting
@@ -45,7 +47,7 @@ The pulse counting input on the heatpump monitor is just a interrupt enabled dig
 
 <table>
 <tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>PulseCount</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><td>PulseIRDA</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
 </table>
 
 ### Electricity monitoring: CT and AC-AC adapter
@@ -168,7 +170,7 @@ Next enter you emoncms.org account apikey. If data is appearing in the Latest da
 
 ### Emoncms Inputs
 
-The input list will look much like this but without the configured feeds. Use the emoncms configuration details above to configure emoncms to record the heatpump monitor data.
+The input list will look much like this but without the configured feeds. Use the emoncms configuration details above to configure emoncms to record the heatpump monitor data or alternatively use the automated setup method as documented here in the [Software setup guide](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/software_setup.md)
 
 ![emoncms_inputs.png](images/emoncms_inputs.png)
 
