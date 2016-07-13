@@ -9,9 +9,9 @@
 #define FirmwareVersion = 2.0
 #define DEBUG 0
 #define emonTxV3 1
-#define RFM69_ENABLE 1
+#define RFM69_ENABLE 0
 #define SEND_RFM69_RX_DATA 0
-#define SEND_RFM69_TX_DATA 1
+#define SEND_RFM69_TX_DATA 0
 
 #define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
