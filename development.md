@@ -26,7 +26,7 @@ BOM and example prototype costing: [BOM&Costing_oneoff_prototype.md](https://git
 - There is still an issue with the ESP Wifi upload reset
 
 **Further development: Short term**
-- Develop simpler heatpump dashboard
+
 - Test and document use of SIKA flow meters
 - Establish reliability of WIFI Connectivity
 
