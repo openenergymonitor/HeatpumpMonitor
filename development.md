@@ -1,6 +1,6 @@
 # Development
 
-The heatpump monitor hardware is now in its second revision. Version 2 replaces the EmonGLD footprint with a solid state relay and fixes a couple of issues with the first board. There are several aspects that would be good to develop further (discussed below) but the heatpump monitor in its present form is a good starting point providing a relatively low cost web-connected WIFI heatpump monitor development board that can interface with Elster A100C Irda electricity monitoring, Kamstrup MBUS heat meters and SIKA flow meters.
+The heatpump monitor hardware is now in its second revision. Version 2 replaces the EmonGLCD footprint with a solid state relay and fixes a couple of issues with the first board. There are several aspects that would be good to develop further (discussed below) but the heatpump monitor in its present form is a good starting point providing a relatively low cost web-connected WIFI heatpump monitor development board that can interface with Elster A100C Irda electricity monitoring, Kamstrup MBUS heat meters and SIKA flow meters.
 
 One of the main questions for the next stage of the heatpump monitor is whether the core features of the heatpump monitor can be integrated in a redesign of the pre-assembled SMT EmonTx v3 including the ESP8266 WIFI module. It would make more sense from a manufacturing perspective to be able to focus around a single unit. 
 
