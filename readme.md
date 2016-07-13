@@ -56,6 +56,8 @@ The following guide details how to setup the heatpump monitor including interfac
 - [Installation and setup](installation.md)
 - [Software Setup](software_setup.md)
 
+[![Heatpump Setup](https://img.youtube.com/vi/71LrNdq08hs/0.jpg)](https://www.youtube.com/watch?v=71LrNdq08hs)
+
 ## Development
 
 - [Development discussion and change log](development.md)
