@@ -51,7 +51,9 @@ There are two build options for the heatpump monitor board, the first is the ful
 
 ## Installation and setup
 
-The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a Kamstrup MBUS heat meter.
+The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a heat meter.
+
+- [Selecting the right heat meter](selectingheatmeter.md)
 
 - [Installation and setup](installation.md)
 - [Software Setup](software_setup.md)
