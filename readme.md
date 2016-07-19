@@ -15,8 +15,8 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 - [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
 - [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
 - [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
-- [**John Cantor's heat pump monitoring blog**](http://johncantorheatpumps.blogspot.co.uk)
-- 
+- **[John Cantor's heat pump monitoring blog](http://johncantorheatpumps.blogspot.co.uk)**
+
 ## Overview
 
 <table>
