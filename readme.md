@@ -15,7 +15,8 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 - [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
 - [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
 - [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
-
+- [**John Cantor's heat pump monitoring blog**](http://johncantorheatpumps.blogspot.co.uk)
+- 
 ## Overview
 
 <table>
@@ -54,7 +55,6 @@ There are two build options for the heatpump monitor board, the first is the ful
 The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a heat meter.
 
 - [Selecting the right heat meter](selectingheatmeter.md)
-
 - [Installation and setup](installation.md)
 - [Software Setup](software_setup.md)
 
