@@ -173,7 +173,11 @@ Check that the power supply voltages are all as expected before inserting the AT
 
 The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_V1](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_V1)
 
-Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE. There's a guide on uploading Arduino firmware here: [http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
+Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE.
+
+If you're using the cable sold through the OpenEnergyMonitor Shop, the drivers for Windows and Mac can be downloaded here: [http://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx](http://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
+
+The Heatpump Monitor repository contains all the Arduino libraries required to compile the heatpump monitor firmware. Once the Ardunio IDE is installed it can be configured to use these libraries by going to: **File > Preferences** and setting the sketchbook location to **HeatpumpMonitor/Firmware/Arduino** (including the full path to your HeatpumpMonitor folder on your system).
 
 ### Uploading the ESP8266 Firmware: EmonESP
 
