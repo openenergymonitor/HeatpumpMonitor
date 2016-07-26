@@ -17,6 +17,8 @@ Selection and use of the IRDA reader over pulse counting is done in the Heatpump
 Set ELSTER_IRDA_ENABLE to 1:
 
     #define ELSTER_IRDA_ENABLE 1
+    
+**When using the Elster IRDA meter reader the 100nF capacitor may need to be removed**
 
 **Emoncms configuration**
 
