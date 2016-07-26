@@ -13,9 +13,13 @@
 #define SEND_RFM69_RX_DATA 0
 #define SEND_RFM69_TX_DATA 0
 
-#define VFS_ENABLE 1
+#define OEM_EMON_ENABLE 1
+#define KAMSTRUP_ENABLE 1
+#define VFS_ENABLE 0
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
+
+
 
 // ------------------------------------------------------------------------------------------
 // Datastructure for data sent via RFM12 or RFM69 radio module - alternative path to ESP WIFI
@@ -163,16 +167,19 @@ void setup() {
   customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
 
   wdt_reset();
-  
-  mbus_normalize();
-  if (kamstrup_mbus_address==0) {
-    if (DEBUG) Serial.println("Scanning MBUS ");
-    kamstrup_mbus_address = mbus_scan();
-    if (kamstrup_mbus_address) {
-      if (DEBUG) Serial.print("Meter found, address: ");
-      if (DEBUG) Serial.println(kamstrup_mbus_address);
-    } else {
-      if (DEBUG) Serial.println("No MBUS meter found");
+
+  if (KAMSTRUP_ENABLE) 
+  {
+    mbus_normalize();
+    if (kamstrup_mbus_address==0) {
+      if (DEBUG) Serial.println("Scanning MBUS ");
+      kamstrup_mbus_address = mbus_scan();
+      if (kamstrup_mbus_address) {
+        if (DEBUG) Serial.print("Meter found, address: ");
+        if (DEBUG) Serial.println(kamstrup_mbus_address);
+      } else {
+        if (DEBUG) Serial.println("No MBUS meter found");
+      }
     }
   }
   wdt_reset();
@@ -249,57 +256,59 @@ void loop() {
     
     last = now; firstrun = false;
 
-    // 1) KAMSTRUP HEAT METER REQUEST: 
-
     bool kamstrup_reply_received = false;
-    if (MBUS_ENABLE) {
-      if (DEBUG) Serial.println("mbus_request_data");
-      if (kamstrup_mbus_address>0) {
-        mbus_request_data(kamstrup_mbus_address);
-      } else {
-        if (kamstrup_failures>10) {
-          if (DEBUG) Serial.println("Mbus scan start");
-          kamstrup_mbus_address = mbus_scan();
-          kamstrup_failures = 0;
-          wdt_reset();
-        }
-      }
-      bid = 0;
-  
-      int kamstrup_timeout = 1000;
-      unsigned long timer_start = millis();
-      while (!kamstrup_reply_received && (millis()-timer_start)<kamstrup_timeout)
-      {
-        if (customSerial->available())
-        {
-          
-          byte val = (byte) customSerial->read();
-      
-          bytes[bid] = val;
-          bid++;
-          
-          if (bytes[0]!=104) {
-            bid = 0;
+    if (KAMSTRUP_ENABLE)
+    {
+      // 1) KAMSTRUP HEAT METER REQUEST:
+      if (MBUS_ENABLE) {
+        if (DEBUG) Serial.println("mbus_request_data");
+        if (kamstrup_mbus_address>0) {
+          mbus_request_data(kamstrup_mbus_address);
+        } else {
+          if (kamstrup_failures>10) {
+            if (DEBUG) Serial.println("Mbus scan start");
+            kamstrup_mbus_address = mbus_scan();
+            kamstrup_failures = 0;
+            wdt_reset();
           }
-          
-          if (bid==3) {
-            if (bytes[1]==bytes[2]) {
-              dlen = bytes[1];
-            } else {
+        }
+        bid = 0;
+    
+        int kamstrup_timeout = 1000;
+        unsigned long timer_start = millis();
+        while (!kamstrup_reply_received && (millis()-timer_start)<kamstrup_timeout)
+        {
+          if (customSerial->available())
+          {
+            
+            byte val = (byte) customSerial->read();
+        
+            bytes[bid] = val;
+            bid++;
+            
+            if (bytes[0]!=104) {
+              bid = 0;
+            }
+            
+            if (bid==3) {
+              if (bytes[1]==bytes[2]) {
+                dlen = bytes[1];
+              } else {
+                bid = 0;
+              }
+            }
+            
+            if (bid==80)
+            {
+              kamstrup_reply_received = true;
               bid = 0;
             }
           }
-          
-          if (bid==80)
-          {
-            kamstrup_reply_received = true;
-            bid = 0;
-          }
         }
-      }
-  
-      if (kamstrup_reply_received==false) {
-        kamstrup_failures++;
+    
+        if (kamstrup_reply_received==false) {
+          kamstrup_failures++;
+        }
       }
     }
 
@@ -343,46 +352,50 @@ void loop() {
     emontx.VFSheat = VFSheat;
 
     wdt_reset();
-    
-    // Reading of CT sensors needs to go here for stability 
-    // need to double check the reason for this.
-    for (int i=0; i<10; i++) {
-      analogRead(0); analogRead(1); analogRead(2);
-    }
-    delay(200);
-    ct1.calcVI(30,2000);
-    emontx.OEMct1 = ct1.realPower;
-    ct2.calcVI(30,2000);
-    emontx.OEMct2 = ct2.realPower;
-
-    // Accumulating Watt hours
-    int interval = millis() - last_reading;
-    last_reading = millis();
-
-    if (ct1.realPower > 0 && interval>0) {
-      int jouleinc = ct1.realPower * interval *0.001;
-      joules_CT1 += jouleinc;
-      CT1_Wh += joules_CT1 / 3600;
-      joules_CT1 = joules_CT1 % 3600;
-    }
-
-    if (ct2.realPower > 0 && interval>0) {
-      int jouleinc = ct2.realPower * interval *0.001;
-      joules_CT2 += jouleinc;
-      CT2_Wh += joules_CT2 / 3600;
-      joules_CT2 = joules_CT2 % 3600;
-    }
-    wdt_reset();
 
     emontx.pulseCount = pulseCount;
-
     msgnum++;
     Serial.print("Msg:"); Serial.print(msgnum);
-    Serial.print(",OEMct1:"); Serial.print(emontx.OEMct1);
-    Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
-    Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
-    Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);    
-
+    
+    if (OEM_EMON_ENABLE)
+    {
+        // Reading of CT sensors needs to go here for stability 
+        // need to double check the reason for this.
+        for (int i=0; i<10; i++) {
+          analogRead(0); analogRead(1); analogRead(2);
+        }
+        delay(200);
+        ct1.calcVI(30,2000);
+        emontx.OEMct1 = ct1.realPower;
+        ct2.calcVI(30,2000);
+        emontx.OEMct2 = ct2.realPower;
+    
+        // Accumulating Watt hours
+        int interval = millis() - last_reading;
+        last_reading = millis();
+    
+        if (ct1.realPower > 0 && interval>0) {
+          int jouleinc = ct1.realPower * interval *0.001;
+          joules_CT1 += jouleinc;
+          CT1_Wh += joules_CT1 / 3600;
+          joules_CT1 = joules_CT1 % 3600;
+        }
+    
+        if (ct2.realPower > 0 && interval>0) {
+          int jouleinc = ct2.realPower * interval *0.001;
+          joules_CT2 += jouleinc;
+          CT2_Wh += joules_CT2 / 3600;
+          joules_CT2 = joules_CT2 % 3600;
+        }
+        wdt_reset();
+    
+    
+        Serial.print(",OEMct1:"); Serial.print(emontx.OEMct1);
+        Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
+        Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
+        Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);    
+    }
+    
     if (emontx.DSairoutT*0.01!=-127) {
         Serial.print(",DSairoutT:"); Serial.print(emontx.DSairoutT*0.01,2);
     }
@@ -405,7 +418,7 @@ void loop() {
       Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
     }
     
-    if (kamstrup_reply_received) {
+    if (KAMSTRUP_ENABLE && kamstrup_reply_received) {
       // Parse kamstrup mbus data reply
       parse();
 
