@@ -4,7 +4,7 @@
 // 2x DS18B20 flow + return sensors
 // All sending via RFM12/69.
 // Licence: GPLv3
-#include <avr/wdt.h>  
+#include <avr/wdt.h>
 
 #define FirmwareVersion = 2.0
 #define DEBUG 0
@@ -55,7 +55,7 @@ typedef struct {
       int VFSflowrate;
       int VFSheat;
     // Kamstrup heat meter
-      int KSflowT; 
+      int KSflowT;
       int KSreturnT;
       int KSdeltaT;
       int KSflowrate;
@@ -73,9 +73,9 @@ PayloadTX emontx;
 typedef struct {                                                      // RFM12B RF payload datastructure
   int temp;
   int temp_external;
-  int humidity;    
+  int humidity;
   int battery;
-  unsigned long pulsecount;                                             
+  unsigned long pulsecount;
 } PayloadTH;
 PayloadTH emonth;
 // ------------------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ byte dlen = 0;
 const int nodeID = 1;                                                   // emonTx RFM12B node ID
 const int networkGroup = 210;                                           // emonTx RFM12B wireless network group - needs to be same as emonBase and emonGLCD needs to be same as emonBase and emonGLCD
 
-#define RF69_COMPAT 1 // set to 1 to use RFM69CW 
+#define RF69_COMPAT 1 // set to 1 to use RFM69CW
 #include <JeeLib.h>   // make sure V12 (latest) is used if using RFM69CW
 ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 
@@ -145,8 +145,60 @@ double VFS_Temp_Cal = 0;
 
 unsigned long msgnum = 0;
 
+
+// -------------------------------------------------------------------
+// Elster meter reading
+// -------------------------------------------------------------------
+void meter_reading(unsigned long r)
+{
+  pulseCount = r;
+}
+
 ElsterA100C meter(meter_reading);
 
+// -------------------------------------------------------------------
+// onPulse
+// The interrupt routine - runs each time a falling edge of a pulse is detected
+// -------------------------------------------------------------------
+//
+void onPulse()
+{
+  //lastTime = pulseTime;
+  //pulseTime = micros();
+  pulseCount++;                                               // count pulse
+  // power = int((3600000000.0 / (pulseTime - lastTime))/ppwh);  // calculate power
+}
+
+// -------------------------------------------------------------------
+// Phase Decode
+// -------------------------------------------------------------------
+void parse()
+{
+  byte i=25;
+  emontx.KSkWh = decodeval(i); i+=6;
+  int volume = decodeval(i); i+=6;
+  int ontime = decodeval(i); i+=6;
+  emontx.KSflowT = decodeval(i); i+=6;
+  emontx.KSreturnT = decodeval(i); i+=6;
+  emontx.KSdeltaT = decodeval(i); i+=6;
+  emontx.KSheat = decodeval(i)*100; i+=6;
+  int maxpower = decodeval(i)*100; i+=6;
+  emontx.KSflowrate = decodeval(i); i+=6;
+  int maxflow = decodeval(i); i+=6;
+  // emontx.KSpulse = decodeval(i);
+}
+
+// -------------------------------------------------------------------
+// Decode
+// -------------------------------------------------------------------
+long decodeval(long i) {
+  return bytes[i+2] + (bytes[i+3]<<8) + (bytes[i+4]<<16) + (bytes[i+5]<<24);
+}
+
+
+// -------------------------------------------------------------------
+// SETUP
+// -------------------------------------------------------------------
 void setup() {
   wdt_enable(WDTO_8S);
   
@@ -168,7 +220,7 @@ void setup() {
 
   wdt_reset();
 
-  if (KAMSTRUP_ENABLE) 
+  if (KAMSTRUP_ENABLE)
   {
     mbus_normalize();
     if (kamstrup_mbus_address==0) {
@@ -186,7 +238,7 @@ void setup() {
   if (DEBUG) Serial.println("Attached Interrupt");
   
   delay(100);
-  if (!ELSTER_IRDA_ENABLE) {  
+  if (!ELSTER_IRDA_ENABLE) {
     attachInterrupt(1, onPulse, FALLING);
   } else {
     meter.init(1);
@@ -200,11 +252,9 @@ void setup() {
   VFS_Temp_Cal = ((VFS_maxtemp_voltage-VFS_zerotemp_voltage)/VFS_maxtemp);
 }
 
-void meter_reading(unsigned long r)
-{
-  pulseCount = r;
-}
-
+// -------------------------------------------------------------------
+// LOOP
+// -------------------------------------------------------------------
 void loop() {
   now = millis();
 
@@ -228,7 +278,7 @@ void loop() {
     }
 
     // If EmonTH on node 23 then decode names fully
-    if (node_id == 23 && n == 12)                 
+    if (node_id == 23 && n == 12)
     {
       emonth = *(PayloadTH*) rf12_data;
       Serial.print("THtemp:"); Serial.print(emonth.temp*0.1,1);
@@ -327,7 +377,7 @@ void loop() {
     // -----------------------------------------------------
     delay(200);
     unsigned long sumA3 = 0;
-    unsigned long sumA4 = 0; 
+    unsigned long sumA4 = 0;
     for (int i=0; i<100; i++) {
       sumA3 += analogRead(3);
       sumA4 += analogRead(4);
@@ -359,7 +409,7 @@ void loop() {
     
     if (OEM_EMON_ENABLE)
     {
-        // Reading of CT sensors needs to go here for stability 
+        // Reading of CT sensors needs to go here for stability
         // need to double check the reason for this.
         for (int i=0; i<10; i++) {
           analogRead(0); analogRead(1); analogRead(2);
@@ -393,7 +443,7 @@ void loop() {
         Serial.print(",OEMct1:"); Serial.print(emontx.OEMct1);
         Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
         Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
-        Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);    
+        Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);
     }
     
     if (emontx.DSairoutT*0.01!=-127) {
@@ -457,31 +507,3 @@ void loop() {
   }
 }
 
-void parse()
-{
-  byte i=25;
-  emontx.KSkWh = decodeval(i); i+=6;
-  int volume = decodeval(i); i+=6;
-  int ontime = decodeval(i); i+=6;
-  emontx.KSflowT = decodeval(i); i+=6;
-  emontx.KSreturnT = decodeval(i); i+=6;
-  emontx.KSdeltaT = decodeval(i); i+=6;
-  emontx.KSheat = decodeval(i)*100; i+=6;
-  int maxpower = decodeval(i)*100; i+=6;
-  emontx.KSflowrate = decodeval(i); i+=6;
-  int maxflow = decodeval(i); i+=6;
-  // emontx.KSpulse = decodeval(i);
-}
-
-long decodeval(long i) {
-  return bytes[i+2] + (bytes[i+3]<<8) + (bytes[i+4]<<16) + (bytes[i+5]<<24);
-}
-
-// The interrupt routine - runs each time a falling edge of a pulse is detected
-void onPulse()                  
-{
-  //lastTime = pulseTime;
-  //pulseTime = micros();
-  pulseCount++;                                               // count pulse               
-  // power = int((3600000000.0 / (pulseTime - lastTime))/ppwh);  // calculate power
-}
