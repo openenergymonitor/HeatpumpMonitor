@@ -57,6 +57,7 @@ The following guide details how to setup the heatpump monitor including interfac
 - [Selecting the right heat meter](selectingheatmeter.md)
 - [Installation and setup](installation.md)
 - [Software Setup](software_setup.md)
+- [Firmware Upload / Update](firmware-upload.md)
 
 Watch the heatpump monitor setup and dashboard example screencast here:
 
