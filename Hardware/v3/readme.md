@@ -1,4 +1,4 @@
-# Heatpump monitor v2
+# Heatpump monitor v3
 
 ## Schematic
 
