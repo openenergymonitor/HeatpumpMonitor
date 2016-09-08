@@ -110,7 +110,7 @@ Capacitors: C11, C13, C12, C19 all 10uF
 
 The following image can also be used as a reference of component locations. 
     
-![energymonitor_v2.JPG](images/energymonitor_v2.JPG)
+![emonbuild_v3.jpg](images/emonbuild_v3.jpg)
 
 **Tip 1:** It is usually easier to start by soldering the lower profile components first such as the resistors and to build up to the taller components. 
 
