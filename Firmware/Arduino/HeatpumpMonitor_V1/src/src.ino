@@ -15,7 +15,7 @@
 
 #define OEM_EMON_ENABLE 1
 #define KAMSTRUP_ENABLE 1
-#define VFS_ENABLE 0
+#define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
 
@@ -404,8 +404,6 @@ void loop() {
     wdt_reset();
 
     emontx.pulseCount = pulseCount;
-    msgnum++;
-    Serial.print("Msg:"); Serial.print(msgnum);
     
     if (OEM_EMON_ENABLE)
     {
@@ -438,8 +436,12 @@ void loop() {
           joules_CT2 = joules_CT2 % 3600;
         }
         wdt_reset();
-    
-    
+    }
+
+    msgnum++;
+    Serial.print("Msg:"); Serial.print(msgnum);
+    if (OEM_EMON_ENABLE)
+    {
         Serial.print(",OEMct1:"); Serial.print(emontx.OEMct1);
         Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
         Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
