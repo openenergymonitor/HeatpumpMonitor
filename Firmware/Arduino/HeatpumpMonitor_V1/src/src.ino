@@ -15,6 +15,7 @@
 
 #define OEM_EMON_ENABLE 1
 #define KAMSTRUP_ENABLE 1
+#define KAMSTRUP_MODEL 402 // 402, 403
 #define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
@@ -105,6 +106,7 @@ double VFS_zerotemp_voltage = 0.5;   // Volts
 // --------------------------------------------------
 // Kamstrup MBUS config
 // --------------------------------------------------
+
 byte kamstrup_mbus_address = 0;                  // Set to 0 for auto scan, (test: check timeout 10ms)
 int kamstrup_failures = 0;
 #include <CustomSoftwareSerial.h>
@@ -174,18 +176,37 @@ void onPulse()
 // -------------------------------------------------------------------
 void parse()
 {
-  byte i=25;
-  emontx.KSkWh = decodeval(i); i+=6;
-  int volume = decodeval(i); i+=6;
-  int ontime = decodeval(i); i+=6;
-  emontx.KSflowT = decodeval(i); i+=6;
-  emontx.KSreturnT = decodeval(i); i+=6;
-  emontx.KSdeltaT = decodeval(i); i+=6;
-  emontx.KSheat = decodeval(i)*100; i+=6;
-  int maxpower = decodeval(i)*100; i+=6;
-  emontx.KSflowrate = decodeval(i); i+=6;
-  int maxflow = decodeval(i); i+=6;
-  // emontx.KSpulse = decodeval(i);
+  if (KAMSTRUP_MODEL==402)
+  {
+    byte i=25;
+    emontx.KSkWh = decodeval(i); i+=6;
+    int volume = decodeval(i); i+=6;
+    int ontime = decodeval(i); i+=6;
+    emontx.KSflowT = decodeval(i); i+=6;
+    emontx.KSreturnT = decodeval(i); i+=6;
+    emontx.KSdeltaT = decodeval(i); i+=6;
+    emontx.KSheat = decodeval(i)*100; i+=6;
+    int maxpower = decodeval(i)*100; i+=6;
+    emontx.KSflowrate = decodeval(i); i+=6;
+    int maxflow = decodeval(i); i+=6;
+  }
+  
+  if (KAMSTRUP_MODEL==403)
+  {
+    emontx.KSkWh = decode_4byte_bin(22-9);
+    // print "Cooling E3:"+str(decode_4byte_bin(30-9))
+    // print "Energy E8:"+str(decode_4byte_bin(37-9))
+    // print "Energy E9:"+str(decode_4byte_bin(44-9))
+    int volume = decode_4byte_bin(50-9);
+    // print "Pulse A:"+str(decode_4byte_bin(57-9))
+    // print "Pulse B:"+str(decode_4byte_bin(65-9))
+    int ontime = decode_4byte_bin(71-9);
+    emontx.KSflowT = decode_2byte_bin(83-9)*0.01;
+    emontx.KSreturnT = decode_2byte_bin(87-9)*0.01;
+    emontx.KSdeltaT = decode_2byte_bin(91-9)*0.01;
+    emontx.KSheat = decode_2byte_bin(95-9);
+    emontx.KSflowrate = 0;
+  }
 }
 
 // -------------------------------------------------------------------
@@ -193,6 +214,14 @@ void parse()
 // -------------------------------------------------------------------
 long decodeval(long i) {
   return bytes[i+2] + (bytes[i+3]<<8) + (bytes[i+4]<<16) + (bytes[i+5]<<24);
+}
+
+long decode_2byte_bin(long i) {
+  return bytes[i+0] + (bytes[i+1]<<8);
+}
+
+long decode_4byte_bin(long i) {
+  return bytes[i+0] + (bytes[i+1]<<8) + (bytes[i+2]<<16) + (bytes[i+3]<<24);
 }
 
 
