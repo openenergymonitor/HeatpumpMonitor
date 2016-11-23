@@ -20,8 +20,6 @@
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
 
-
-
 // ------------------------------------------------------------------------------------------
 // Datastructure for data sent via RFM12 or RFM69 radio module - alternative path to ESP WIFI
 // ------------------------------------------------------------------------------------------
@@ -117,7 +115,7 @@ unsigned long now = 0;
 unsigned long lastwdtreset = 0;
 
 int bid = 0;
-byte bytes[81];
+byte bytes[100];
 byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
@@ -146,8 +144,6 @@ double VFS_Flow_Cal = 0;
 double VFS_Temp_Cal = 0;
 
 unsigned long msgnum = 0;
-
-
 // -------------------------------------------------------------------
 // Elster meter reading
 // -------------------------------------------------------------------
@@ -176,6 +172,9 @@ void onPulse()
 // -------------------------------------------------------------------
 void parse()
 {
+  
+
+  
   if (KAMSTRUP_MODEL==402)
   {
     byte i=25;
@@ -193,18 +192,21 @@ void parse()
   
   if (KAMSTRUP_MODEL==403)
   {
-    emontx.KSkWh = decode_4byte_bin(22-9);
-    // print "Cooling E3:"+str(decode_4byte_bin(30-9))
-    // print "Energy E8:"+str(decode_4byte_bin(37-9))
-    // print "Energy E9:"+str(decode_4byte_bin(44-9))
+    // Locations set here correspond to location as described in datasheet minus 9 bytes
+    // 
+    int offset = 9;
+    emontx.KSkWh = decode_4byte_bin(22-offset);
+    // print "Cooling E3:"+str(decode_4byte_bin(30-offset))
+    // print "Energy E8:"+str(decode_4byte_bin(37-offset))
+    // print "Energy E9:"+str(decode_4byte_bin(44-offset))
     int volume = decode_4byte_bin(50-9);
-    // print "Pulse A:"+str(decode_4byte_bin(57-9))
-    // print "Pulse B:"+str(decode_4byte_bin(65-9))
-    int ontime = decode_4byte_bin(71-9);
-    emontx.KSflowT = decode_2byte_bin(83-9)*0.01;
-    emontx.KSreturnT = decode_2byte_bin(87-9)*0.01;
-    emontx.KSdeltaT = decode_2byte_bin(91-9)*0.01;
-    emontx.KSheat = decode_2byte_bin(95-9);
+    // print "Pulse A:"+str(decode_4byte_bin(57-offset))
+    // print "Pulse B:"+str(decode_4byte_bin(65-offset))
+    int ontime = decode_4byte_bin(71-offset);
+    emontx.KSflowT = decode_2byte_bin(83-offset);
+    emontx.KSreturnT = decode_2byte_bin(87-offset);
+    emontx.KSdeltaT = decode_2byte_bin(91-offset);
+    emontx.KSheat = decode_2byte_bin(95-offset);
     emontx.KSflowrate = 0;
   }
 }
@@ -377,7 +379,7 @@ void loop() {
               }
             }
             
-            if (bid==80)
+            if (bid==99)
             {
               kamstrup_reply_received = true;
               bid = 0;
