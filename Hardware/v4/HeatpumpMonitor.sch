@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -18668,7 +18668,6 @@ RFM1269CW</text>
 <text x="109.22" y="17.78" size="1.778" layer="91">RFM69</text>
 <text x="217.17" y="92.71" size="1.778" layer="91">PVT312
 Using alternative footprint here</text>
-<text x="282.448" y="21.082" size="1.778" layer="95">RESET</text>
 </plain>
 <instances>
 <instance part="IC1" gate="1" x="55.88" y="48.26"/>
@@ -18856,7 +18855,7 @@ Using alternative footprint here</text>
 <attribute name="NAME" x="264.16" y="16.51" size="1.778" layer="95" rot="R270"/>
 </instance>
 <instance part="GPIO15" gate="1" x="219.71" y="15.24" smashed="yes" rot="R180">
-<attribute name="NAME" x="214.63" y="12.7" size="1.778" layer="95"/>
+<attribute name="NAME" x="214.63" y="17.78" size="1.778" layer="95"/>
 </instance>
 <instance part="GPIO0" gate="G$1" x="203.2" y="7.62"/>
 <instance part="RX" gate="G$1" x="256.54" y="-52.07" rot="R180"/>
@@ -18901,8 +18900,8 @@ Using alternative footprint here</text>
 <attribute name="VALUE" x="104.902" y="-120.65" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="C9" gate="G$1" x="133.35" y="-104.14"/>
-<instance part="U$2" gate="G$1" x="290.068" y="33.02" rot="R180"/>
-<instance part="P+11" gate="G$1" x="295.148" y="31.75"/>
+<instance part="U$2" gate="G$1" x="177.8" y="25.4" rot="R270"/>
+<instance part="P+11" gate="G$1" x="182.88" y="33.02"/>
 </instances>
 <busses>
 </busses>
@@ -19263,12 +19262,6 @@ Using alternative footprint here</text>
 <wire x1="127" y1="-68.58" x2="134.62" y2="-68.58" width="0.1524" layer="91"/>
 <label x="132.08" y="-68.58" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="U$2" gate="G$1" pin="2"/>
-<pinref part="U$1" gate="G$1" pin="GPIO13"/>
-<wire x1="277.368" y1="27.94" x2="277.368" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="277.368" y1="15.24" x2="261.62" y2="15.24" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="N$19" class="0">
 <segment>
@@ -19599,9 +19592,9 @@ Using alternative footprint here</text>
 <label x="121.92" y="149.86" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="P+11" gate="G$1" pin="3.3V"/>
-<wire x1="295.148" y1="31.75" x2="295.148" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="1"/>
+<wire x1="182.88" y1="30.48" x2="182.88" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="P+11" gate="G$1" pin="3.3V"/>
 </segment>
 </net>
 <net name="DIG1" class="0">
@@ -20019,6 +20012,30 @@ Using alternative footprint here</text>
 <wire x1="129.54" y1="-111.76" x2="133.35" y2="-111.76" width="0.1524" layer="91"/>
 <pinref part="C9" gate="G$1" pin="2"/>
 <wire x1="133.35" y1="-111.76" x2="133.35" y2="-109.22" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="GPIO5"/>
+<wire x1="231.14" y1="7.62" x2="226.06" y2="7.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$17" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="GPIO4"/>
+<wire x1="231.14" y1="5.08" x2="226.06" y2="5.08" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="ESP_PUSH" class="0">
+<segment>
+<pinref part="U$2" gate="G$1" pin="2"/>
+<wire x1="182.88" y1="12.7" x2="182.88" y2="7.62" width="0.1524" layer="91"/>
+<label x="180.34" y="2.54" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GPIO2"/>
+<wire x1="231.14" y1="12.7" x2="226.06" y2="12.7" width="0.1524" layer="91"/>
+<label x="220.98" y="12.7" size="1.27" layer="95"/>
 </segment>
 </net>
 </nets>
