@@ -8,65 +8,15 @@
 
 #define FirmwareVersion = 2.0
 #define DEBUG 0
-#define emonTxV3 1
 #define RFM69_ENABLE 0
-#define SEND_RFM69_RX_DATA 0
-#define SEND_RFM69_TX_DATA 0
 
-#define OEM_EMON_ENABLE 1
+#define OEM_EMON_ENABLE 0
+#define DS18B20_ENABLE 1
 #define KAMSTRUP_ENABLE 1
 #define KAMSTRUP_MODEL 403 // 402, 403
-#define VFS_ENABLE 1
+#define VFS_ENABLE 0
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
-
-// ------------------------------------------------------------------------------------------
-// Datastructure for data sent via RFM12 or RFM69 radio module - alternative path to ESP WIFI
-// ------------------------------------------------------------------------------------------
-/*
-
-Copy this node decoder to your emonhub.conf file to decode the heatpump monitor rfm69 data packet:
-
-[[1]]
-    nodename = Heatpump Monitor
-    firmware = v0.1
-    hardware = v0.1
-    [[[rx]]]
-       names = OEMct1,OEMct2,DSflowT,DSreturnT,DSairoutT,DSairinT,VFSflowT,VFSflowrate,VFSheat,KSflowT,KSreturnT,KSdeltaT,KSflowrate,KSheat,KSkWh,pulseCount
-       datacodes = h,h,h,h,h,h,h,h,h,h,h,h,h,h,L,L
-       scales = 1,1,0.01,0.01,0.01,0.01,0.01,1,1,0.01,0.01,0.01,1,1,1,1
-       units = W,W,C,C,C,C,C,L/h,W,C,C,K,L/h,W,kWh,Wh
-*/
-
-// RFM Packet structure
-typedef struct {
-  // Integer datatypes:
-    // OpenEnergyMonitor CTs
-      int OEMct1;
-      int OEMct2;
-    // DS18B20 temperatures:
-      int DSflowT;
-      int DSreturnT;
-      int DSairoutT;
-      int DSairinT;
-    // Grundfos VFS flow meter
-      int VFSflowT;
-      int VFSflowrate;
-      int VFSheat;
-    // Kamstrup heat meter
-      int KSflowT;
-      int KSreturnT;
-      int KSdeltaT;
-      int KSflowrate;
-      int KSheat;
-    // Long data types:
-      long KSkWh;
-      long pulseCount;
-      // long KSpulse;
-} PayloadTX;         // neat way of packaging data for RF comms
-PayloadTX emontx;
-// ------------------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------------------
 
 // EmonTH packet
 typedef struct {                                                      // RFM12B RF payload datastructure
@@ -88,9 +38,12 @@ EnergyMonitor ct2;                     // Create an instance
 #include <DallasTemperature.h>
 
 #define ONE_WIRE_BUS 19                                                  // Data wire is plugged into port 2 on the Arduino
-OneWire oneWire(ONE_WIRE_BUS);                                          // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
-DallasTemperature sensors(&oneWire);                                    // Pass our oneWire reference to Dallas Temperature.
-DeviceAddress sensor;
+OneWire oneWire(ONE_WIRE_BUS);                                           // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+DallasTemperature sensors(&oneWire);                                     // Pass our oneWire reference to Dallas Temperature.
+DeviceAddress tmp_address;
+
+// Four temperature sensors
+int uids[6]; double temps[6];
 
 // --------------------------------------------------
 // Grundfos VFS config
@@ -105,7 +58,7 @@ double VFS_zerotemp_voltage = 0.5;   // Volts
 // Kamstrup MBUS config
 // --------------------------------------------------
 
-byte kamstrup_mbus_address = 0;                  // Set to 0 for auto scan, (test: check timeout 10ms)
+byte kamstrup_mbus_address = 0;                   // Set to 0 for auto scan, (test: check timeout 10ms)
 int kamstrup_failures = 0;
 #include <CustomSoftwareSerial.h>
 CustomSoftwareSerial* customSerial;               // Declare serial
@@ -126,16 +79,36 @@ const int networkGroup = 210;                                           // emonT
 #include <JeeLib.h>   // make sure V12 (latest) is used if using RFM69CW
 ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 
+// CT Sensors
+int OEMct1 = 0;
+int OEMct2 = 0;
+int joules_CT1 = 0;
+int joules_CT2 = 0;
+unsigned long CT1_Wh = 0;
+unsigned long CT2_Wh = 0;
+
+// Kamstrup variables
+long KSkWh = 0;
+int volume = 0;
+int ontime = 0;
+int KSflowT = 0;
+int KSreturnT = 0;
+int KSdeltaT = 0;
+int KSheat = 0;
+int maxpower = 0;
+int KSflowrate = 0;
+int maxflow = 0;
+
+// VFS Variables
+int VFSflowT = 0;
+int VFSflowrate = 0;
+int VFSheat = 0;
+
 // pulseCounting
 long pulseCount = 0;
 //unsigned long pulseTime,lastTime; // Used to measure time between pulses
 //double power;
 //int ppwh = 1;                     // pulses per watt hour - found or set on the meter.
-
-int joules_CT1 = 0;
-int joules_CT2 = 0;
-unsigned long CT1_Wh = 0;
-unsigned long CT2_Wh = 0;
 
 bool firstrun = true;
 unsigned long last_reading = 0;
@@ -161,8 +134,8 @@ ElsterA100C meter(meter_reading);
 //
 void onPulse()
 {
-  //lastTime = pulseTime;
-  //pulseTime = micros();
+  // lastTime = pulseTime;
+  // pulseTime = micros();
   pulseCount++;                                               // count pulse
   // power = int((3600000000.0 / (pulseTime - lastTime))/ppwh);  // calculate power
 }
@@ -172,22 +145,19 @@ void onPulse()
 // -------------------------------------------------------------------
 void parse()
 {
-  
-
-  
   if (KAMSTRUP_MODEL==402)
   {
     byte i=25;
-    emontx.KSkWh = decodeval(i); i+=6;
-    int volume = decodeval(i); i+=6;
-    int ontime = decodeval(i); i+=6;
-    emontx.KSflowT = decodeval(i); i+=6;
-    emontx.KSreturnT = decodeval(i); i+=6;
-    emontx.KSdeltaT = decodeval(i); i+=6;
-    emontx.KSheat = decodeval(i)*100; i+=6;
-    int maxpower = decodeval(i)*100; i+=6;
-    emontx.KSflowrate = decodeval(i); i+=6;
-    int maxflow = decodeval(i); i+=6;
+    KSkWh = decodeval(i); i+=6;
+    volume = decodeval(i); i+=6;
+    ontime = decodeval(i); i+=6;
+    KSflowT = decodeval(i); i+=6;
+    KSreturnT = decodeval(i); i+=6;
+    KSdeltaT = decodeval(i); i+=6;
+    KSheat = decodeval(i)*100; i+=6;
+    maxpower = decodeval(i)*100; i+=6;
+    KSflowrate = decodeval(i); i+=6;
+    maxflow = decodeval(i); i+=6;
   }
   
   if (KAMSTRUP_MODEL==403)
@@ -195,7 +165,7 @@ void parse()
     // Locations set here correspond to location as described in datasheet minus 9 bytes
     // 
     int offset = 9;
-    emontx.KSkWh = decode_4byte_bin(22-offset);
+    KSkWh = decode_4byte_bin(21);
     // print "Cooling E3:"+str(decode_4byte_bin(30-offset))
     // print "Energy E8:"+str(decode_4byte_bin(37-offset))
     // print "Energy E9:"+str(decode_4byte_bin(44-offset))
@@ -203,11 +173,11 @@ void parse()
     // print "Pulse A:"+str(decode_4byte_bin(57-offset))
     // print "Pulse B:"+str(decode_4byte_bin(65-offset))
     int ontime = decode_4byte_bin(71-offset);
-    emontx.KSflowT = decode_2byte_bin(83-offset);
-    emontx.KSreturnT = decode_2byte_bin(87-offset);
-    emontx.KSdeltaT = decode_2byte_bin(91-offset);
-    emontx.KSheat = decode_2byte_bin(95-offset);
-    emontx.KSflowrate = 0;
+    KSflowT = decode_2byte_bin(83-offset);
+    KSreturnT = decode_2byte_bin(87-offset);
+    KSdeltaT = decode_2byte_bin(91-offset);
+    KSheat = decode_4byte_bin(95-offset);
+    KSflowrate = decode_4byte_bin(107-offset);
   }
 }
 
@@ -297,7 +267,7 @@ void loop() {
     }
   }
 
-  if (SEND_RFM69_RX_DATA && rf12_recvDone() && rf12_crc == 0 && (rf12_hdr & RF12_HDR_CTL) == 0)
+  if (RFM69_ENABLE && rf12_recvDone() && rf12_crc == 0 && (rf12_hdr & RF12_HDR_CTL) == 0)
   {
     int node_id = (rf12_hdr & 0x1F);
     byte n = rf12_len;
@@ -336,8 +306,8 @@ void loop() {
     wdt_reset();
     
     last = now; firstrun = false;
-
     bool kamstrup_reply_received = false;
+    
     if (KAMSTRUP_ENABLE)
     {
       // 1) KAMSTRUP HEAT METER REQUEST:
@@ -379,7 +349,7 @@ void loop() {
               }
             }
             
-            if (bid==99)
+            if (bid==120)
             {
               kamstrup_reply_received = true;
               bid = 0;
@@ -396,46 +366,68 @@ void loop() {
     wdt_reset();
 
     delay(200);
-    // DS18B20 temp sensors
-    sensors.requestTemperatures();
-    emontx.DSflowT = sensors.getTempCByIndex(0)*100;
-    emontx.DSreturnT = sensors.getTempCByIndex(1)*100;
-    emontx.DSairinT = sensors.getTempCByIndex(2)*100;
-    emontx.DSairoutT = sensors.getTempCByIndex(3)*100;
+
+    // -----------------------------------------------------
+    // DS18B20 Temperature sensors
+    // -----------------------------------------------------
+    int numberOfDevices = 0;
+    if (DS18B20_ENABLE) {
+      // DS18B20 temp sensors
+      sensors.begin();
+      numberOfDevices = sensors.getDeviceCount();
+      sensors.requestTemperatures();
+  
+      for(int i=0;i<numberOfDevices; i++)
+      {
+        sensors.getAddress(tmp_address, i);
+        double temp = sensors.getTempC(tmp_address);
+        
+        unsigned long uid = 0;
+        for (uint8_t i = 0; i < 8; i++) {
+           // Serial.print(deviceAddress[i], HEX);
+           uid += tmp_address[i];
+        }
+        uids[i] = uid;
+        temps[i] = temp;
+        
+        wdt_reset();
+      }
+    }
+
+    wdt_reset();
     
     // -----------------------------------------------------
     // Analog read for grundfos vortex flow sensor
     // -----------------------------------------------------
-    delay(200);
-    unsigned long sumA3 = 0;
-    unsigned long sumA4 = 0;
-    for (int i=0; i<100; i++) {
-      sumA3 += analogRead(3);
-      sumA4 += analogRead(4);
+    if (VFS_ENABLE) {
+      delay(200);
+      unsigned long sumA3 = 0;
+      unsigned long sumA4 = 0;
+      for (int i=0; i<100; i++) {
+        sumA3 += analogRead(3);
+        sumA4 += analogRead(4);
+      }
+      int A3 = (int)(sumA3 / 100);
+      int A4 = (int)(sumA4 / 100);
+      double A3_voltage = 3.3*(A3/1023.0);
+      double A4_voltage = 3.3*(A4/1023.0);
+      
+      double VFStemp = (A3_voltage - VFS_zerotemp_voltage) / VFS_Temp_Cal;
+      if (VFStemp<0) VFStemp = 0;
+  
+      double VFSflow = (A4_voltage - VFS_zeroflow_voltage) / VFS_Flow_Cal;
+      if (VFSflow<0) VFSflow = 0;
+      if ((1*A4_voltage)<0.4) VFSflow = 0;  // Minimum voltage to accept flow reading, datasheet recommends 0.5V
+      
+      // double deltaT = (1.0*emontx.DSflowT-emontx.DSreturnT)*0.01;
+      // double VFSheat = ((VFSflow/60.0)*4181.0) * deltaT;
     }
-    int A3 = (int)(sumA3 / 100);
-    int A4 = (int)(sumA4 / 100);
-    double A3_voltage = 3.3*(A3/1023.0);
-    double A4_voltage = 3.3*(A4/1023.0);
     
-    double VFStemp = (A3_voltage - VFS_zerotemp_voltage) / VFS_Temp_Cal;
-    if (VFStemp<0) VFStemp = 0;
-
-    double VFSflow = (A4_voltage - VFS_zeroflow_voltage) / VFS_Flow_Cal;
-    if (VFSflow<0) VFSflow = 0;
-    if ((1*A4_voltage)<0.4) VFSflow = 0;  // Minimum voltage to accept flow reading, datasheet recommends 0.5V
-    
-    emontx.VFSflowT = VFStemp*100;
-    emontx.VFSflowrate = VFSflow*60;
-
-    double deltaT = (1.0*emontx.DSflowT-emontx.DSreturnT)*0.01;
-    double VFSheat = ((VFSflow/60.0)*4181.0) * deltaT;
-    emontx.VFSheat = VFSheat;
-
     wdt_reset();
 
-    emontx.pulseCount = pulseCount;
-    
+    // -----------------------------------------------------
+    // CT Sensors
+    // -----------------------------------------------------
     if (OEM_EMON_ENABLE)
     {
         // Reading of CT sensors needs to go here for stability
@@ -445,9 +437,9 @@ void loop() {
         }
         delay(200);
         ct1.calcVI(30,2000);
-        emontx.OEMct1 = ct1.realPower;
+        OEMct1 = ct1.realPower;
         ct2.calcVI(30,2000);
-        emontx.OEMct2 = ct2.realPower;
+        OEMct2 = ct2.realPower;
     
         // Accumulating Watt hours
         int interval = millis() - last_reading;
@@ -473,32 +465,26 @@ void loop() {
     Serial.print("Msg:"); Serial.print(msgnum);
     if (OEM_EMON_ENABLE)
     {
-        Serial.print(",OEMct1:"); Serial.print(emontx.OEMct1);
-        Serial.print(",OEMct2:"); Serial.print(emontx.OEMct2);
+        Serial.print(",OEMct1:"); Serial.print(OEMct1);
+        Serial.print(",OEMct2:"); Serial.print(OEMct2);
         Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
         Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);
     }
     
-    if (emontx.DSairoutT*0.01!=-127) {
-        Serial.print(",DSairoutT:"); Serial.print(emontx.DSairoutT*0.01,2);
-    }
-
-    if (emontx.DSairinT*0.01!=-127) {
-        Serial.print(",DSairinT:"); Serial.print(emontx.DSairinT*0.01,2);
-    }
-
-    if (emontx.DSflowT*0.01!=-127) {
-        Serial.print(",DSflowT:"); Serial.print(emontx.DSflowT*0.01,2);
-    }
-
-    if (emontx.DSreturnT*0.01!=-127) {
-        Serial.print(",DSreturnT:"); Serial.print(emontx.DSreturnT*0.01,2);
-    }
-    
     if (VFS_ENABLE) {
-      Serial.print(",VFSflowT:"); Serial.print(emontx.VFSflowT*0.01);
-      Serial.print(",VFSflowrate:"); Serial.print(emontx.VFSflowrate);
-      Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
+      Serial.print(",VFSflowT:"); Serial.print(VFSflowT*0.01);
+      Serial.print(",VFSflowrate:"); Serial.print(VFSflowrate);
+      // Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
+    }
+
+    if (DS18B20_ENABLE) { 
+        for(int i=0;i<numberOfDevices; i++)
+        {
+          Serial.print(",T");
+          Serial.print(uids[i]);
+          Serial.print(":");
+          Serial.print(temps[i]);
+        }
     }
     
     if (KAMSTRUP_ENABLE && kamstrup_reply_received) {
@@ -506,32 +492,18 @@ void loop() {
       parse();
 
       // Print kamstrup data to serial
-      Serial.print(",KSflowT:"); Serial.print(emontx.KSflowT*0.01,2);
-      Serial.print(",KSreturnT:"); Serial.print(emontx.KSreturnT*0.01,2);
-      Serial.print(",KSdeltaT:"); Serial.print(emontx.KSdeltaT*0.01,2);
-      Serial.print(",KSflowrate:"); Serial.print(emontx.KSflowrate);
-      Serial.print(",KSheat:"); Serial.print(emontx.KSheat);
-      Serial.print(",KSkWh:"); Serial.print(emontx.KSkWh);
-      // Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
+      Serial.print(",KSflowT:"); Serial.print(KSflowT*0.01,2);
+      Serial.print(",KSreturnT:"); Serial.print(KSreturnT*0.01,2);
+      Serial.print(",KSdeltaT:"); Serial.print(KSdeltaT*0.01,2);
+      Serial.print(",KSflowrate:"); Serial.print(KSflowrate);
+      Serial.print(",KSheat:"); Serial.print(KSheat);
+      Serial.print(",KSkWh:"); Serial.print(KSkWh);
     }
-    Serial.print(",PulseIRDA:"); Serial.print(emontx.pulseCount);
+    Serial.print(",PulseIRDA:"); Serial.print(pulseCount);
     Serial.println();
     delay(100);
 
     wdt_reset();
-
-    if (SEND_RFM69_TX_DATA) {
-      if (DEBUG) { Serial.println("RFM send"); delay(100); }
-      // if ready to send + exit loop if it gets stuck as it seems too
-      int rf = 0; while (!rf12_canSend() && rf<10) {rf12_recvDone(); rf++;}
-      rf12_sendStart(0, &emontx, sizeof emontx);
-      // set the sync mode to 2 if the fuses are still the Arduino default
-      // mode 3 (full powerdown) can only be used with 258 CK startup fuses
-      rf12_sendWait(2);
-    
-      delay(100);
-      wdt_reset();
-    }
   }
 
   if ((millis()-lastwdtreset)>1000) {
