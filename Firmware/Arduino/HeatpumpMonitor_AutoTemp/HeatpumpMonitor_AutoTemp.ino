@@ -11,6 +11,7 @@
 #define RFM69_ENABLE 0
 
 #define OEM_EMON_ENABLE 0
+#define OEM_EMON_ACAC 1
 #define DS18B20_ENABLE 1
 #define KAMSTRUP_ENABLE 1
 #define KAMSTRUP_MODEL 403 // 402, 403
@@ -436,10 +437,16 @@ void loop() {
           analogRead(0); analogRead(1); analogRead(2);
         }
         delay(200);
-        ct1.calcVI(30,2000);
-        OEMct1 = ct1.realPower;
-        ct2.calcVI(30,2000);
-        OEMct2 = ct2.realPower;
+        
+        if (OEM_EMON_ACAC) {
+          ct1.calcVI(30,2000);
+          OEMct1 = ct1.realPower;
+          ct2.calcVI(30,2000);
+          OEMct2 = ct2.realPower;
+        } else {
+          OEMct1 = 230 * ct1.calcIrms(1480);
+          OEMct2 = 230 * ct2.calcIrms(1480);
+        }
     
         // Accumulating Watt hours
         int interval = millis() - last_reading;
