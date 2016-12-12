@@ -14,11 +14,13 @@
 #define SEND_RFM69_TX_DATA 0
 
 #define OEM_EMON_ENABLE 1
+#define OEM_EMON_ACAC 1
 #define KAMSTRUP_ENABLE 1
 #define KAMSTRUP_MODEL 403 // 402, 403
 #define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
+
 
 // ------------------------------------------------------------------------------------------
 // Datastructure for data sent via RFM12 or RFM69 radio module - alternative path to ESP WIFI
@@ -445,24 +447,30 @@ void loop() {
           analogRead(0); analogRead(1); analogRead(2);
         }
         delay(200);
-        ct1.calcVI(30,2000);
-        emontx.OEMct1 = ct1.realPower;
-        ct2.calcVI(30,2000);
-        emontx.OEMct2 = ct2.realPower;
+        
+        if (OEM_EMON_ACAC) {
+          ct1.calcVI(30,2000);
+          emontx.OEMct1 = ct1.realPower;
+          ct2.calcVI(30,2000);
+          emontx.OEMct2 = ct2.realPower;
+        } else {
+          emontx.OEMct1 = 230 * ct1.calcIrms(1480);
+          emontx.OEMct2 = 230 * ct2.calcIrms(1480);
+        }
     
         // Accumulating Watt hours
         int interval = millis() - last_reading;
         last_reading = millis();
     
         if (ct1.realPower > 0 && interval>0) {
-          int jouleinc = ct1.realPower * interval *0.001;
+          unsigned long jouleinc = ct1.realPower * interval *0.001;
           joules_CT1 += jouleinc;
           CT1_Wh += joules_CT1 / 3600;
           joules_CT1 = joules_CT1 % 3600;
         }
     
         if (ct2.realPower > 0 && interval>0) {
-          int jouleinc = ct2.realPower * interval *0.001;
+          unsigned long jouleinc = ct2.realPower * interval *0.001;
           joules_CT2 += jouleinc;
           CT2_Wh += joules_CT2 / 3600;
           joules_CT2 = joules_CT2 % 3600;
@@ -480,19 +488,19 @@ void loop() {
         Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);
     }
     
-    if (emontx.DSairoutT*0.01!=-127) {
+    if (emontx.DSairoutT*0.01>-50 && emontx.DSairoutT*0.01<80) {
         Serial.print(",DSairoutT:"); Serial.print(emontx.DSairoutT*0.01,2);
     }
 
-    if (emontx.DSairinT*0.01!=-127) {
+    if (emontx.DSairinT*0.01>-50 && emontx.DSairinT*0.01<80) {
         Serial.print(",DSairinT:"); Serial.print(emontx.DSairinT*0.01,2);
     }
 
-    if (emontx.DSflowT*0.01!=-127) {
+    if (emontx.DSflowT*0.01>-50 && emontx.DSflowT*0.01<80) {
         Serial.print(",DSflowT:"); Serial.print(emontx.DSflowT*0.01,2);
     }
 
-    if (emontx.DSreturnT*0.01!=-127) {
+    if (emontx.DSreturnT*0.01>-50 && emontx.DSreturnT*0.01<80) {
         Serial.print(",DSreturnT:"); Serial.print(emontx.DSreturnT*0.01,2);
     }
     

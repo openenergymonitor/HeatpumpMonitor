@@ -446,14 +446,14 @@ void loop() {
         last_reading = millis();
     
         if (ct1.realPower > 0 && interval>0) {
-          int jouleinc = ct1.realPower * interval *0.001;
+          unsigned long jouleinc = ct1.realPower * interval *0.001;
           joules_CT1 += jouleinc;
           CT1_Wh += joules_CT1 / 3600;
           joules_CT1 = joules_CT1 % 3600;
         }
     
         if (ct2.realPower > 0 && interval>0) {
-          int jouleinc = ct2.realPower * interval *0.001;
+          unsigned long jouleinc = ct2.realPower * interval *0.001;
           joules_CT2 += jouleinc;
           CT2_Wh += joules_CT2 / 3600;
           joules_CT2 = joules_CT2 % 3600;
@@ -480,10 +480,12 @@ void loop() {
     if (DS18B20_ENABLE) { 
         for(int i=0;i<numberOfDevices; i++)
         {
-          Serial.print(",T");
-          Serial.print(uids[i]);
-          Serial.print(":");
-          Serial.print(temps[i]);
+          if (temps[i]>-50 && temps[i]<80) {
+            Serial.print(",T");
+            Serial.print(uids[i]);
+            Serial.print(":");
+            Serial.print(temps[i]);
+          }
         }
     }
     

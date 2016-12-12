@@ -72,14 +72,14 @@ void loop() {
     last_reading = millis();
     
     if (ct1.realPower > 0 && interval>0) {
-      int jouleinc = ct1.realPower * interval *0.001;
+      unsigned long jouleinc = ct1.realPower * interval *0.001;
       joules_CT1 += jouleinc;
       CT1_Wh += joules_CT1 / 3600;
       joules_CT1 = joules_CT1 % 3600;
     }
 
     if (ct2.realPower > 0 && interval>0) {
-      int jouleinc = ct2.realPower * interval *0.001;
+      unsigned long jouleinc = ct2.realPower * interval *0.001;
       joules_CT2 += jouleinc;
       CT2_Wh += joules_CT2 / 3600;
       joules_CT2 = joules_CT2 % 3600;
