@@ -300,6 +300,7 @@ void loop() {
         Serial.print(":");
         Serial.print(num);
       }
+      Serial.println();
     }
   }
   
