@@ -8,16 +8,16 @@
 
 #define FirmwareVersion = 2.0
 #define DEBUG 0
-#define RFM69_ENABLE 0
+#define RFM69_ENABLE 1
 
-#define OEM_EMON_ENABLE 0
+#define OEM_EMON_ENABLE 1
 #define OEM_EMON_ACAC 1
 #define DS18B20_ENABLE 1
-#define KAMSTRUP_ENABLE 1
+#define KAMSTRUP_ENABLE 0
 #define KAMSTRUP_MODEL 403 // 402, 403
 #define VFS_ENABLE 0
-#define ELSTER_IRDA_ENABLE 1
-#define MBUS_ENABLE 1
+#define ELSTER_IRDA_ENABLE 0
+#define MBUS_ENABLE 0
 
 // EmonTH packet
 typedef struct {                                                      // RFM12B RF payload datastructure
@@ -83,10 +83,10 @@ ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 // CT Sensors
 int OEMct1 = 0;
 int OEMct2 = 0;
-int joules_CT1 = 0;
-int joules_CT2 = 0;
-unsigned long CT1_Wh = 0;
-unsigned long CT2_Wh = 0;
+long joules_CT1 = 0;
+long joules_CT2 = 0;
+long CT1_Wh = 0;
+long CT2_Wh = 0;
 
 // Kamstrup variables
 long KSkWh = 0;
@@ -210,9 +210,9 @@ void setup() {
   sensors.begin();
 
   ct1.voltage(0, 262.0, 1.7);
-  ct1.current(1, 20.0);
+  ct1.current(1, 90.9);
   ct2.voltage(0, 262.0, 1.7);
-  ct2.current(2, 20.0);
+  ct2.current(2, 90.9);
   
   delay(100);
   
@@ -453,14 +453,14 @@ void loop() {
         last_reading = millis();
     
         if (ct1.realPower > 0 && interval>0) {
-          unsigned long jouleinc = ct1.realPower * interval *0.001;
+          long jouleinc = ct1.realPower * interval *0.001;
           joules_CT1 += jouleinc;
           CT1_Wh += joules_CT1 / 3600;
           joules_CT1 = joules_CT1 % 3600;
         }
     
         if (ct2.realPower > 0 && interval>0) {
-          unsigned long jouleinc = ct2.realPower * interval *0.001;
+          long jouleinc = ct2.realPower * interval *0.001;
           joules_CT2 += jouleinc;
           CT2_Wh += joules_CT2 / 3600;
           joules_CT2 = joules_CT2 % 3600;
