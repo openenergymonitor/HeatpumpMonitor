@@ -10,7 +10,7 @@ The next section uses emoncms energy a new and still in early development front-
 
 Emoncms energy can be found here:
 
-[http://openenergymonitor.org/dev/energy](http://openenergymonitor.org/dev/energy)
+[http://energy.emoncms.org](http://energy.emoncms.org)
 
 If you haven’t already done so, register a new emoncms user:
 
