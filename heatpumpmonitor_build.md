@@ -4,6 +4,8 @@ The heatpump monitor comes as a component kit with all the resistors, capacitors
 
 ![heatpump_monitor_v2_components.JPG](images/heatpump_monitor_v2_components.JPG)
 
+**Voltage Regulator Update:** The voltage regulator has been updated to a surface mount voltage regulator see updated assembled close-up below.
+
 **Resistor reference**
 
 The following resistors are included in the kit.
@@ -171,7 +173,7 @@ Check that the power supply voltages are all as expected before inserting the AT
 
 ### Uploading the ATmega328 Firmware
 
-The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_V1](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_V1)
+The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
 
 Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE.
 
