@@ -41,5 +41,3 @@ After an extended period of logging the dashboard will by default show the daily
 ![energy_6.png](images/softwaresetup/energy_6.png)
 
 Click on a particular day to see electricity, heat, flow and return temperatures for the day.
-
-![energy_7.png](images/softwaresetup/energy_7.png)
