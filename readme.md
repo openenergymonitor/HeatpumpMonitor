@@ -46,9 +46,9 @@ There are two build options for the heatpump monitor board, the first is the ful
 
 **Quick reference**
 
-- [ATmega328 Arduino Firmware: HeatpumpMonitor_V1.ino](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1)
+- [ATmega328 Arduino Firmware: HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
 - [ESP8266 EmonESP WIFI Firmware](https://github.com/openenergymonitor/EmonESP)
-- [Hardware Schematic and Board files v2](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/v2)
+- [Hardware Schematic and Board files v4](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/v4)
 
 ## Installation and setup
 
