@@ -156,7 +156,7 @@ Capacitors: C11, C13, C12, C19 all 10uF
 
 The following image can also be used as a reference of component locations. 
     
-![heatpump_monitor_v4.png](images/heatpump_monitor_v4.png)
+![heatpump_monitor_v4.png](images/heatpump_monitor_v4.jpg)
 
 **Tip 1:** It is usually easier to start by soldering the lower profile components first such as the resistors and to build up to the taller components. 
 
