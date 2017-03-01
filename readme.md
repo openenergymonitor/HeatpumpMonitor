@@ -28,7 +28,7 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 <li>CT current and ACAC voltage based electricity monitoring</li>
 <li>Pulse counting or IRDA Elster meter reader</li>
 <li>Analog inputs for Vortex Flow Sensor (VFS) option (e.g Sika, Grundfos)</li>
-<li>MBUS reader for kamstrup heat meters</li>
+<li>MBUS reader for kamstrup heat meters (402, 403)</li>
 <li>4x individually broken out DS18B20 temperature sensor connections</li>
 <li>Arduino ATmega328 core</li>
 <li>Connectivity options: ESP-12 WIFI, RaspberryPI header, RFM69</li>
