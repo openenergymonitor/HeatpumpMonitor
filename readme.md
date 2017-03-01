@@ -77,7 +77,7 @@ A case study in open hardware development
 
 ## Heatpump dashboard
 
-**Login and explore:** [https://openenergymonitor.org/dev/energy](https://openenergymonitor.org/dev/energy)
+**Login and explore:** [http://energy.emoncms.org](http://energy.emoncms.org)
 
 Source code for the heatpump dashboard can be found as part of the front end emoncms energy site:
 
