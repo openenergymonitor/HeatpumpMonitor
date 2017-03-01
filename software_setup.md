@@ -26,7 +26,7 @@ Paste the apikey into the EmonESP apikey input box and click save.
 
 ### Auto-configuration
 
-**Note:** Auto-configuration is currently only supported for the three configurations listed in the screenshot below. If your configuration differs from these configurations or you need to configure specific temperature sensors, configuration can be done manually via emoncms.
+**Note:** Auto-configuration is currently only supported for the three configurations listed in the screenshot below. If your configuration differs from these configurations or you need to configure specific temperature sensors, configuration can be done manually via emoncms. See [Installation and Setup](installation.md)
 
 Navigate back to emoncms energy and click on *Device config* in the left hand sidebar. Select the heat pump monitor configuration you wish to use.
 
