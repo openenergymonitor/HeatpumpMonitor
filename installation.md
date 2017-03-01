@@ -144,13 +144,9 @@ Testing is ongoing to verify the potential accuracy of heat measurement based on
 
 **Emoncms configuration**
 
-<table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>DSairoutT</td><td>Air out temperature off air-source heatpump (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>DSairinT</td><td>Air in temperature into air-source heatpump (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>DSflowT</td><td>Water flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>DSreturnT</td><td>Water return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-</table>
+Using the latest HeatpumpMonitor_AutoTemp firmware, DS18B20 temperature sensors are detected automatically and sent with a key/name that includes a unqiue ID so that removing a fautly sensor does not mix up the order. The naming is of the form: T[ID], T682.
+
+These temperature inputs can then be named within emoncms to a more useful descriptive name.
 
 ## Power up
 
