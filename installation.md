@@ -153,7 +153,7 @@ Testing is ongoing to verify the potential accuracy of heat measurement based on
 <tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
 <tr><td>VFSflowT</td><td>Flow temperature measured by temperature sensor in VFS flow meter.<br><b>Log to feed</b> record to PHPFina feed at 10s interval</td><td>heatpump_flowT</td></tr>
 <tr><td>VFSflowrate</td><td>Flow rate in Litres/hour.<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>VFSheat</td><td>Heat output measured in Watts by VFS<br><b>Log to feed</b> record power to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to calculate cumulative kWh feed</td><td>log_to_feed: heatpump_heat<br>power_to_kwh: <b>heatpump_heat_kwh</b></td></tr>
+<tr><td>VFSheat</td><td>Heat output measured in Watts by VFS<br><b>Log to feed</b> record power to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to calculate cumulative kWh feed</td><td>log_to_feed: <b>heatpump_heat</b><br>power_to_kwh: <b>heatpump_heat_kwh</b></td></tr>
 </table>
 
 
