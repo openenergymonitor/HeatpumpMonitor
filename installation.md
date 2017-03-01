@@ -12,7 +12,7 @@ The Heatpump Monitor supports reading from the Irda port on Elster A100C energy 
 
 Selection and use of the IRDA reader over pulse counting is done in the Heatpump Monitor firmware here:
 
-[Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L17)
+[Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L19](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L19)
 
 Set ELSTER_IRDA_ENABLE to 1:
 
@@ -41,7 +41,7 @@ Alternatively wired pulse counting is also an option. For wired pulse counting t
 
 When using the pulse counting input with wired pulse output meters such as an Elster A100C or Ampy single phase meter two additional components are needed to provide reliable pulse counting. A pull down resistor is needed across the pulse input (100k) and ground and then a 100nf capacitor is needed to filter any high frequency pulses outside the expected range. The footprint for these are now on the PCB just below the terminals.
 
-For more information on pulse counting see the Building Blocks page: [Introduction to Pulse Counting](https://openenergymonitor.org/emon/buildingblocks/introduction-to-pulse-counting)
+For more information on pulse counting see the Building Blocks page: [Introduction to Pulse Counting](https://learn.openenergymonitor.org/electricity-monitoring/pulse-counting/introduction-to-pulse-counting)
 
 The pulse counting input on the heatpump monitor is just a interrupt enabled digital input on the atmega328.
 
@@ -60,7 +60,7 @@ In addition to the elster irda meter reader and pulse counting options the heatp
 
 CT Burden resistor sizing: The current range measurable by the CT based measurement is dependent on both the CT sensor used and the burden resistor size on the heat pump monitoring board. In order to obtain higher measurement resolution it is recommended to size the burden resistor to match closely the maximum rated electrical power input of the heat pump.
 
-The included burden resistor in the heatpump monitor kit is 100 Ohms, this provides a AC power measurement range of **0 - 5.4 kW**. This provides ample range for many small domestic heatpumps. A smaller burden resistor can be used instead for larger measurement range at lower resolution. See Building Blocks guide [CT sensors - interfacing with arduino](https://openenergymonitor.org/emon/buildingblocks/ct-sensors-interface)
+The included burden resistor in the heatpump monitor kit is 100 Ohms, this provides a AC power measurement range of **0 - 5.4 kW**. This provides ample range for many small domestic heatpumps. A smaller burden resistor can be used instead for larger measurement range at lower resolution. See Building Blocks guide [CT sensors - interfacing with arduino](https://learn.openenergymonitor.org/electricity-monitoring/ct-sensors/interface-with-arduino)
 
 **Calibration and Accuracy**
 
@@ -68,7 +68,7 @@ The CT and AC-AC power measurement circuitry was designed for indicative power m
 
 In order to confirm the accuracy of the heat pump monitor electricity measurement note down a manual meter reading from the heat pump kwh meter when the heat pump monitor is first powered up, note down the date and time of this reading. After a measurement period of around 1 week check the accumulated electricity consumption recorded by the heat pump monitor both from the pulse counting input, the CT sensors against the consumption as read manually on the kwh meter.
 
-See [Building Blocks: Sources of error in the emontx voltage and current inputs](https://openenergymonitor.org/emon/buildingblocks/emontx-error-sources)
+See [Building Blocks: Sources of error in the emontx voltage and current inputs](https://learn.openenergymonitor.org/electricity-monitoring/ctac/emontx-error-sources)
 
 **Emoncms configuration**
 
@@ -114,7 +114,7 @@ A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS rang
 
 There are a multitude of VFS flow sensors each catering for different flow ranges, the calibration for the VFS sensor is set in the Heatpump monitor firmware here:
 
-[Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L92](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_V1/HeatpumpMonitor_V1.ino#L92)
+[Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L52](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L52)
 
     // --------------------------------------------------
     // VFS config
