@@ -112,6 +112,8 @@ The following image can also be used as a reference of component locations.
     
 ![emonbuild_v3.jpg](images/emonbuild_v3.jpg)
 
+**Voltage regulator note:**The voltage regulator shown in the picture above is the large through-hole TC1262-3.3V, the board also supports the smaller MCP1825 surface mount voltage regulator. 
+
 **Tip 1:** It is usually easier to start by soldering the lower profile components first such as the resistors and to build up to the taller components. 
 
 **Tip 2:** Test that the ATmega328 part works first before soldering in the ESP8266 module so that any issues with the ATmega328 part can be isolated before adding the ESP WIFI part. 
