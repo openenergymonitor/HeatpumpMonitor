@@ -4,6 +4,23 @@ The following image shows the function of each connector:
 
 ![heatpump_monitor_v2_connections.JPG](images/heatpump_monitor_v2_connections.JPG)
 
+#### Note: Heatpump Dashboard naming convention
+
+The heatpump dashboard available on energy.emoncms.org does not have a configuration interface, it instead just looks for feeds in the emoncms.org account with the following names:
+
+- **heatpump_elec**: Heatpump electrical power in Watts
+- **heatpump_elec_kwh**: Heatpump cumulative electricity consumption in kWh 
+- **heatpump_heat**: Heatpump heat output in Watts
+- **heatpump_heat_kwh**: Heatpump cumulative heat output in kWh
+- **heatpump_flowT**: Heatpump central heating/DHW water flow temperature.
+- **heatpump_returnT**: Heatpump central heating/DHW water return temperature.
+- **outside_temperature**: Outside/Ambient temperature
+- **DHW_cylinderT**: Hot Water Cylinder temperature
+
+The minimum requirement for the heatpump dashboard is a cumulative kWh feed of heatpump electricity consumption named: **heatpump_elec_kwh**.
+
+Beyond this addition of the further feeds just extends and improves the dashboard further.
+
 ### Electricity monitoring: IRDA Elster A100C Watt Hour reader
 
 The Heatpump Monitor supports reading from the Irda port on Elster A100C energy meters using the [OpenEnergyMonitor pulse sensor](https://shop.openenergymonitor.com/optical-utility-meter-led-pulse-sensor/). This provides a convenient way of reading the actual watt hours as recorded on the meter avoiding errors that may be caused by a multitude of sources via the other optional methods.
@@ -25,8 +42,8 @@ Set ELSTER_IRDA_ENABLE to 1:
 See the [Software setup guide](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/software_setup.md) for automated setup method.
 
 <table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>PulseIRDA</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
+<tr><td>PulseIRDA</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td><td>heatpump_elec_kwh</td></tr>
 </table>
 
 ### Electricity monitoring: Pulse counting
@@ -48,8 +65,8 @@ The pulse counting input on the heatpump monitor is just a interrupt enabled dig
 **Emoncms configuration**
 
 <table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>PulseIRDA</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
+<tr><td>PulseIRDA</td><td><b>Log to feed</b> record one standard feed with 'log to feed'.<br><b>Wh accumulator</b> record a second feed with the wh accumulator process, this process creates a feed where any data gaps are joined producing more reliable kwh graphs.</td><td>heatpump_elec_kwh</td></tr>
 </table>
 
 ### Electricity monitoring: CT and AC-AC adapter
@@ -73,11 +90,11 @@ See [Building Blocks: Sources of error in the emontx voltage and current inputs]
 **Emoncms configuration**
 
 <table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>OEMct1</td><td><b>Log to feed</b> record one standard power feed with 'log to feed'.<br><b>power to kWh</b> record a second feed with the power to kwh process, this process creates a cumulative kWh feed from the power input.</td></tr>
-<tr><td>OEMct2</td><td><b>Log to feed</b> record one standard power feed with 'log to feed'.<br><b>power to kWh</b> record a second feed with the power to kwh process, this process creates a cumulative kWh feed from the power input.</td></tr>
-<tr><td>OEMct1Wh</td><td><b>Wh accumulator</b> use the wh accumulator process to record the cumulative watt hour data in a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
-<tr><td>OEMct2Wh</td><td><b>Wh accumulator</b> use the wh accumulator process to record the cumulative watt hour data in a feed where any data gaps are joined producing more reliable kwh graphs.</td></tr>
+<tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
+<tr><td>OEMct1</td><td><b>Log to feed</b> record one standard power feed with 'log to feed'.<br><b>power to kWh</b> record a second feed with the power to kwh process, this process creates a cumulative kWh feed from the power input.</td><td>log_to_Feed: heatpump_elec<br>power_to_kwh: heatpump_elec_kwh</td></tr>
+<tr><td>OEMct2</td><td><b>Log to feed</b> record one standard power feed with 'log to feed'.<br><b>power to kWh</b> record a second feed with the power to kwh process, this process creates a cumulative kWh feed from the power input.</td><td></td></tr>
+<tr><td>OEMct1Wh</td><td><b>Wh accumulator</b> use the wh accumulator process to record the cumulative watt hour data in a feed where any data gaps are joined producing more reliable kwh graphs.</td><td>heatpump_elec_kwh</td></tr>
+<tr><td>OEMct2Wh</td><td><b>Wh accumulator</b> use the wh accumulator process to record the cumulative watt hour data in a feed where any data gaps are joined producing more reliable kwh graphs.</td><td></td></tr>
 </table>
 
 ### Heat metering: MBUS Kamstrup heat meter
@@ -97,13 +114,13 @@ Troubleshooting: If the kamstrup meter data does not appear straight away, wait 
 **Emoncms configuration**
 
 <table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
-<tr><td>KSflowT</td><td>Flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>KSreturnT</td><td>Return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>KSdeltaT</td><td>Difference between flow and return temperature (Kelvin)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
-<tr><td>KSheat</td><td>Heatpump heat output (Watts)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to generate a higher resolution kWh feed from the kamstrup power data to be used in parallel with the kWh reading from the kamstrup meter.</td></tr>
-<tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
+<tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
+<tr><td>KSflowT</td><td>Flow temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td><td>heatpump_flowT</td></tr>
+<tr><td>KSreturnT</td><td>Return temperature (Celcius)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td><td>heatpump_returnT</td></tr>
+<tr><td>KSdeltaT</td><td>Difference between flow and return temperature (Kelvin)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td><td>heatpump_deltaT</td></tr>
+<tr><td>KSflowrate</td><td>Water Flowrate (Litres/hour)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td><td></td></tr>
+<tr><td>KSheat</td><td>Heatpump heat output (Watts)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to generate a higher resolution kWh feed from the kamstrup power data to be used in parallel with the kWh reading from the kamstrup meter.</td><td>log_to_Feed: heatpump_heat<br>power_to_kwh: heatpump_heat_kwh</td></tr>
+<tr><td>KSkWh</td><td>Total cumulative kWh of heat measured by kamstrup (kWh)<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td><td>heatpump_heat_kwh</td></tr>
 </table>
 
 ### Heat metering: VFS Flow meter (Sika or Grundfos)
@@ -133,7 +150,7 @@ Testing is ongoing to verify the potential accuracy of heat measurement based on
 **Emoncms configuration**
 
 <table>
-<tr><th>Input name</th><th>Input processing and feeds</th></tr>
+<tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
 <tr><td>VFSflowT</td><td>Flow temperature measured by temperature sensor in VFS flow meter.<br><b>Log to feed</b> record to PHPFina feed at 10s interval</td></tr>
 <tr><td>VFSflowrate</td><td>Flow rate in Litres/hour.<br><b>Log to feed</b> record to PHPFina feed at 10s interval.<br><b>Log to feed</b> record to PHPFina feed at 10s interval.</td></tr>
 <tr><td>VFSheat</td><td>Heat output measured in Watts by VFS<br><b>Log to feed</b> record power to PHPFina feed at 10s interval.<br><b>Power to kWh</b> use the power to kwh process to calculate cumulative kWh feed</td></tr>
