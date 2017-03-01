@@ -12,9 +12,9 @@ Heat-pumps are a key component of zero carbon energy systems making it possible 
 
 By monitoring a heat-pump its possible to see how well it is working, diagnose problems and get a better understanding of how a key potentially zero carbon heating solution works, data gathered and shared from well performing systems could help de-mystify heat-pump operation and help improve performance by diagnosing any problems early.
 
-- [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
-- [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
-- [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
+- **Blog post:** [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
+- **Blog post:** [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
+- **Blog post:** [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
 - **[John Cantor's heat pump monitoring blog](http://johncantorheatpumps.blogspot.co.uk)**
 
 ## Overview
