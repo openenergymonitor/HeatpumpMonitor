@@ -31,14 +31,7 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 **All pricing below is ex VAT**
 
 <table cellspacing="0" border="0">
-	<colgroup width="273"></colgroup>
-	<colgroup span="2" width="85"></colgroup>
-	<colgroup width="110"></colgroup>
-	<colgroup width="116"></colgroup>
-	<colgroup width="85"></colgroup>
-	<colgroup width="123"></colgroup>
-	<colgroup width="182"></colgroup>
-	<colgroup span="2" width="85"></colgroup>
+	<colgroup span="8" width="85"></colgroup>
 	<tr>
 		<td height="17" align="left"><b>Component name</b></td>
 		<td align="center"><b>Quantity</b></td>
@@ -48,8 +41,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><b>Unit cost</b></td>
 		<td align="center"><b>Price Quantity</b></td>
 		<td align="center"><b>Minimum Order Quantity</b></td>
-		<td align="center"><b><br></b></td>
-		<td align="left"><b>Other notes</b></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b><br></b></td>
@@ -60,8 +51,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Heatpump monitor PCB</b></td>
@@ -72,8 +61,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left">One off prototype cost</td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -84,8 +71,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Connectors and headers</b></td>
@@ -96,8 +81,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">3.5mm CT jack sockets</td>
@@ -108,8 +91,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.346" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.346</td>
 		<td align="center">1-24</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">2.1mm DC ACAC socket</td>
@@ -120,8 +101,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.19" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.190</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">3 Way 3.5mm terminal block</td>
@@ -132,8 +111,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.19" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.190</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">USB mini</td>
@@ -144,8 +121,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.745" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.745</td>
 		<td align="center">1-24</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">ESP-12</td>
@@ -156,8 +131,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="2.45" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£2.45</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left">UK distributor</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">RFM69</td>
@@ -168,8 +141,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="3.2" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£3.200</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left">UK distributor</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">2 way headers</td>
@@ -180,8 +151,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0203" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.020</td>
 		<td align="center">100-499</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">6 way headers</td>
@@ -192,8 +161,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.261" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.261</td>
 		<td align="center">10-49</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -204,8 +171,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">jumper</td>
@@ -216,8 +181,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.08" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.080</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">5x2 way female header RASPI</td>
@@ -228,8 +191,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.1" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.100</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -240,8 +201,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Capacitors</b></td>
@@ -252,8 +211,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">100nf</td>
@@ -264,8 +221,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0222" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.022</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">22pf</td>
@@ -276,8 +231,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0122" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.012</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">10uf</td>
@@ -288,8 +241,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.044" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.044</td>
 		<td align="center">1to9</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -300,8 +251,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Resistors</b></td>
@@ -312,8 +261,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">470k 5%</td>
@@ -324,8 +271,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0062" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left">£4.59 for box of 1000 or £3.63 for 5000</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">10k 5%</td>
@@ -336,8 +281,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0062" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">10k 1%</td>
@@ -348,8 +291,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0118" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.012</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left">£7.18 for box of 1000 or £3.63 for 5000</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">4.7k 5%</td>
@@ -360,8 +301,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0062" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">100k</td>
@@ -372,8 +311,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0062" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">100R 5%</td>
@@ -384,8 +321,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0062" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">CT burden resistors 22R</td>
@@ -396,8 +331,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0118" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.012</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">CT burden resistors 100R</td>
@@ -408,8 +341,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0118" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.012</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">120K</td>
@@ -420,8 +351,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0118" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.012</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">5k6</td>
@@ -432,8 +361,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0062" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -444,8 +371,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Other</b></td>
@@ -456,8 +381,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">16 Mhz crystal</td>
@@ -468,8 +391,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.212" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.212</td>
 		<td align="center">1to24</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">atmega328</td>
@@ -480,8 +401,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="2.41" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£2.410</td>
 		<td align="center">1to9</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">28pin DIL</td>
@@ -492,8 +411,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.453" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.453</td>
 		<td align="center">10-99</td>
 		<td align="center" sdval="10" sdnum="2057;">10</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">MCP1825S-3302</td>
@@ -504,8 +421,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.45" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.450</td>
 		<td align="center">1to9</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left">TC1262-3.3V (1852182) also supported</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">LED</td>
@@ -516,8 +431,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -528,8 +441,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>MBUS meter reader</b></td>
@@ -540,8 +451,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">BC307 or other PNP, BC557:1:C,2:B,3:E</td>
@@ -552,8 +461,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0401" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.040</td>
 		<td align="center">5-249</td>
 		<td align="center" sdval="5" sdnum="2057;">5</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">BC337 or other NPN,BC547:1:C,2:B,3:E</td>
@@ -564,8 +471,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0401" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.040</td>
 		<td align="center">5-249</td>
 		<td align="center" sdval="5" sdnum="2057;">5</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">220k</td>
@@ -576,8 +481,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">33k</td>
@@ -588,8 +491,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">39k</td>
@@ -600,8 +501,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">22k</td>
@@ -612,8 +511,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">3k3</td>
@@ -624,8 +521,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">82r</td>
@@ -636,8 +531,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">1K</td>
@@ -648,8 +541,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.00624" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.006</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
 		<td align="center">pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">2 way header female</td>
@@ -660,8 +551,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.034" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.034</td>
 		<td align="center">50-99</td>
 		<td align="center">pack of 50</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">2 way headers</td>
@@ -672,8 +561,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0203" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.020</td>
 		<td align="center">100-499</td>
 		<td align="center" sdval="100" sdnum="2057;">100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">5v to 24v boost converter</td>
@@ -684,8 +571,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="2.2" sdnum="2057;0;[$£-809]#,##0.00;[RED]-[$£-809]#,##0.00">£2.20</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b><br></b></td>
@@ -696,8 +581,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>MBUS meter reader cost</b></td>
@@ -708,8 +591,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Total Component cost</b></td>
@@ -720,8 +601,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>PCB cost</b></td>
@@ -732,8 +611,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -744,8 +621,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -756,8 +631,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Enclosure</b></td>
@@ -768,8 +641,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">EmonTx v3 aluminium enclosure</td>
@@ -780,8 +651,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="4.74" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£4.740</td>
 		<td align="center">1to9</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left">http://www.lincolnbinns.com/e-case-b/</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">Laser cut facia pack</td>
@@ -792,8 +661,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="3" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£3.000</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="center"><br></td>
-		<td align="left">Custom guide price: Laser cut clear acrylic</td>
 	</tr>
 	<tr>
 		<td height="17" align="left">Enclosure screws</td>
@@ -804,8 +671,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center" sdval="0.0096" sdnum="2057;0;[$£-809]#,##0.000;[RED]-[$£-809]#,##0.000">£0.010</td>
 		<td align="center">Pack of 100</td>
 		<td align="center">Pack of 100</td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left">Total enclosure cost</td>
@@ -816,8 +681,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><br></td>
@@ -828,8 +691,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>Cost price (components, case and PCB)</b></td>
@@ -840,8 +701,6 @@ At a sale price of 2.0x cost price the heatpump monitor kit costs £26 x 2.0 = �
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td align="center"><br></td>
-		<td align="left"><br></td>
 	</tr>
 </table>
 
