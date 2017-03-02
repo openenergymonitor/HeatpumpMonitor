@@ -18,7 +18,7 @@ See [HeatpumpMonitor/BOM&Costing_20x.ods](files/heatpumpmonitor/BOM&Costing_20x.
 
 Some of the components in the heatpump monitor are shared with other OpenEnergyMonitor units. Because we order these in much larger quantities we are able to get a lower price on some items. This drops the cost price to near £26 ex VAT.
 
-The cost price of the heatpump monitor would be less if the PCB was ordered in larger quantities. Ordering in 50x would reduce the cost price by about £3, ordering in several hundred would reduce the cost price by about £6.
+The cost price of the heatpump monitor would be less if the PCB was ordered in larger quantities. Ordering in 50x would reduce the cost price by about £1.80, ordering in several hundred would reduce the cost price by about £6.
 
 ### Sale price
 
