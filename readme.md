@@ -6,6 +6,10 @@ This is a web-connected open source hardware heat-pump monitor that can measure 
 
 ![Heatpump monitor](images/topgraphic.jpg)
 
+## Available in the OpenEnergyMonitor Shop
+
+[https://shop.openenergymonitor.com/esp8266-wifi-heatpump-monitor](https://shop.openenergymonitor.com/esp8266-wifi-heatpump-monitor)
+
 ## Rationale
 
 Heat-pumps are a key component of zero carbon energy systems making it possible to provide heating efficiently from renewable energy, they are featured in many zero carbon energy scenarios such as ZeroCarbonBritain developed by the Centre for Alternative Technology and are also highlighted in David MacKay's book Sustainable Energy without the hot air.
