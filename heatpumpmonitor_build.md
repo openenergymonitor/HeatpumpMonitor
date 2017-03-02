@@ -78,17 +78,26 @@ The following resistors are included in the kit.
 		<td align="left">Serial 5V to 3.3V level converter</td>
 	</tr>
 	<tr>
-		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
-		<td align="left">56R (5%)</td>
-		<td align="left">Green-blue-black</td>
-		<td align="left">Unused for powering from ACAC*</td>
+		<td height="17" align="center" sdval="3" sdnum="2057;">3</td>
+		<td align="left">22R (1%)</td>
+		<td align="left"></td>
+		<td align="left">CT burden resistors OPTION 1 (1%)</td>
 	</tr>
 	<tr>
 		<td height="17" align="center" sdval="3" sdnum="2057;">3</td>
-		<td align="left">CT burden resistors (1%)</td>
-		<td align="left">see note</td>
-		<td align="left"><br></td>
+		<td align="left">100R (1%)</td>
+		<td align="left"></td>
+		<td align="left">CT burden resistors OPTION 2 (1%)</td>
 	</tr>
+</table>
+
+**MBUS Reader kit**
+
+<table cellspacing="0" border="0">
+	<colgroup width="63"></colgroup>
+	<colgroup width="219"></colgroup>
+	<colgroup width="162"></colgroup>
+	<colgroup width="245"></colgroup>
 	<tr>
 		<td height="17" align="center" sdval="1" sdnum="2057;">1</td>
 		<td align="left">220k (5%)</td>
