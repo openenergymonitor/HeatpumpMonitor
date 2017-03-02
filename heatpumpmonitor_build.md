@@ -14,8 +14,6 @@ The heatpump monitor comes as a component kit with all the resistors, capacitors
 
 image of MBUS kit components
 
-**Voltage Regulator Update:** The voltage regulator has been updated to a surface mount voltage regulator see updated assembled close-up below.
-
 **Resistor reference**
 
 The following resistors are included in the kit.
