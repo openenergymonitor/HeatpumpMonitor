@@ -232,6 +232,11 @@ Finished article:
 
 <img src="images/buildguide/20.jpg" style="width:400px">
 
+Optional enclosure kit:
+
+<img src="images/enclosure_kit.jpg" style="width:400px">
+<img src="images/kit_enclosed.jpg.jpg" style="width:400px">
+
 ### Uploading the ATmega328 Firmware
 
 The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
