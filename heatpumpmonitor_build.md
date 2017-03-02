@@ -2,9 +2,17 @@
 
 The heatpump monitor comes as a component kit with all the resistors, capacitors, connectors, IC's and other parts required to complete the build. The full Bill of Materials can be found [here](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/costingexample.md)
 
+**Packaged Kit**
+
 ![kit_packaged.jpg](images/kit_packaged.jpg)
 
+**Core kit components**
+
 ![core_kit_bom.jpg](images/core_kit_bom.jpg)
+
+**MBUS Reader kit components**
+
+image of MBUS kit components
 
 **Voltage Regulator Update:** The voltage regulator has been updated to a surface mount voltage regulator see updated assembled close-up below.
 
