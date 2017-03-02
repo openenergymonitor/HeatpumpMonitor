@@ -12,7 +12,7 @@ The heatpump monitor comes as a component kit with all the resistors, capacitors
 
 **MBUS Reader kit components**
 
-image of MBUS kit components
+![mbus_kit_bom.jpg](images/mbus_kit_bom.jpg)
 
 **Resistor reference**
 
@@ -91,7 +91,7 @@ The following resistors are included in the kit.
 	</tr>
 </table>
 
-**MBUS Reader kit**
+MBUS Reader kit resistors:
 
 <table cellspacing="0" border="0">
 	<colgroup width="63"></colgroup>
