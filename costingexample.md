@@ -4,21 +4,21 @@
 
 The following outlines example one-off or low volume cost price costing for the Heatpump Monitor. 
 
-**Total £53.27 ex VAT** including **£28.93 ex VAT** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off - £34.72 inc VAT). Total £63.92 including VAT (20%) + misc shipping costs to do one-off prototype/DIY.
+**Total £53.48 ex VAT** including **£28.93 ex VAT** prototype one-off PCB from [Ragworm](http://ragworm.eu) (100mm x 80mm PCB standard pricing in one-off - £34.72 inc VAT). Total £65.38 including VAT (20%) + misc shipping costs to do one-off prototype/DIY.
 
 See [HeatpumpMonitor/BOM&Costing_1x.ods](files/heatpumpmonitor/BOM&Costing_1x.ods) 
 
 ### 20x batch
 
-A batch of 20x heatpump monitor boards start to give significant savings on the PCB cost and a couple of the other components, the cost price drops to £29.61 ex VAT in these quantities. 
+A batch of 20x heatpump monitor boards start to give significant savings on the PCB cost and a couple of the other components, the cost price drops to £29.93 ex VAT in these quantities. 
 
 See [HeatpumpMonitor/BOM&Costing_20x.ods](files/heatpumpmonitor/BOM&Costing_20x.ods) 
 
 ### Custom OEM
 
-Some of the components in the heatpump monitor are shared with other OpenEnergyMonitor units. Because we order these in much larger quantities we are able to get a lower price on some items. This drops the cost price to near £26 ex VAT.
+Some of the components in the heatpump monitor are shared with other OpenEnergyMonitor units. Because we order these in much larger quantities we are able to get a lower price on some items. This drops the cost price to £28.88 ex VAT.
 
-The cost price of the heatpump monitor would be less if the PCB was ordered in larger quantities. Ordering in 50x would reduce the cost price by about £1.80, ordering in several hundred would reduce the cost price by about £6.
+The cost price of the heatpump monitor would be less if the PCB was ordered in larger quantities. Ordering in 50x would reduce the cost price by about £1.56, ordering in several hundred would reduce the cost price further.
 
 ### Sale price
 
@@ -768,15 +768,17 @@ First figure: cost price, second figure sale price (cost price x 2.0). See above
 
 With case: 
 
-- 1x £53.22
-- 20x £29.61, £59.22
-- OEM £25.88, £51.76
+- 1x £53.48, £106.96
+- 20x £29.93, £59.86
+- OEM £28.88, £57.76
+- OEM £27.32, £54.65 (50x PCB)
 
 Without case: 
 
-- 1x £45.41
-- 20x £23.26, £46.52
-- OEM £20.30, £40.6
+- 1x £45.66, £91.32
+- 20x £23.59, £47.18
+- OEM £22.54, £45.07
+- OEM £20.98, £41.95 (50x PCB)
 
 Spreadsheets:
 
