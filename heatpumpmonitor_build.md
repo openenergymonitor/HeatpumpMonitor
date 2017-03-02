@@ -198,16 +198,38 @@ Check that the power supply voltages are all as expected before inserting the AT
 <img src="images/buildguide/7.jpg" style="width:400px">
 <img src="images/buildguide/8.jpg" style="width:400px">
 <img src="images/buildguide/9.jpg" style="width:400px">
+
+**Voltage check**
+
+At this point with the voltage regulator soldered in, mini USB and capacitors its possible to check that the board is producing 3.3V from the 5.0V USB supply. Use a multimeter and connect across GND and 3.3V on one of the DS18B20 temperature sensor inputs.
+Check that the voltage regulator is not getting warm.
+
+**Arduino Upload check**
+
+This is also a good point to check that its possible to upload firmware to the ATmega328 microcontroller. Place the ATmega328 in the 28pin chip holder temporarily and try uploading the Arduino ATmega328 firmware, follow the instructions below in the *Uploading the ATmega328 Firmware*.
+
 <img src="images/buildguide/10.jpg" style="width:400px">
 <img src="images/buildguide/11.jpg" style="width:400px">
 <img src="images/buildguide/12.jpg" style="width:400px">
 <img src="images/buildguide/13.jpg" style="width:400px">
 <img src="images/buildguide/14.jpg" style="width:400px">
+
+Once happy that the components so far are all soldered correctly and that the board voltages are still correct and that its still possible to upload code to the Arduino ATmega328, the next step is to solder in the radio module and ESP8266 Wifi module.
+
+Start by placing a small blob of solder on one of the pads on the board.
+Then place the module on the board and adjust into position heating up the soldered pad so that a holding connection is made at this one point. Triple check the positioning of the modules before soldering the rest of the pads.
+
 <img src="images/buildguide/15.jpg" style="width:400px">
 <img src="images/buildguide/16.jpg" style="width:400px">
 <img src="images/buildguide/17.jpg" style="width:400px">
+
+MBUS resistor and transistor reference:
+
 <img src="images/buildguide/18.jpg" style="width:400px">
 <img src="images/buildguide/19.jpg" style="width:400px">
+
+Finished article:
+
 <img src="images/buildguide/20.jpg" style="width:400px">
 
 ### Uploading the ATmega328 Firmware
