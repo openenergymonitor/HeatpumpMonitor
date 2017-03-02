@@ -60,6 +60,7 @@ The following guide details how to setup the heatpump monitor including interfac
 
 - [Selecting the right heat meter](selectingheatmeter.md)
 - [Installation and setup](installation.md)
+- [Blog: Temperature sensors for monitoring heat pumps](http://johncantorheatpumps.blogspot.co.uk/2015/06/temperature-sensing-with.html)
 - [Software Setup](software_setup.md)
 - [Firmware Upload / Update](firmware-upload.md)
 
