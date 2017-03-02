@@ -187,6 +187,28 @@ Check that the power supply voltages are all as expected before inserting the AT
 
 **ESP CH_PD and GPIO15 Solder jumpers** Both of these solder jumpers need to be connected with a small blob of solder for the ESP module to work.
 
+### Build Guide Images
+
+<img src="images/buildguide/1.jpg" style="width:400px">
+<img src="images/buildguide/2.jpg" style="width:400px">
+<img src="images/buildguide/3.jpg" style="width:400px">
+<img src="images/buildguide/4.jpg" style="width:400px">
+<img src="images/buildguide/5.jpg" style="width:400px">
+<img src="images/buildguide/6.jpg" style="width:400px">
+<img src="images/buildguide/7.jpg" style="width:400px">
+<img src="images/buildguide/8.jpg" style="width:400px">
+<img src="images/buildguide/9.jpg" style="width:400px">
+<img src="images/buildguide/10.jpg" style="width:400px">
+<img src="images/buildguide/11.jpg" style="width:400px">
+<img src="images/buildguide/12.jpg" style="width:400px">
+<img src="images/buildguide/13.jpg" style="width:400px">
+<img src="images/buildguide/14.jpg" style="width:400px">
+<img src="images/buildguide/15.jpg" style="width:400px">
+<img src="images/buildguide/16.jpg" style="width:400px">
+<img src="images/buildguide/17.jpg" style="width:400px">
+<img src="images/buildguide/18.jpg" style="width:400px">
+<img src="images/buildguide/19.jpg" style="width:400px">
+<img src="images/buildguide/20.jpg" style="width:400px">
 
 ### Uploading the ATmega328 Firmware
 
