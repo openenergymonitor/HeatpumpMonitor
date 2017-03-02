@@ -235,7 +235,7 @@ Finished article:
 Optional enclosure kit:
 
 <img src="images/enclosure_kit.jpg" style="width:400px">
-<img src="images/kit_enclosed.jpg.jpg" style="width:400px">
+<img src="images/kit_enclosed.jpg" style="width:400px">
 
 ### Uploading the ATmega328 Firmware
 
