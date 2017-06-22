@@ -8,7 +8,7 @@
 
 #define FirmwareVersion = 2.0
 #define DEBUG 0
-#define RFM69_ENABLE 1
+#define RFM69_ENABLE 0
 
 #define OEM_EMON_ENABLE 1
 #define OEM_EMON_ACAC 1
@@ -312,13 +312,13 @@ void loop() {
     }
 
     msgnum++;
-    Serial.print("Msg:"); Serial.print(msgnum);
+    Serial.print("MSG:"); Serial.print(msgnum);
     if (OEM_EMON_ENABLE)
     {
-        Serial.print(",OEMct1:"); Serial.print(OEMct1);
-        Serial.print(",OEMct2:"); Serial.print(OEMct2);
-        Serial.print(",OEMct1Wh:"); Serial.print(CT1_Wh);
-        Serial.print(",OEMct2Wh:"); Serial.print(CT2_Wh);
+        Serial.print(",P1:"); Serial.print(OEMct1);
+        Serial.print(",P2:"); Serial.print(OEMct2);
+        Serial.print(",E1:"); Serial.print(CT1_Wh);
+        Serial.print(",E2:"); Serial.print(CT2_Wh);
     }
     
     if (VFS_ENABLE) {
@@ -339,7 +339,7 @@ void loop() {
         }
     }
 
-    Serial.print(",PulseIRDA:"); Serial.print(pulseCount);
+    Serial.print(",IRDA:"); Serial.print(pulseCount);
     Serial.println();
     delay(100);
 
