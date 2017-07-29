@@ -2,7 +2,7 @@
 // MBUS meter reader for kampstrup multical 402
 // Grundfos vortex flow sensor on analog 0 and 1
 // 2x DS18B20 flow + return sensors
-// All sending via RFM12/69.
+// For use with ESP8266 WIFI adapter
 // Licence: GPLv3
 #include <avr/wdt.h>
 
