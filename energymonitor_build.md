@@ -79,7 +79,7 @@ The following resistors are included in the kit.
 
 Component values including resistor resistance and capacitor capacitance are printed on the PCB. See resistor color code graphic here to match the resistors [images/resistor-color-chart.jpg](images/resistor-color-chart.jpg).
 
-Several of the resistors only have a reference name printed, the following are all part of the CT sensor and ACAC sensor biasing circuits and are all 470k resistors (470k (yellow-purple-yellow) was historically choosen to increase battery lifespan in battery powered nodes - lower values down to around 10k could be choosen instead here for a more stable biasing voltage):
+Several of the resistors only have a reference name printed, the following are all part of the CT sensor and ACAC sensor biasing circuits and are all 470k resistors (470k (yellow-purple-yellow) was historically chosen to increase battery lifespan in battery powered nodes - lower values down to around 10k could be chosen instead here for a more stable biasing voltage):
 
     VDT: Voltage Divider Top (for AC-AC Voltage sensor)
     VDB: Voltage Divider Bottom (for AC-AC Voltage sensor)
@@ -97,32 +97,34 @@ The included burden resistor is 100 Ohms, this provides a AC power measurement r
 Example calculation:
 
     Max Power = (((VREF ÷ 2) ÷ Burden resistance) × CT turns) × 230V ÷ sqrt(2)
-    Max Power = (((3.3V ÷ 2) ÷ 100R) × 2000 turns) × 230V ÷ sqrt(2) 
-    Copy into calculator: (((3.3÷2)÷100)×2000)×230÷sqrt(2) 
+    Max Power = (((3.3V ÷ 2) ÷ 100R) × 2000 turns) × 230V ÷ sqrt(2)
+    Copy into calculator: (((3.3÷2)÷100)×2000)×230÷sqrt(2)
 
 Burden resistor PCB name reference:
 
     BUR1: Burden resistor 1 (for CT sensor 1)
     BUR2: Burden resistor 2 (for CT sensor 2)
     BUR3: Burden resistor 3 (for CT sensor 3)
-    
+
 Capacitors: C11, C13, C12, C19 all 10uF
 
-The following image can also be used as a reference of component locations. 
-    
+The following image can also be used as a reference of component locations.
+
 ![emonbuild_v3.jpg](images/emonbuild_v3.jpg)
 
-**Voltage regulator note:**The voltage regulator shown in the picture above is the large through-hole TC1262-3.3V, the board also supports the smaller MCP1825 surface mount voltage regulator. 
+**Voltage regulator note:**The voltage regulator shown in the picture above is the large through-hole TC1262-3.3V, the board also supports the smaller MCP1825 surface mount voltage regulator.
 
-**Tip 1:** It is usually easier to start by soldering the lower profile components first such as the resistors and to build up to the taller components. 
+**Tip 1:** It is usually easier to start by soldering the lower profile components first such as the resistors and to build up to the taller components.
 
-**Tip 2:** Test that the ATmega328 part works first before soldering in the ESP8266 module so that any issues with the ATmega328 part can be isolated before adding the ESP WIFI part. 
+**Tip 2:** Test that the ATmega328 part works first before soldering in the ESP8266 module so that any issues with the ATmega328 part can be isolated before adding the ESP WIFI part.
 
 Check that the power supply voltages are all as expected before inserting the ATmega328 in the 28pin holder.
 
 **ESP8266 Supply capacitor:** An additional 10uF is required across the supply to the ESP8266 module. The ground is top-left and 3.3v top-right.
 
 **ESP CH_PD and GPIO15 Solder jumpers** Both of these solder jumpers need to be connected with a small blob of solder for the ESP module to work.
+
+**CT-3 Solder jumper** This jumper must be connected to enable CT-3. ADC3 is shared with Grundfoss VFS.
 
 ### Uploading the ATmega328 Firmware
 
