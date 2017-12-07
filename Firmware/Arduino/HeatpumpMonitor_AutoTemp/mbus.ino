@@ -42,28 +42,34 @@ void mbus_normalize() {
   customSerial->write((char*)data);
 }
 
-byte mbus_scan()
+int mbus_scan()
 {
+  wdt_reset();
   unsigned long timer_start = 0;
   int byte_id = 0;
-  for (byte address = 0; address <= 250; address++)
+  for (int address = 0; address < 256; address++)
   {
-    mbus_send_ping(address);
+    mbus_request_data(address);
     byte_id = 0;
     timer_start = millis();
-    while (millis()-timer_start<10)
+    while (millis()-timer_start<50)
     {
       if (customSerial->available())
       {
         byte val = customSerial->read();
-        if (byte_id==0 && val==0xe5) {
+        if (val) {
             return address;
         }
         byte_id ++;
       }
     }
-    if (address==50 || address==100 || address==150) wdt_reset();
+    if (address==50 || address==100 || address==150 || address==200) {
+      if (DEBUG) Serial.print(".");
+      wdt_reset();
+    }
   }
-  return 0;
+
+  wdt_reset();
+  return -1;
 }
 

@@ -6,17 +6,17 @@
 #include <avr/wdt.h>
 
 #define FirmwareVersion = 2.0
-#define DEBUG 0
+#define DEBUG 1
 #define RFM69_ENABLE 1
 
-#define OEM_EMON_ENABLE 1
-#define OEM_EMON_ACAC 1
+#define OEM_EMON_ENABLE 0
+#define OEM_EMON_ACAC 0
 #define DS18B20_ENABLE 1
-#define KAMSTRUP_ENABLE 0
-#define KAMSTRUP_MODEL 403 // 402, 403
+#define KAMSTRUP_ENABLE 1
+#define KAMSTRUP_MODEL 531 // 402, 403, 531 (Sontex)
 #define VFS_ENABLE 0
-#define ELSTER_IRDA_ENABLE 0
-#define MBUS_ENABLE 0
+#define ELSTER_IRDA_ENABLE 1
+#define MBUS_ENABLE 1
 
 // EmonTH packet
 typedef struct {                                                      // RFM12B RF payload datastructure
@@ -58,7 +58,7 @@ double VFS_zerotemp_voltage = 0.5;   // Volts
 // Kamstrup MBUS config
 // --------------------------------------------------
 
-byte kamstrup_mbus_address = 0;                   // Set to 0 for auto scan, (test: check timeout 10ms)
+int kamstrup_mbus_address = -1;                   // Set to 0 for auto scan, (test: check timeout 10ms)
 int kamstrup_failures = 0;
 #include <CustomSoftwareSerial.h>
 CustomSoftwareSerial* customSerial;               // Declare serial
@@ -179,6 +179,18 @@ void parse()
     KSheat = decode_4byte_bin(95-offset);
     KSflowrate = decode_4byte_bin(107-offset);
   }
+
+  if (KAMSTRUP_MODEL==531)
+  {
+    Serial.print(",SNXerror:");
+    Serial.print(decode_4byte_bin(27));
+    Serial.print(",SNXenergy:");
+    Serial.print(decode_4byte_bin(39));
+    Serial.print(",SNXvol1:");
+    Serial.print(decode_4byte_bin(45));
+    Serial.print(",SNXvol2:");
+    Serial.print(decode_4byte_bin(59));
+  }
 }
 
 // -------------------------------------------------------------------
@@ -216,25 +228,34 @@ void setup() {
   delay(100);
   
   // MBUS
-  customSerial = new CustomSoftwareSerial(4, 5); // rx, tx
+  //                                     (5,19);
+  customSerial = new CustomSoftwareSerial(4,5); // rx, tx
   customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
 
   wdt_reset();
 
   if (KAMSTRUP_ENABLE)
   {
-    mbus_normalize();
-    if (kamstrup_mbus_address==0) {
-      if (DEBUG) Serial.println("Scanning MBUS ");
-      kamstrup_mbus_address = mbus_scan();
-      if (kamstrup_mbus_address) {
-        if (DEBUG) Serial.print("Meter found, address: ");
-        if (DEBUG) Serial.println(kamstrup_mbus_address);
-      } else {
-        if (DEBUG) Serial.println("No MBUS meter found");
+    if (kamstrup_mbus_address==-1) {
+      for (int i=0; i<3; i++) 
+      {
+        if (DEBUG) Serial.println("Scanning MBUS ");
+        mbus_normalize();
+        delay(100);
+        kamstrup_mbus_address = mbus_scan();
+        if (kamstrup_mbus_address!=-1) {
+          if (DEBUG) Serial.print("Meter found, address: ");
+          if (DEBUG) Serial.println(kamstrup_mbus_address);
+          break;
+        } else {
+          if (DEBUG) Serial.println("No MBUS meter found");
+        }
       }
     }
   }
+
+  // kamstrup_mbus_address = 254;
+  
   wdt_reset();
   if (DEBUG) Serial.println("Attached Interrupt");
   
@@ -349,8 +370,8 @@ void loop() {
                 bid = 0;
               }
             }
-            
-            if (bid==120)
+
+            if (bid==81) // or 120
             {
               kamstrup_reply_received = true;
               bid = 0;
@@ -500,13 +521,15 @@ void loop() {
       // Parse kamstrup mbus data reply
       parse();
 
-      // Print kamstrup data to serial
-      Serial.print(",KSflowT:"); Serial.print(KSflowT*0.01,2);
-      Serial.print(",KSreturnT:"); Serial.print(KSreturnT*0.01,2);
-      Serial.print(",KSdeltaT:"); Serial.print(KSdeltaT*0.01,2);
-      Serial.print(",KSflowrate:"); Serial.print(KSflowrate);
-      Serial.print(",KSheat:"); Serial.print(KSheat);
-      Serial.print(",KSkWh:"); Serial.print(KSkWh);
+      if (KAMSTRUP_MODEL!=531) {
+        // Print kamstrup data to serial
+        Serial.print(",KSflowT:"); Serial.print(KSflowT*0.01,2);
+        Serial.print(",KSreturnT:"); Serial.print(KSreturnT*0.01,2);
+        Serial.print(",KSdeltaT:"); Serial.print(KSdeltaT*0.01,2);
+        Serial.print(",KSflowrate:"); Serial.print(KSflowrate);
+        Serial.print(",KSheat:"); Serial.print(KSheat);
+        Serial.print(",KSkWh:"); Serial.print(KSkWh);
+      }
     }
     Serial.print(",PulseIRDA:"); Serial.print(pulseCount);
     Serial.println();
