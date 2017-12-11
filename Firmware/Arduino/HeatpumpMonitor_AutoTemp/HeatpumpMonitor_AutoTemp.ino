@@ -42,7 +42,7 @@ OneWire oneWire(ONE_WIRE_BUS);                                           // Setu
 DallasTemperature sensors(&oneWire);                                     // Pass our oneWire reference to Dallas Temperature.
 
 // Four temperature sensors
-int uids[6]; double temps[6];
+int uids[4]; double temps[4];
 
 // --------------------------------------------------
 // Grundfos VFS config
@@ -67,7 +67,7 @@ unsigned long now = 0;
 unsigned long lastwdtreset = 0;
 
 int bid = 0;
-byte bytes[100];
+byte bytes[90];
 byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
@@ -327,6 +327,37 @@ void loop() {
     wdt_reset();
     
     last = now; firstrun = false;
+
+    // -----------------------------------------------------
+    // DS18B20 Temperature sensors
+    // -----------------------------------------------------
+    int numberOfDevices = 0;
+    if (DS18B20_ENABLE) {
+      // DS18B20 temp sensors
+      sensors.begin();
+      numberOfDevices = sensors.getDeviceCount();
+      sensors.requestTemperatures();
+  
+      for(int dsid=0;dsid<numberOfDevices; dsid++)
+      {
+        DeviceAddress tmp_address;
+        sensors.getAddress(tmp_address, dsid);
+        double temp = sensors.getTempC(tmp_address);
+        
+        unsigned long uid = 0;
+        for (uint8_t i = 0; i < 8; i++) {
+           // Serial.print(deviceAddress[i], HEX);
+           uid += tmp_address[i];
+        }
+        uids[dsid] = uid;
+        temps[dsid] = temp;
+        
+        wdt_reset();
+      }
+    }
+
+    delay(200);
+    
     bool kamstrup_reply_received = false;
     
     if (KAMSTRUP_ENABLE)
@@ -384,37 +415,7 @@ void loop() {
       }
     }
 
-    wdt_reset();
-
     delay(200);
-
-    // -----------------------------------------------------
-    // DS18B20 Temperature sensors
-    // -----------------------------------------------------
-    int numberOfDevices = 0;
-    if (DS18B20_ENABLE) {
-      // DS18B20 temp sensors
-      sensors.begin();
-      numberOfDevices = sensors.getDeviceCount();
-      sensors.requestTemperatures();
-  
-      for(int i=0;i<numberOfDevices; i++)
-      {
-        DeviceAddress tmp_address;
-        sensors.getAddress(tmp_address, i);
-        double temp = sensors.getTempC(tmp_address);
-        
-        unsigned long uid = 0;
-        for (uint8_t i = 0; i < 8; i++) {
-           // Serial.print(deviceAddress[i], HEX);
-           uid += tmp_address[i];
-        }
-        uids[i] = uid;
-        temps[i] = temp;
-        
-        wdt_reset();
-      }
-    }
 
     wdt_reset();
     

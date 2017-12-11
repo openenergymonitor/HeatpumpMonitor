@@ -47,7 +47,7 @@ int mbus_scan()
   wdt_reset();
   unsigned long timer_start = 0;
   int byte_id = 0;
-  for (int address = 0; address < 256; address++)
+  for (int address = 250; address < 256; address++)
   {
     mbus_request_data(address);
     byte_id = 0;
