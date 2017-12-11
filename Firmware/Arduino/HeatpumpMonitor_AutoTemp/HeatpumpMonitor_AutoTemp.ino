@@ -6,7 +6,7 @@
 #include <avr/wdt.h>
 
 #define FirmwareVersion = 2.0
-#define DEBUG 1
+#define DEBUG 0
 #define RFM69_ENABLE 1
 
 #define OEM_EMON_ENABLE 0
@@ -40,7 +40,6 @@ EnergyMonitor ct2;                     // Create an instance
 #define ONE_WIRE_BUS 19                                                  // Data wire is plugged into port 2 on the Arduino
 OneWire oneWire(ONE_WIRE_BUS);                                           // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
 DallasTemperature sensors(&oneWire);                                     // Pass our oneWire reference to Dallas Temperature.
-DeviceAddress tmp_address;
 
 // Four temperature sensors
 int uids[6]; double temps[6];
@@ -401,6 +400,7 @@ void loop() {
   
       for(int i=0;i<numberOfDevices; i++)
       {
+        DeviceAddress tmp_address;
         sensors.getAddress(tmp_address, i);
         double temp = sensors.getTempC(tmp_address);
         
