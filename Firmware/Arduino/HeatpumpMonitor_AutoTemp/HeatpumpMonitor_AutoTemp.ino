@@ -20,6 +20,9 @@
 // - Elster https://github.com/openenergymonitor/ElsterMeterReader.git 
 //   commit: e63aa28868de3096723702a95e25f100e5227aaf
 
+// - OneWire https://github.com/PaulStoffregen/OneWire.git
+//   commit: ebc5f7f503b7be9c3772c3c131d86d7080cc77cf
+
 // Beware of errors caused by use of previously compiled libraries
 // clear complilation cache in /tmp/ if necessary
 
