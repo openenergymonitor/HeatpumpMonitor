@@ -121,9 +121,8 @@ int KSflowrate = 0;
 int maxflow = 0;
 
 // VFS Variables
-int VFSflowT = 0;
-int VFSflowrate = 0;
-int VFSheat = 0;
+double VFSflow = 0;
+double VFStemp = 0;
 
 // pulseCounting
 long pulseCount = 0;
@@ -458,10 +457,10 @@ void loop() {
       double A3_voltage = 3.3*(A3/1023.0);
       double A4_voltage = 3.3*(A4/1023.0);
       
-      double VFStemp = (A3_voltage - VFS_zerotemp_voltage) / VFS_Temp_Cal;
+      VFStemp = (A3_voltage - VFS_zerotemp_voltage) / VFS_Temp_Cal;
       if (VFStemp<0) VFStemp = 0;
   
-      double VFSflow = (A4_voltage - VFS_zeroflow_voltage) / VFS_Flow_Cal;
+      VFSflow = (A4_voltage - VFS_zeroflow_voltage) / VFS_Flow_Cal;
       if (VFSflow<0) VFSflow = 0;
       if ((1*A4_voltage)<0.4) VFSflow = 0;  // Minimum voltage to accept flow reading, datasheet recommends 0.5V
       
@@ -524,9 +523,8 @@ void loop() {
     }
     
     if (VFS_ENABLE) {
-      Serial.print(",VFSflowT:"); Serial.print(VFSflowT*0.01);
-      Serial.print(",VFSflowrate:"); Serial.print(VFSflowrate);
-      // Serial.print(",VFSheat:"); Serial.print(VFSheat,2);
+      Serial.print(",VFStemp:"); Serial.print(VFStemp,1);
+      Serial.print(",VFSflow:"); Serial.print(VFSflow,1);
     }
 
     if (DS18B20_ENABLE) { 
