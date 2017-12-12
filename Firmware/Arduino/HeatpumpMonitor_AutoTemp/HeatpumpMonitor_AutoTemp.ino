@@ -1,12 +1,33 @@
-// Heatpump monitor example with:
-// MBUS meter reader for kampstrup multical 402
-// Grundfos vortex flow sensor on analog 0 and 1
-// 2x DS18B20 flow + return sensors
+// HeatpumpMonitor_AutoTemp
 // Licence: GPLv3
+//
+// Compilation note:
+
+// ---------------------------------------------------------
+// Compilation 12th December 2017
+// ---------------------------------------------------------
+// - Arduino 1.8.5
+
+// - JeeLib https://github.com/jcw/jeelib.git 
+//   commit: 026bb6ea843abafff1619ae272a4ea754e0b016e
+
+// - EmonLib https://github.com/openenergymonitor/EmonLib.git 
+//   commit: bd0c6ac3bea7f098605841d4124b168e311ac51e
+
+// - CustomSoftwareSerial https://github.com/ledongthuc/CustomSoftwareSerial.git 
+//   commit: f97d168a6f29c065fd811b137281d35a40a899e6
+
+// - Elster https://github.com/openenergymonitor/ElsterMeterReader.git 
+//   commit: e63aa28868de3096723702a95e25f100e5227aaf
+
+// Beware of errors caused by use of previously compiled libraries
+// clear complilation cache in /tmp/ if necessary
+
 #include <avr/wdt.h>
 
 #define FirmwareVersion = 2.0
 #define DEBUG 0
+
 #define RFM69_ENABLE 0
 
 #define OEM_EMON_ENABLE 1
@@ -35,14 +56,12 @@ EnergyMonitor ct1;                     // Create an instance
 EnergyMonitor ct2;                     // Create an instance
 
 #include <OneWire.h>
-#include <DallasTemperature.h>
-
-#define ONE_WIRE_BUS 19                                                  // Data wire is plugged into port 2 on the Arduino
-OneWire oneWire(ONE_WIRE_BUS);                                           // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
-DallasTemperature sensors(&oneWire);                                     // Pass our oneWire reference to Dallas Temperature.
+#define DS18B20_PIN 19                                                  // Data wire is plugged into port 2 on the Arduino
+OneWire ds(DS18B20_PIN);                                           // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
 
 // Four temperature sensors
-int uids[4]; double temps[4];
+byte addr[8]; int uids[4]; double temps[4];
+byte numberOfDevices = 0;
 
 // --------------------------------------------------
 // Grundfos VFS config
@@ -67,7 +86,7 @@ unsigned long now = 0;
 unsigned long lastwdtreset = 0;
 
 int bid = 0;
-byte bytes[82];
+byte bytes[100];
 byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
@@ -192,6 +211,23 @@ void parse()
   }
 }
 
+float getTemp(byte* addr){
+  byte data[2];
+  ds.reset();
+  ds.select(addr);
+  ds.write(0x44);
+  delay(750);
+  byte present = ds.reset();
+  ds.select(addr);
+  ds.write(0xBE);
+  for (int i = 0; i < 2; i++) data[i] = ds.read();
+  byte MSB = data[1];
+  byte LSB = data[0];
+  float tempRead = ((MSB << 8) | LSB);
+  float TemperatureSum = tempRead / 16;
+  return TemperatureSum;
+}
+
 // -------------------------------------------------------------------
 // Decode
 // -------------------------------------------------------------------
@@ -217,12 +253,11 @@ void setup() {
   Serial.begin(115200);
   if (DEBUG) Serial.println("Startup");
   if (RFM69_ENABLE) rf12_initialize(nodeID, RF_freq, networkGroup);
-  sensors.begin();
 
   ct1.voltage(0, 262.0, 1.7);
-  ct1.current(1, 90.9);
+  ct1.current(1, 20.0);
   ct2.voltage(0, 262.0, 1.7);
-  ct2.current(2, 90.9);
+  ct2.current(2, 20.0);
   
   delay(100);
   
@@ -252,8 +287,6 @@ void setup() {
       }
     }
   }
-
-  // kamstrup_mbus_address = 254;
   
   wdt_reset();
   if (DEBUG) Serial.println("Attached Interrupt");
@@ -331,30 +364,17 @@ void loop() {
     // -----------------------------------------------------
     // DS18B20 Temperature sensors
     // -----------------------------------------------------
-    int numberOfDevices = 0;
-    if (DS18B20_ENABLE) {
-      // DS18B20 temp sensors
-      sensors.begin();
-      numberOfDevices = sensors.getDeviceCount();
-      sensors.requestTemperatures();
+    byte dsid = 0;
+    while(ds.search(addr)) {
   
-      for(int dsid=0;dsid<numberOfDevices; dsid++)
-      {
-        DeviceAddress tmp_address;
-        sensors.getAddress(tmp_address, dsid);
-        double temp = sensors.getTempC(tmp_address);
-        
-        unsigned long uid = 0;
-        for (uint8_t i = 0; i < 8; i++) {
-           // Serial.print(deviceAddress[i], HEX);
-           uid += tmp_address[i];
-        }
-        uids[dsid] = uid;
-        temps[dsid] = temp;
-        
-        wdt_reset();
-      }
+      unsigned long uid = 0;
+      for(byte i=0; i<8; i++) uid += addr[i];
+      
+      uids[dsid] = uid;
+      temps[dsid] = getTemp(addr);
+      dsid++;
     }
+    numberOfDevices = dsid;
 
     delay(200);
     
@@ -401,7 +421,7 @@ void loop() {
               }
             }
 
-            if (bid==81) // or 120
+            if (bid==99) // or 120
             {
               kamstrup_reply_received = true;
               bid = 0;

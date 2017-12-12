@@ -49,15 +49,17 @@ int mbus_scan()
   int byte_id = 0;
   for (int address = 0; address < 256; address++)
   {
-    mbus_request_data(address);
+    // mbus_request_data(address);
+    mbus_send_ping(address);
     byte_id = 0;
     timer_start = millis();
-    while (millis()-timer_start<50)
+    while (millis()-timer_start<10)
     {
       if (customSerial->available())
       {
         byte val = customSerial->read();
-        if (val) {
+        // if (val) {
+        if (byte_id==0 && val==0xe5) {
             return address;
         }
         byte_id ++;

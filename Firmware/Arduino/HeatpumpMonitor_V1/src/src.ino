@@ -16,7 +16,7 @@
 #define OEM_EMON_ENABLE 1
 #define OEM_EMON_ACAC 1
 #define KAMSTRUP_ENABLE 1
-#define KAMSTRUP_MODEL 403 // 402, 403
+#define KAMSTRUP_MODEL 402 // 402, 403
 #define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
@@ -174,9 +174,6 @@ void onPulse()
 // -------------------------------------------------------------------
 void parse()
 {
-  
-
-  
   if (KAMSTRUP_MODEL==402)
   {
     byte i=25;
@@ -236,28 +233,31 @@ void setup() {
   wdt_enable(WDTO_8S);
   
   Serial.begin(115200);
-  if (DEBUG) Serial.println("Startup");
+  //if (DEBUG) {Serial.println("Startup"); delay(100); }
   if (RFM69_ENABLE) rf12_initialize(nodeID, RF_freq, networkGroup);
+  //if (DEBUG) {Serial.println("DS18B20 begin"); delay(100); }
   sensors.begin();
-
+  //if (DEBUG) {Serial.println("OEM Init"); delay(100); }
   ct1.voltage(0, 262.0, 1.7);
   ct1.current(1, 20.0);
   ct2.voltage(0, 262.0, 1.7);
   ct2.current(2, 20.0);
   
   delay(100);
-  
+  //if (DEBUG) {Serial.println("MBUS Serial Init"); delay(100); }
   // MBUS
   customSerial = new CustomSoftwareSerial(4, 5); // rx, tx
   customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
+  delay(100);
+  //wdt_reset();
 
-  wdt_reset();
+  //if (DEBUG) {Serial.println("MBUS Init"); delay(300); }
 
   if (KAMSTRUP_ENABLE)
   {
     mbus_normalize();
     if (kamstrup_mbus_address==0) {
-      if (DEBUG) Serial.println("Scanning MBUS ");
+      //if (DEBUG) Serial.println("Scanning MBUS ");
       kamstrup_mbus_address = mbus_scan();
       if (kamstrup_mbus_address) {
         if (DEBUG) Serial.print("Meter found, address: ");
@@ -523,7 +523,10 @@ void loop() {
       Serial.print(",KSkWh:"); Serial.print(emontx.KSkWh);
       // Serial.print(",KSpulse:"); Serial.print(emontx.KSpulse);
     }
-    Serial.print(",PulseIRDA:"); Serial.print(emontx.pulseCount);
+
+    if (emontx.pulseCount>0) {
+        Serial.print(",PulseIRDA:"); Serial.print(emontx.pulseCount);
+    }
     Serial.println();
     delay(100);
 
