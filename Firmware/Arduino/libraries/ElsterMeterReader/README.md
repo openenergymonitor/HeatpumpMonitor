@@ -1,6 +1,10 @@
 ElsterMeterReader
 =================
 
-ElsterMeterReader
+Irda Elster A100C MeterReader
 
-http://openenergymonitor.blogspot.co.uk/2012/08/reading-watt-hour-data-from-elster.html
+## See blog posts:
+
+- http://blog.openenergymonitor.org/2012/08/reading-watt-hour-data-from-elster/
+
+

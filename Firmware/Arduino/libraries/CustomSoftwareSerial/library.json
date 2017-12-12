@@ -1,0 +1,16 @@
+{
+  "name": "CustomSoftwareSerial",
+  "keywords": "software serial, parity bit",
+  "description": "Alternative SoftwareSerial in Arduino: configure custom Parity Bit and Stop Bit.",
+  "version": "1.0.0",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/ledongthuc/CustomSoftwareSerial.git"
+  },
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr"
+  ]
+}
