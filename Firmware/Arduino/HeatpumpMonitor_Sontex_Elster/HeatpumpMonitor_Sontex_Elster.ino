@@ -1,8 +1,5 @@
-// Heatpump monitor example with:
-// MBUS meter reader for kampstrup multical 402
-// Grundfos vortex flow sensor on analog 0 and 1
-// 2x DS18B20 flow + return sensors
-// Licence: GPLv3
+// Works with Arduino 1.6.7 but not 1.8.2
+
 #include <avr/wdt.h>
 
 #define FirmwareVersion = 2.0
@@ -119,7 +116,7 @@ float getTemp(byte* addr){
 // SETUP
 // -------------------------------------------------------------------
 void setup() {
-  //wdt_enable(WDTO_8S);
+  wdt_enable(WDTO_8S);
   
   Serial.begin(115200);
   if (DEBUG) Serial.println("Startup");
@@ -215,6 +212,8 @@ void loop() {
       }
       Serial.println();
     }
+
+    delay(100);
   }
   
   if ((now-last)>=9800 || firstrun) {
@@ -237,7 +236,7 @@ void loop() {
     }
     numberOfDevices = dsid;
 
-    delay(2000);
+    delay(200);
     
     bool mbus_reply_received = false;
     
@@ -292,6 +291,8 @@ void loop() {
     }
 
     wdt_reset();
+
+    delay(100);
 
     msgnum++;
     Serial.print("Msg:"); Serial.print(msgnum);

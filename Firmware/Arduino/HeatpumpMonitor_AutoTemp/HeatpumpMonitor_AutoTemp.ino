@@ -7,14 +7,14 @@
 
 #define FirmwareVersion = 2.0
 #define DEBUG 0
-#define RFM69_ENABLE 1
+#define RFM69_ENABLE 0
 
-#define OEM_EMON_ENABLE 0
-#define OEM_EMON_ACAC 0
+#define OEM_EMON_ENABLE 1
+#define OEM_EMON_ACAC 1
 #define DS18B20_ENABLE 1
 #define KAMSTRUP_ENABLE 1
-#define KAMSTRUP_MODEL 531 // 402, 403, 531 (Sontex)
-#define VFS_ENABLE 0
+#define KAMSTRUP_MODEL 402 // 402, 403, 531 (Sontex)
+#define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 #define MBUS_ENABLE 1
 
@@ -67,7 +67,7 @@ unsigned long now = 0;
 unsigned long lastwdtreset = 0;
 
 int bid = 0;
-byte bytes[90];
+byte bytes[82];
 byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
