@@ -31,7 +31,7 @@
 #define FirmwareVersion = 2.0
 #define DEBUG 0
 
-#define RFM69_ENABLE 0
+#define RFM69_ENABLE 1
 
 #define OEM_EMON_ENABLE 1
 #define OEM_EMON_ACAC 1
