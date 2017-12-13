@@ -37,7 +37,8 @@
 #define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
-#define KAMSTRUP_402 //  or... KAMSTRUP_403, SONTEX_531
+#define KAMSTRUP_402 //  or... KAMSTRUP_403, 
+// SONTEX_531 (Sontex support is still in development, not clear if it is working)
 
 #define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
