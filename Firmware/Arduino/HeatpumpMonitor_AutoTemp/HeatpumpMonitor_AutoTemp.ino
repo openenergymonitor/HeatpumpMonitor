@@ -32,15 +32,14 @@
 #define DEBUG 0
 
 #define RFM69_ENABLE 1
-#define OEM_EMON_ENABLE 0
-#define OEM_EMON_ACAC 0
+#define OEM_EMON_ENABLE 1
+#define OEM_EMON_ACAC 1
 #define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
-#define SONTEX_531 //  or... KAMSTRUP_403, 
-// SONTEX_531 (Sontex support is still in development, not clear if it is working)
+#define KAMSTRUP_402 // KAMSTRUP_403 or SONTEX_531, 
 
-#define VFS_ENABLE 0
+#define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
 
 // EmonTH packet
@@ -96,7 +95,7 @@ byte len = 0;
 byte valid = 0;
 byte checksum = 0;
 
-byte bytes[150];
+byte bytes[255]; // reduce to 150 if stability problems
 // byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
@@ -211,7 +210,7 @@ void setup() {
   // MBUS
   //                                     (5,19);
   customSerial = new CustomSoftwareSerial(4,5); // rx, tx
-  customSerial->begin(4800, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
+  customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
 
   wdt_reset();
 
@@ -320,7 +319,7 @@ void loop() {
       mbus_request_data(mbus_address);
       bid = 0;
   
-      int mbus_timeout = 200;
+      int mbus_timeout = 1000;
       unsigned long timer_start = millis();
       while (!mbus_reply_received && (millis()-timer_start)<mbus_timeout)
       {
