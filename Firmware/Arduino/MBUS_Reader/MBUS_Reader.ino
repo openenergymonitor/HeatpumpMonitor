@@ -30,7 +30,7 @@ byte cmd[10];
 byte cmdi = 0;
 byte page = 0;
 
-byte data[150];
+byte data[255];
 
 // --------------------------------------------------------
 // Setup 
@@ -47,7 +47,7 @@ void setup() {
   Serial.println("- p: select page eg: p1");
   Serial.println();
   customSerial = new CustomSoftwareSerial(4,5);
-  customSerial->begin(4800, CSERIAL_8E1);
+  customSerial->begin(2400, CSERIAL_8E1);
 }
 // --------------------------------------------------------
 // Parse command
