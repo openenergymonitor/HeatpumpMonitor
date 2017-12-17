@@ -28,19 +28,19 @@
 
 #include <avr/wdt.h>
 
-#define FirmwareVersion = 3.0
+#define FirmwareVersion = 4.0
 #define DEBUG 0
 
 #define RFM69_ENABLE 1
-#define OEM_EMON_ENABLE 1
-#define OEM_EMON_ACAC 1
+#define OEM_EMON_ENABLE 0
+#define OEM_EMON_ACAC 0
 #define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
-#define KAMSTRUP_402 //  or... KAMSTRUP_403, 
+#define SONTEX_531 //  or... KAMSTRUP_403, 
 // SONTEX_531 (Sontex support is still in development, not clear if it is working)
 
-#define VFS_ENABLE 1
+#define VFS_ENABLE 0
 #define ELSTER_IRDA_ENABLE 1
 
 // EmonTH packet
@@ -79,7 +79,7 @@ const double VFS_zerotemp_voltage = 0.5;   // Volts
 // --------------------------------------------------
 // MBUS
 // --------------------------------------------------
-int mbus_address = -1;                   // Set to 0 for auto scan, (test: check timeout 10ms)
+byte mbus_address = 100;                   // Set to 0 for auto scan, (test: check timeout 10ms)
 int mbus_failures = 0;
 
 #include <CustomSoftwareSerial.h>
@@ -89,9 +89,15 @@ unsigned long last = 0;
 unsigned long now = 0;
 unsigned long lastwdtreset = 0;
 
-int bid = 0;
-byte bytes[100];
-byte dlen = 0;
+byte bid = 0;
+byte bid_end = 255;
+byte bid_checksum = 255;
+byte len = 0;
+byte valid = 0;
+byte checksum = 0;
+
+byte bytes[150];
+// byte dlen = 0;
 
 #define RF_freq RF12_433MHZ                                             // Frequency of RF12B module can be RF12_433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.433MHZ, RF12_868MHZ or RF12_915MHZ. You should use the one matching the module you have.
 const int nodeID = 1;                                                   // emonTx RFM12B node ID
@@ -168,6 +174,22 @@ long decode_4byte_bin(long i) {
   return bytes[i+0] + (bytes[i+1]<<8) + (bytes[i+2]<<16) + (bytes[i+3]<<24);
 }
 
+float decode_4byte_bin_to_float(long i)
+{
+  byte float_data[4];
+  float_data[0] = bytes[i+0];
+  float_data[1] = bytes[i+1];
+  float_data[2] = bytes[i+2];
+  float_data[3] = bytes[i+3];
+  
+  union {
+      uint32_t u32;
+      float f;
+  } data;
+  memcpy(&(data.u32), float_data, sizeof(uint32_t));
+  return data.f;
+}
+
 
 // -------------------------------------------------------------------
 // SETUP
@@ -189,28 +211,15 @@ void setup() {
   // MBUS
   //                                     (5,19);
   customSerial = new CustomSoftwareSerial(4,5); // rx, tx
-  customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
+  customSerial->begin(4800, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
 
   wdt_reset();
 
-  if (MBUS_ENABLE)
-  {
-    if (mbus_address==-1) {
-      for (int i=0; i<3; i++) 
-      {
-        if (DEBUG) Serial.println(F("Scanning MBUS "));
-        mbus_normalize();
-        delay(100);
-        mbus_address = mbus_scan();
-        if (mbus_address!=-1) {
-          if (DEBUG) Serial.print(F("Meter found, address: "));
-          if (DEBUG) Serial.println(mbus_address);
-          break;
-        } else {
-          if (DEBUG) Serial.println(F("No MBUS meter found"));
-        }
-      }
-    }
+  if (MBUS_ENABLE) {
+    // Broadcast set address to 100
+    if (DEBUG) Serial.println(F("Set MBUS Address to 100"));
+    mbus_set_address(254,mbus_address);
+    delay(1000);
   }
   
   wdt_reset();
@@ -308,57 +317,63 @@ void loop() {
     // 1) KAMSTRUP HEAT METER REQUEST:
     if (MBUS_ENABLE) {
       if (DEBUG) Serial.println(F("mbus_request_data"));
-      if (mbus_address>0) {
-        mbus_request_data(mbus_address);
-      } else {
-        if (mbus_failures>10) {
-          if (DEBUG) Serial.println(F("Mbus scan start"));
-          mbus_address = mbus_scan();
-          mbus_failures = 0;
-          wdt_reset();
-        }
-      }
+      mbus_request_data(mbus_address);
       bid = 0;
   
-      int mbus_timeout = 1000;
+      int mbus_timeout = 200;
       unsigned long timer_start = millis();
       while (!mbus_reply_received && (millis()-timer_start)<mbus_timeout)
       {
-        if (customSerial->available()) {
+        while (customSerial->available()) {
           byte val = (byte) customSerial->read();
-      
-          bytes[bid++] = val;
-          if (bytes[0]!=104) bid = 0;
+          bytes[bid] = val;
           
-          if (bid==3) {
-            if (bytes[1]==bytes[2]) {
-              dlen = bytes[1];
-            } else {
-              bid = 0;
-            }
-          }
+          // Catch ACK
+          if (bid==0 && val==0xE5) if (DEBUG) Serial.println(F("ACK"));
 
-          if (bid==99) { // or 120
+          // Long frame start, reset checksum
+          if (bid==0 && val==0x68) {
+            valid = 1;
+            checksum = 0;
+          }
+      
+          // 2nd byte is the frame length
+          if (valid && bid==1) {
+            len = val;
+            bid_end = len+4+2-1;
+            bid_checksum = bid_end-1;
+          }
+          
+          if (valid && bid==2 && val!=len) valid = 0;                 // 3rd byte is also length, check that its the same as 2nd byte
+          if (valid && bid==3 && val!=0x68) valid = 0;                // 4th byte is the start byte again
+          if (valid && bid>3 && bid<bid_checksum) checksum += val;    // Increment checksum during data portion of frame
+      
+          if (valid && bid==bid_checksum && val!=checksum) valid = 0; // Validate checksum
+          if (valid && bid==bid_end && val==0x16) {                   // Parse frame if still valid
             mbus_reply_received = true;
             bid = 0;
+            break;
           }
+      
+          bid++;
         }
       }
   
       if (mbus_reply_received==false) {
         mbus_failures++;
       }
+      if (DEBUG) Serial.println(F("MBUS REPLY END"));
     }
-
-    delay(200);
-
+    
     wdt_reset();
+    delay(200);
     
     // -----------------------------------------------------
     // Analog read for grundfos vortex flow sensor
     // -----------------------------------------------------
     if (VFS_ENABLE) {
-      delay(200);
+      if (DEBUG) Serial.println(F("VFS READ"));
+      
       unsigned long sumA3 = 0;
       unsigned long sumA4 = 0;
       for (int i=0; i<100; i++) {
@@ -388,6 +403,7 @@ void loop() {
     // -----------------------------------------------------
     if (OEM_EMON_ENABLE)
     {
+        if (DEBUG) Serial.println(F("OEM CT READ"));
         // Reading of CT sensors needs to go here for stability
         // need to double check the reason for this.
         for (int i=0; i<10; i++) {
@@ -398,11 +414,15 @@ void loop() {
         if (OEM_EMON_ACAC) {
           ct1.calcVI(30,2000);
           OEMct1 = ct1.realPower;
+          wdt_reset();
           ct2.calcVI(30,2000);
           OEMct2 = ct2.realPower;
+          wdt_reset();
         } else {
           OEMct1 = 230 * ct1.calcIrms(1480);
+          wdt_reset();
           OEMct2 = 230 * ct2.calcIrms(1480);
+          wdt_reset();
         }
     
         // Accumulating Watt hours
@@ -423,6 +443,8 @@ void loop() {
           joules_CT2 = joules_CT2 % 3600;
         }
         wdt_reset();
+
+        if (DEBUG) Serial.println(F("OEM CT READ END"));
     }
 
     msgnum++;
@@ -499,14 +521,14 @@ void loop() {
       #endif
     
       #ifdef SONTEX_531
-        Serial.print(F(",SNXerror:"));
-        Serial.print(decode_4byte_bin(27));
-        Serial.print(F(",SNXenergy:"));
+        Serial.print(F(",SNXflowT:"));
+        Serial.print(decode_4byte_bin_to_float(21));
+        Serial.print(F(",SNXreturnT:"));
+        Serial.print(decode_4byte_bin_to_float(27));
+        Serial.print(F(",SNXflowrate:"));
+        Serial.print(decode_4byte_bin(33));
+        Serial.print(F(",SNXheat:"));
         Serial.print(decode_4byte_bin(39));
-        Serial.print(F(",SNXvol1:"));
-        Serial.print(decode_4byte_bin(45));
-        Serial.print(F(",SNXvol2:"));
-        Serial.print(decode_4byte_bin(59));
       #endif
     }
 
