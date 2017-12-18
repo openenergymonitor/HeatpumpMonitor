@@ -219,6 +219,12 @@ void setup() {
     if (DEBUG) Serial.println(F("Set MBUS Address to 100"));
     mbus_set_address(254,mbus_address);
     delay(1000);
+    
+    #ifdef SONTEX_531
+      // Set sontex data reply page to 3
+      mbus_request(100,3);
+      delay(1000);
+    #endif 
   }
   
   wdt_reset();
