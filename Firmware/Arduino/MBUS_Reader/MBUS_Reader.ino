@@ -199,18 +199,23 @@ void parse_frame()
           if (val>=0x80) type=VIFE; else type=DATA;
 
           if (val==0x06) Serial.print("Energy kWh");
-          if (val==0x13) Serial.print("Volume 0.001m3");
-          if (val==0x14) Serial.print("Volume 0.01m3");
+          if (val==0x13) Serial.print("Volume Flow 0.001m3");
+          if (val==0x14) Serial.print("Volume Flow 0.01m3");
 
           if (val==0x5b) Serial.print("Flow Temp C");
+          if (val==0x59) Serial.print("Flow Temp 0.01C");
           if (val==0x5f) Serial.print("Return Temp C");
-          if (val==0x3e) Serial.print("Volume Flow m3/h");
-          if (val==0x2b) Serial.print("Power W");
-          if (val==0x22) Serial.print("Power 100 J/h");
+          if (val==0x5d) Serial.print("Return Temp 0.01C");
+          if (val==0x3b) Serial.print("Volume Flow mm3/h (averaged)");
+          if (val==0x3e) Serial.print("Volume Flow m3/h (averaged)");
+          if (val==0x2b) Serial.print("Power W (averaged)");
+          if (val==0x2c) Serial.print("Power kW (averaged)");
+          if (val==0x22) Serial.print("Power 100 J/h (averaged)");
           if (val==0x6D) Serial.print("TIME & DATE");
 
-          if (val==0x70) Serial.print("Duration seconds");
-          if (val==0x75) Serial.print("Duration minutes");
+          if (val==0x70) Serial.print("Duration seconds (averaged)");
+          if (val==0x74) Serial.print("Duration seconds (actual)");         
+          if (val==0x75) Serial.print("Duration minutes (actual)");
           if (val==0x78) Serial.print("Fab No");
           if (val==0x79) Serial.print("Enhanced");
           
