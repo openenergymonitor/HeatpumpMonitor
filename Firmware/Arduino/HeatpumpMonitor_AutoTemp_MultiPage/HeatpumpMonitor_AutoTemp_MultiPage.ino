@@ -334,8 +334,10 @@ void loop() {
       bid = 0;
       boolean ack = false;
       int mbus_timeout = 1000;
+
+      // Set page
       unsigned long timer_start = millis();
-      while (!mbus_reply_received && (millis()-timer_start)<mbus_timeout)
+      while (!ack && (millis()-timer_start)<mbus_timeout)
       {
         while (customSerial->available()) {
           byte val = (byte) customSerial->read();
@@ -345,6 +347,7 @@ void loop() {
       }
 
       if (ack) {
+        delay(500); // need to wait at least 300ms before sending data request command
         mbus_request_data(mbus_address);
         bid = 0;
         timer_start = millis();
