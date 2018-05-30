@@ -31,10 +31,10 @@
 #define FirmwareVersion = 4.0
 #define DEBUG 0
 
-#define RFM69_ENABLE 0
-#define OEM_EMON_ENABLE 0
-#define OEM_EMON_ACAC 0
-#define DS18B20_ENABLE 0
+#define RFM69_ENABLE 1
+#define OEM_EMON_ENABLE 1
+#define OEM_EMON_ACAC 1
+#define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
 #define SONTEX_531 // KAMSTRUP_403 or SONTEX_531, 

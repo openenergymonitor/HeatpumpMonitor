@@ -37,7 +37,7 @@
 #define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
-#define KAMSTRUP_402 // KAMSTRUP_403 or SONTEX_531, 
+#define SONTEX_531 // KAMSTRUP_403 or SONTEX_531, 
 
 #define VFS_ENABLE 1
 #define ELSTER_IRDA_ENABLE 1
@@ -210,7 +210,7 @@ void setup() {
   // MBUS
   //                                     (5,19);
   customSerial = new CustomSoftwareSerial(4,5); // rx, tx
-  customSerial->begin(2400, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
+  customSerial->begin(4800, CSERIAL_8E1);         // Baud rate: 9600, configuration: CSERIAL_8N1
 
   wdt_reset();
 
