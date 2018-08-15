@@ -1,5 +1,7 @@
 # Heatpump Monitor Build
 
+**Please note: 100k / 10k blue resistors look very similar!** When assembling be sure to use select the 10k resistor for the ACAC voltage divider input.
+
 The heatpump monitor comes as a component kit with all the resistors, capacitors, connectors, IC's and other parts required to complete the build. The full Bill of Materials can be found [here](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/costingexample.md)
 
 **Packaged Kit**
