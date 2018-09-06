@@ -239,11 +239,16 @@ Optional enclosure kit:
 <img src="images/enclosure_kit.jpg" style="width:400px">
 <img src="images/kit_enclosed.jpg" style="width:400px">
 
+
+## Uploading Firware
+
+The Heatpump monitor has two microcontrollers. Firmware for these must be loaded separately:
+
 ### Uploading the ATmega328 Firmware
 
 The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
 
-Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE.
+Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE. Be sure to select "Uno" as the board type in the Arduino IDE. 
 
 If you're using the cable sold through the OpenEnergyMonitor Shop, the drivers for Windows and Mac can be downloaded here: [http://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx](http://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
 
