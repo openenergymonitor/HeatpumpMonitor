@@ -31,7 +31,7 @@
 #define FirmwareVersion = 4.0
 #define DEBUG 0
 
-#define RFM69_ENABLE 1
+#define RFM69_ENABLE 0
 #define OEM_EMON_ENABLE 1
 #define OEM_EMON_ACAC 1
 #define DS18B20_ENABLE 1
@@ -328,12 +328,15 @@ void loop() {
     
     // 1) KAMSTRUP HEAT METER REQUEST:
     if (MBUS_ENABLE) {
-      if (DEBUG) Serial.println(F("mbus_request_data"));
+      for (int t=0; t<5; t++) {
+      
+      if (DEBUG) Serial.print(F("mbus_request_data "));
+      if (DEBUG) Serial.println(t);
       mbus_request(100,page);
 
       bid = 0;
       boolean ack = false;
-      int mbus_timeout = 1000;
+      int mbus_timeout = 500;
 
       // Set page
       unsigned long timer_start = millis();
@@ -391,8 +394,12 @@ void loop() {
   
       if (mbus_reply_received==false) {
         mbus_failures++;
+      } else {
+        break;
       }
       if (DEBUG) Serial.println(F("MBUS REPLY END"));
+
+      }
     }
     
     wdt_reset();
@@ -568,9 +575,9 @@ void loop() {
           Serial.print(F(",SNXreturnT:"));
           Serial.print(decode_4byte_bin_to_float(27));
           Serial.print(F(",SNXflowrate:"));
-          Serial.print(decode_4byte_bin(33));
+          Serial.print(decode_4byte_bin_to_float(33));
           Serial.print(F(",SNXheat:"));
-          Serial.print(decode_4byte_bin(39));
+          Serial.print(decode_4byte_bin_to_float(39));
           page = 1;
         } 
       #endif
