@@ -33,7 +33,7 @@
 
 #define RFM69_ENABLE 0
 #define OEM_EMON_ENABLE 1
-#define OEM_EMON_ACAC 1
+#define OEM_EMON_ACAC 0
 #define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
@@ -482,6 +482,9 @@ void loop() {
         wdt_reset();
 
         if (DEBUG) Serial.println(F("OEM CT READ END"));
+    } else {
+      delay(500);
+      wdt_reset();
     }
 
     msgnum++;
