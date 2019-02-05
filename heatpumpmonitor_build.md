@@ -259,3 +259,7 @@ The Heatpump Monitor repository contains all the Arduino libraries required to c
 The EmonESP ESP8266 Firmware and upload guide can be found here: [https://github.com/openenergymonitor/EmonESP](https://github.com/openenergymonitor/EmonESP)
 
 **GPIO0 Jumper:** Place a jumper across the GPIO0 header just left of the ESP8266 module to place the ESP8266 module in bootloader mode. Power cycle the board to reset the ESP8266 module. Once the firmware is uploaded remove the GPIO0 jumper so that the ESP8266 starts up without going into bootloader mode at the next power cycle.
+
+---
+
+**TX Jumper:** Place the second jumper across the TX header to link the Atmega micro to the ESP8266 module. Required sending data on to emoncms via WIFI.
