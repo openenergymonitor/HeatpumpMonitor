@@ -262,4 +262,4 @@ The EmonESP ESP8266 Firmware and upload guide can be found here: [https://github
 
 ---
 
-**TX Jumper:** Place the second jumper across the TX header to link the Atmega micro to the ESP8266 module. Required sending data on to emoncms via WIFI.
+**TX Jumper:** Place the second jumper across the TX header to link the Atmega micro to the ESP8266 module. Required for sending data on to emoncms via WIFI.
