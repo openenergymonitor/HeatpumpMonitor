@@ -191,9 +191,15 @@ The input list will look much like this but without the configured feeds. Use th
 
 ### Emoncms Feeds
 
+The result of configuring the inputs will be a set of heatpump monitor related feeds, depending on your configuration this will look something like this:
+
 ![emoncms_feeds.png](images/emoncms_feeds.png)
 
 ### Emoncms Heatpump Monitor dashboard
+
+Open the heatpump monitor dashboard Apps > Add + > My Heatpump
+
+Configure via spanner (top-right) as required.
 
 ![emoncms_hpmon_app_1.png](images/emoncms_hpmon_app_1.png)
 
