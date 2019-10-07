@@ -185,7 +185,19 @@ Next enter you emoncms.org account apikey. If data is appearing in the Latest da
 
 ### Emoncms Inputs
 
-The input list will look much like this but without the configured feeds. Use the emoncms configuration details above to configure emoncms to record the heatpump monitor data or alternatively use the automated setup method as documented here in the [Software setup guide](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/software_setup.md)
+The input list will look much like this but without the configured feeds. Use the emoncms configuration details above to configure emoncms to record the heatpump monitor data.
 
 ![emoncms_inputs.png](images/emoncms_inputs.png)
+
+### Emoncms Feeds
+
+![emoncms_feeds.png](images/emoncms_feeds.png)
+
+### Emoncms Heatpump Monitor dashboard
+
+![emoncms_hpmon_app_1.png](images/emoncms_hpmon_app_1.png)
+
+![emoncms_hpmon_app_2.png](images/emoncms_hpmon_app_2.png)
+
+
 

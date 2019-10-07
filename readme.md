@@ -61,12 +61,7 @@ The following guide details how to setup the heatpump monitor including interfac
 - [Selecting the right heat meter](selectingheatmeter.md)
 - [Installation and setup](installation.md)
 - [Blog: Temperature sensors for monitoring heat pumps](http://johncantorheatpumps.blogspot.co.uk/2015/06/temperature-sensing-with.html)
-- [Software Setup](software_setup.md)
 - [Firmware Upload / Update](firmware-upload.md)
-
-Watch the heatpump monitor setup and dashboard example screencast here:
-
-[![Heatpump Setup](https://img.youtube.com/vi/71LrNdq08hs/0.jpg)](https://www.youtube.com/watch?v=71LrNdq08hs)
 
 ## Development
 
@@ -79,16 +74,9 @@ A case study in open hardware development
 - Exporting gerbers from EAGLE, getting a PCB made with a PCB manufacturer such as Ragworm
 - [Heatpump Monitor and cut down energy monitor kit costing](costingexample.md)
 
+## Heatpump Monitor dashboard
 
-## Heatpump dashboard
-
-**Login and explore:** [http://energy.emoncms.org](http://energy.emoncms.org)
-
-Source code for the heatpump dashboard can be found as part of the front end emoncms energy site:
-
-[http://github.com/emoncms/energy](http://github.com/emoncms/energy)
-
-Emoncms energy uses emoncms as the data backend.
+![emoncms_hpmon_app_1.png](images/emoncms_hpmon_app_1.png)
 
 ## Licence
 
