@@ -109,7 +109,7 @@ Ensure the blue voltage converter board is fitted and positioned with the arrow 
 
 Once connected the heat pump monitor will auto detect the Kamstrup heat meter address and pass the polled data through without further configuration.
 
-Troubleshooting: If the kamstrup meter data does not appear straight away, wait several minutes for the reader to rescan. The voltage across the MBUS reader terminals should be close to 24V.
+Troubleshooting: If the kamstrup meter data does not appear straight away, wait several minutes for the reader to rescan. The voltage across the MBUS reader terminals should be close to 34V.
 
 **Emoncms configuration**
 
