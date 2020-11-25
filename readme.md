@@ -54,6 +54,17 @@ There are two build options for the heatpump monitor board, the first is the ful
 - [ESP8266 EmonESP WIFI Firmware](https://github.com/openenergymonitor/EmonESP)
 - [Hardware Schematic and Board files v4](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/v4)
 
+**USB to MBUS**
+
+- [USB to MBUS v1 SMT](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/USB_to_MBUS)
+
+**WiFi MBUS Reader**
+
+- [WiFi MBUS Reader v1 (Through-hole)](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v1_TH)
+- [WiFi MBUS Reader v1 SMT](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v1)
+- [WiFi MBUS Reader v2 SMT (Work in progress)](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v2)
+
+
 ## Installation and setup
 
 The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a heat meter.
