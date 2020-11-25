@@ -1,5 +1,11 @@
 # WiFi MBUS Reader
 
+![mbus_reader.png](mbus_reader.png)
+
+If used in MBUS to UART mode, to be used with EmonHub MBUS interfacer:
+
+https://guide.openenergymonitor.org/integrations/emonhub-interfacers/#mbus-reader-for-electric-and-heat-meters
+
 ## Schematic
 
 [WiFi_MBUS_Reader.brd](WiFi_MBUS_Reader.brd)
