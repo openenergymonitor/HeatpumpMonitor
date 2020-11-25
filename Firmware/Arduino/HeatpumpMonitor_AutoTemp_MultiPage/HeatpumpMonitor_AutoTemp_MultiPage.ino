@@ -31,9 +31,9 @@
 #define FirmwareVersion = 4.0
 #define DEBUG 0
 
-#define RFM69_ENABLE 0
+#define RFM69_ENABLE 1
 #define OEM_EMON_ENABLE 1
-#define OEM_EMON_ACAC 0
+#define OEM_EMON_ACAC 1
 #define DS18B20_ENABLE 1
 
 #define MBUS_ENABLE 1
@@ -207,9 +207,9 @@ void setup() {
   if (DEBUG) Serial.println(F("Startup"));
   if (RFM69_ENABLE) rf12_initialize(nodeID, RF_freq, networkGroup);
 
-  ct1.voltage(0, 262.0, 1.7);
+  ct1.voltage(0, 263.241,1.28);
   ct1.current(1, 20.0);
-  ct2.voltage(0, 262.0, 1.7);
+  ct2.voltage(0, 263.241,1.28);
   ct2.current(2, 20.0);
   
   delay(100);
@@ -491,10 +491,12 @@ void loop() {
     Serial.print(F("Msg:")); Serial.print(msgnum);
     if (OEM_EMON_ENABLE)
     {
+        Serial.print(F(",Vrms:")); Serial.print(ct1.Vrms);
         Serial.print(F(",OEMct1:")); Serial.print(OEMct1);
         Serial.print(F(",OEMct2:")); Serial.print(OEMct2);
         Serial.print(F(",OEMct1Wh:")); Serial.print(CT1_Wh);
         Serial.print(F(",OEMct2Wh:")); Serial.print(CT2_Wh);
+        Serial.print(F(",OEMct1PF:")); Serial.print(ct1.powerFactor,4);
     }
     
     if (VFS_ENABLE) {
