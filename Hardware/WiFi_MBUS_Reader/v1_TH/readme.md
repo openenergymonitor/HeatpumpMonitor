@@ -20,7 +20,7 @@ If used in **MBUS to UART mode**, the board can be used with the EmonHub MBUS In
 
 https://guide.openenergymonitor.org/integrations/emonhub-interfacers/#mbus-reader-for-electric-and-heat-meters
 
-The software for the **MBUS to WiFi mode** has not been written in full yet. A basic MBUS Reader firmware is available here for anyone keen to get stuck in before I get this done: https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/MBUS_Reader_ESP 
+The software for the **MBUS to WiFi mode** has not been written in full yet. A basic MBUS Reader firmware tested to work on this board is available here for anyone keen to get stuck in before I get this done: https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/MBUS_Reader_ESP 
 
 ## Schematic
 
