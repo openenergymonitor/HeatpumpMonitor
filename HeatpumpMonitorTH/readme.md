@@ -1,6 +1,6 @@
 # The Original Through-hole Heatpump Monitor
 
-This directory contains all the documentation, hardware schematics, board files and firmware for the original OpenEnergyMonitor through-hole heat pump monitor mostly developed between 2015-2017.
+This directory contains all the documentation, hardware schematics, board files and firmware for the original OpenEnergyMonitor through-hole heat pump monitor, developed between 2015-2017.
 
 This is a web-connected open source hardware heat-pump monitor that can measure heat-pump electrical input with CT sensors, heat output with an MBUS reader or voltage output flow sensor and system temperatures using DS18B20 temperature sensors. The design is based on both the Ardunio and ESP8266 WiFi platforms.
 
