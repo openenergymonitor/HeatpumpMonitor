@@ -16,7 +16,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 
 ## Hardware
 
-### New: RaspberryPi & MBUS based heat pump monitor
+### [New: RaspberryPi & MBUS based heat pump monitor](HeatpumpMonitorPi)
 
 <table>
 <tr><td>
@@ -27,7 +27,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 </tr>
 </table>
 
-### Original through-hole heat pump monitor
+### [Original through-hole heat pump monitor](HeatpumpMonitorTH)
 
 <table>
 <tr><td>
