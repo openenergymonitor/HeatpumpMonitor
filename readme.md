@@ -57,8 +57,6 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 
 - [WiFi MBUS Reader v1 (Through-hole)](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v1_TH)
 - [WiFi MBUS Reader v1 SMT](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v1)
-- [WiFi MBUS Reader v2 SMT (Work in progress)](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v2)
-
 
 ## Heatpump Monitor dashboard
 
