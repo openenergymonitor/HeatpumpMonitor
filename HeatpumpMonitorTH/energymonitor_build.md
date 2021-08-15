@@ -126,7 +126,7 @@ Check that the power supply voltages are all as expected before inserting the AT
 
 ### Uploading the ATmega328 Firmware
 
-The energy monitor only firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/BasicEnergyMonitor](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/BasicEnergyMonitor)
+The energy monitor only firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/HeatpumpMonitorTH/Firmware/Arduino/BasicEnergyMonitor](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/HeatpumpMonitorTH/Firmware/Arduino/BasicEnergyMonitor)
 
 Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE. There's a guide on uploading Arduino firmware here: [http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
 

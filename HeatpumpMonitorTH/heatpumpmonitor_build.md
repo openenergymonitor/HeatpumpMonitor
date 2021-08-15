@@ -2,7 +2,7 @@
 
 **Please note: 100k / 10k blue resistors look very similar!** When assembling be sure to use select the 10k resistor for the ACAC voltage divider input.
 
-The heatpump monitor comes as a component kit with all the resistors, capacitors, connectors, IC's and other parts required to complete the build. The full Bill of Materials can be found [here](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/costingexample.md)
+The heatpump monitor comes as a component kit with all the resistors, capacitors, connectors, IC's and other parts required to complete the build. The full Bill of Materials can be found [here](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/HeatpumpMonitorTH/costingexample.md)
 
 **Packaged Kit**
 
@@ -246,7 +246,7 @@ The Heatpump monitor has two microcontrollers. Firmware for these must be loaded
 
 ### Uploading the ATmega328 Firmware
 
-The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
+The default heatpump monitor firmware can be found here: [https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/HeatpumpMonitorTH/Firmware/Arduino/HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/HeatpumpMonitorTH/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
 
 Use a USB to UART programmer connected to the 6-way UART header closest to the ATmega328 to upload this firmware using the Arduino IDE. Be sure to select "Uno" as the board type in the Arduino IDE. 
 

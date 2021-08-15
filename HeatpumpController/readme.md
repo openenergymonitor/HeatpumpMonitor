@@ -13,7 +13,7 @@ This board sits on top of a RaspberryPi and the very basic at this stage python 
 - A connection for the MBUS reader module here [USB_to_MBUS](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/USB_to_MBUS) to read from heat meters. Later version could integrate this on the board.
 - The Pi can connect via an modbus reader to a SDM120 single phase electricity meter, see [OEM Guide](https://guide.openenergymonitor.org/integrations/emonhub-interfacers/#reading-from-a-sdm120-single-phase-meter)
 
-![hpctrl_brd.png](hpctrl_brd.png)
+![hpctrl_brd.png](v1/hpctrl_brd.png)
 
-![heatpump_controller.png](heatpump_controller.png)
+![heatpump_controller.png](v1/heatpump_controller.png)
 

@@ -1,14 +1,6 @@
 # Heatpump Monitor
 
-This is the technical github repository for the open hardware and software heat-pump performance monitor, part of a wider heat-pump monitoring project by OpenEnergyMonitor.org and John Cantor of heatpumps.co.uk.
-
-This is a web-connected open source hardware heat-pump monitor that can measure heat-pump electrical input, heat output and system temperatures. Alongside open source web software for heat-pump data visualisation, analysis and sharing of open heat-pump data.
-
-![Heatpump monitor](images/topgraphic.jpg)
-
-## Available in the OpenEnergyMonitor Shop
-
-[https://shop.openenergymonitor.com/esp8266-wifi-heatpump-monitor](https://shop.openenergymonitor.com/esp8266-wifi-heatpump-monitor)
+This is a technical github repository for OpenEnergyMonitor open hardware and software heat-pump performance monitoring development.
 
 ## Rationale
 
@@ -16,16 +8,24 @@ Heat-pumps are a key component of zero carbon energy systems making it possible 
 
 By monitoring a heat-pump its possible to see how well it is working, diagnose problems and get a better understanding of how a key potentially zero carbon heating solution works, data gathered and shared from well performing systems could help de-mystify heat-pump operation and help improve performance by diagnosing any problems early.
 
-- **Blog post:** [Heat pump Monitoring](https://blog.openenergymonitor.org/2015/12/heat-pump-monitoring)
-- **Blog post:** [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
-- **Blog post:** [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
-- **[John Cantor's heat pump monitoring blog](http://johncantorheatpumps.blogspot.co.uk)**
+## Hardware
 
-## Overview
+### New: RaspberryPi & MBUS based heat pump monitor
 
 <table>
 <tr><td>
-<img style="width:40%" src="images/HPgraphic.png">
+<img style="width:40%" src="HeatpumpMonitorPi/images/heatpump_monitor_connected.jpg">
+</td><td>
+<p>This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.</p>
+</td>
+</tr>
+</table>
+
+### Original through-hole heat pump monitor
+
+<table>
+<tr><td>
+<img style="width:40%" src="HeatpumpMonitorTH/images/HPgraphic.png">
 </td><td>
 <b>Main Features:</b><br>
 <ul>
@@ -41,22 +41,11 @@ By monitoring a heat-pump its possible to see how well it is working, diagnose p
 </tr>
 </table>
 
-## Build Guides
-
-There are two build options for the heatpump monitor board, the first is the full heatpump monitor build with components for the MBUS heat meter reader, DS18B20 temperature sensing plus other interfaces. The second is a cut-down WIFI electricity monitor only build where the additional components for heat metering are not soldered in.
-
-- [Heatpump monitor kit build guide](heatpumpmonitor_build.md)
-- [Cut down energy monitor kit build guide](energymonitor_build.md)
-
-**Quick reference**
-
-- [ATmega328 Arduino Firmware: HeatpumpMonitor_AutoTemp](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp)
-- [ESP8266 EmonESP WIFI Firmware](https://github.com/openenergymonitor/EmonESP)
-- [Hardware Schematic and Board files v4](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/v4)
+### Mini Boards
 
 **USB to MBUS**
 
-- [USB to MBUS v1 SMT](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/USB_to_MBUS)
+- [USB to MBUS v1 SMT](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/USB_MBUS_Reader)
 
 **WiFi MBUS Reader**
 
@@ -65,29 +54,17 @@ There are two build options for the heatpump monitor board, the first is the ful
 - [WiFi MBUS Reader v2 SMT (Work in progress)](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v2)
 
 
-## Installation and setup
-
-The following guide details how to setup the heatpump monitor including interfacting with an Elster A100C Irda port and connecting up to a heat meter.
-
-- [Selecting the right heat meter](selectingheatmeter.md)
-- [Installation and setup](installation.md)
-- [Blog: Temperature sensors for monitoring heat pumps](http://johncantorheatpumps.blogspot.co.uk/2015/06/temperature-sensing-with.html)
-- [Firmware Upload / Update](firmware-upload.md)
-
-## Development
-
-- [Development discussion and change log](development.md)
-
-## Open Hardware ++
-
-A case study in open hardware development
-
-- Exporting gerbers from EAGLE, getting a PCB made with a PCB manufacturer such as Ragworm
-- [Heatpump Monitor and cut down energy monitor kit costing](costingexample.md)
-
 ## Heatpump Monitor dashboard
 
-![emoncms_hpmon_app_1.png](images/emoncms_hpmon_app_1.png)
+Available in the Emoncms Apps module:
+
+![emoncms_hpmon_app_1.png](HeatpumpMonitorTH/images/emoncms_hpmon_app_1.png)
+
+## Blogs and further reading
+
+- **Blog post:** [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
+- **Blog post:** [Heat pump Testing: Initial results](https://blog.openenergymonitor.org/2016/02/heat-pump-testing-initial-results)
+- **[John Cantor's heat pump monitoring blog](https://heatpumps.co.uk/technical/energy-monitoring)**
 
 ## Licence
 

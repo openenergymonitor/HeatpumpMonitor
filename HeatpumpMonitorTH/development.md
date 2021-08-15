@@ -24,8 +24,6 @@ Another key development will be to increase the accuracy of the CT based electri
 - Pulse counting dropdown resistor footprint on the board
 - CT3 can now be selected seperatly from analog 3
 
-BOM and example prototype costing: [BOM&Costing_oneoff_prototype.md](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Hardware/v2/BOM&Costing_oneoff_prototype.md)
-
 **Known Issues**
 
 - There is still an issue with the ESP Wifi upload reset

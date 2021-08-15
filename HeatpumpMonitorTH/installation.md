@@ -29,7 +29,7 @@ The Heatpump Monitor supports reading from the Irda port on Elster A100C energy 
 
 Selection and use of the IRDA reader over pulse counting is done in the Heatpump Monitor firmware here:
 
-[Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L19](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L19)
+[Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L19](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/HeatpumpMonitorTH/Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L19)
 
 Set ELSTER_IRDA_ENABLE to 1:
 
@@ -39,7 +39,7 @@ Set ELSTER_IRDA_ENABLE to 1:
 
 **Emoncms configuration**
 
-See the [Software setup guide](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/software_setup.md) for automated setup method.
+See the [Software setup guide](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/HeatpumpMonitorTH/software_setup.md) for automated setup method.
 
 <table>
 <tr><th>Input name</th><th>Input processing and feeds</th><th>Recommended feed name</th></tr>
@@ -131,7 +131,7 @@ A Vortex Flow Sensor with an analog voltage output such as the Grundfos VFS rang
 
 There are a multitude of VFS flow sensors each catering for different flow ranges, the calibration for the VFS sensor is set in the Heatpump monitor firmware here:
 
-[Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L52](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L52)
+[Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L52](https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/HeatpumpMonitorTH/Firmware/Arduino/HeatpumpMonitor_AutoTemp/HeatpumpMonitor_AutoTemp.ino#L52)
 
     // --------------------------------------------------
     // VFS config
