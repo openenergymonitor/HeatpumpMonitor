@@ -8,6 +8,12 @@ Heat-pumps are a key component of zero carbon energy systems making it possible 
 
 By monitoring a heat-pump its possible to see how well it is working, diagnose problems and get a better understanding of how a key potentially zero carbon heating solution works, data gathered and shared from well performing systems could help de-mystify heat-pump operation and help improve performance by diagnosing any problems early.
 
+## Getting started
+
+The heat pump monitoring application guide in the main OpenEnergyMonitor guide is a good place to start, covering the different options, including the use of the main OpenEnergyMonitor hardware:
+
+[https://guide.openenergymonitor.org/applications/heatpump](https://guide.openenergymonitor.org/applications/heatpump)
+
 ## Hardware
 
 ### New: RaspberryPi & MBUS based heat pump monitor
