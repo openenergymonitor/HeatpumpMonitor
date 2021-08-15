@@ -2,16 +2,15 @@
 
 This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.
 
-**Example test setup:** Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter.
+**Example test setup:** Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. These, or similar meters would usually be installed as part of heat pump installation.
 
 ![images/hpmon_small.jpg](images/hpmon_small.jpg)
 
-**The heat pump monitor:**
-
-This design combines RaspberryPi, [heat pump monitoring baseboard](baseboard) and the [USB to MBUS reader](../USB_MBUS_Reader) board into a single unit.
+**The heat pump monitor:** This design combines a RaspberryPi, [heat pump monitoring baseboard](baseboard) and [USB to MBUS reader](../USB_MBUS_Reader) board in a single unit.
 
 ![heatpump_monitor_connected.jpg](images/heatpump_monitor_connected.jpg)
 
+---
 
 **Forum post: Reading from multiple MBUS meters with the EmonHub MBUS interfacer**<br>
 https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
