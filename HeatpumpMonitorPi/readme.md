@@ -12,7 +12,11 @@ It is designed for monitoring heat pump electricity consumption, heat output and
 - I2C connection (uses 2 of the 6 digital IO's)
 - RaspberryPi running the OpenEnergyMonitor emonSD image
 
-This hardware design combines a: RaspberryPi + [heat pump monitoring baseboard](baseboard) + [USB to MBUS reader](../USB_MBUS_Reader) board in a single unit.
+This hardware design combines in a single unit a: 
+
+- RaspberryPi
+- [Heat pump monitoring baseboard](baseboard)
+- [USB to MBUS reader](../USB_MBUS_Reader)
 
 ### Tested MBUS meters:
 
