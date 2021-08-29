@@ -12,6 +12,8 @@ It is designed for monitoring heat pump electricity consumption, heat output and
 - I2C connection (uses 2 of the 6 digital IO's)
 - RaspberryPi running the OpenEnergyMonitor emonSD image
 
+This hardware design combines a: RaspberryPi + [heat pump monitoring baseboard](baseboard) + [USB to MBUS reader](../USB_MBUS_Reader) board in a single unit.
+
 ### Tested MBUS meters:
 
 - SDM120-MBUS electricity meter
@@ -70,21 +72,13 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 ...
 
+### Example test setup
 
----
-
-**Example test setup:** Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. These, or similar meters would usually be installed as part of heat pump installation.
+Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. These, or similar meters would usually be installed as part of heat pump installation.
 
 ![images/hpmon_small.jpg](images/hpmon_small.jpg)
 
-**The heat pump monitor:** This design combines a: RaspberryPi + [heat pump monitoring baseboard](baseboard) + [USB to MBUS reader](../USB_MBUS_Reader) board in a single unit.
-
 ![heatpump_monitor_connected.jpg](images/heatpump_monitor_connected.jpg)
-
----
-
-**Forum post: Reading from multiple MBUS meters with the EmonHub MBUS interfacer**<br>
-https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
 
 ### Example EmonHub Configuration
 
@@ -151,3 +145,6 @@ loglevel = DEBUG
 
 [nodes]
 ```
+
+**Forum post: Reading from multiple MBUS meters with the EmonHub MBUS interfacer**<br>
+https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
