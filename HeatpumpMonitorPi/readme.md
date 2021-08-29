@@ -28,7 +28,7 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 4. EmonHub is piece of software running on the Pi that reads from the connected MBUS meters and DS18B20 temperature sensors. It then forwards the data to a seperate piece of software called Emoncms for data storage and visualisation. EmonHub is configured using a configuration file located at: /etc/emonhub/emonhub.conf. A configuration example is included at the bottom of this page for reading from a SDM120-MBUS electricity meter, a Qalcosonic E3 heat meter and DS18B20 temperature sensors. Overwrite the existing default configuration with this configuration as it is a better starting point for our requirements.
 
-
+5. Configure EmonHub MBUS settings. The default MBUS configuration settings below assume that an SDM120-MBUS meter is configured to use MBUS address 1 and the Qalcosonic E3 heat meter is configured to use address 2. You may need to adjust the MBUS address of either of the meters to ensure that they are not both on the same address. See instructions in the forum post here on how to do this: https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
 
 
 
