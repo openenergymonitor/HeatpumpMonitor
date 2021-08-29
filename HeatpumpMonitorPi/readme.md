@@ -12,6 +12,14 @@ It is designed for monitoring heat pump electricity consumption, heat output and
 - I2C connection (uses 2 of the 6 digital IO's)
 - RaspberryPi running the OpenEnergyMonitor emonSD image
 
+### Tested MBUS meters:
+
+- SDM120-MBUS electricity meter
+- Qalcosonic E3 heat meter
+- Sontex 531 (e.g part of Superstatic 440 range of heat meters)
+
+Should also work with Kamstrup 402, Sharky 775 (See [forum post on Sharky 775](https://community.openenergymonitor.org/t/newbie-hardware-question/16242/31)). Testing required to confirm that these meters continue to work with the latest MBUS reader software.
+
 ### Connection diagram
 
 ![images/connection_diagram.jpg](images/connection_diagram.jpg)
