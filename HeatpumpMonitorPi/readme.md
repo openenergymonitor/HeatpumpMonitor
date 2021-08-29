@@ -2,7 +2,7 @@
 
 This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.
 
-**The heat pump monitor:** This design combines a RaspberryPi, [heat pump monitoring baseboard](baseboard) and [USB to MBUS reader](../USB_MBUS_Reader) board in a single unit.
+**The heat pump monitor:** This design combines a: RaspberryPi + [heat pump monitoring baseboard](baseboard) + [USB to MBUS reader](../USB_MBUS_Reader) board in a single unit.
 
 **Features**
 
