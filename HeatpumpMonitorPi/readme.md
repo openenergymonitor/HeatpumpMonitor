@@ -18,7 +18,12 @@ It is designed for monitoring heat pump electricity consumption, heat output and
 
 ### Setup
 
-1. Use the connection diagram above to connect MBUS meters, temperature sensors and power. There are two A and B MBUS terminals that can be used to simplify connecting two meters to the MBUS reader. Make sure that the power supply is capable of supplying 2A e.g [OpenEnergyMonitor Shop 5V USB Power Adapter](https://shop.openenergymonitor.com/5v-dc-usb-power-adapter-uk-plug).
+The following setup instructions assume an assembled heat pump monitor kit as shown in the picture above, with pre-prepared SD card running the standard emonSD image inserted into the RaspberryPi **(with SSH enabled, see [Guide: Credentials](https://guide.openenergymonitor.org/technical/credentials/))**.
+
+1. Use the connection diagram above to connect MBUS meters, temperature sensors and power. There are two A and B MBUS terminals that can be used to simplify connecting two meters to the MBUS reader. Make sure that the power supply is capable of supplying 2A e.g [OpenEnergyMonitor Shop 5V USB Power Adapter](https://shop.openenergymonitor.com/5v-dc-usb-power-adapter-uk-plug) (MBUS data corruption can occur if the power supply output is too low).
+
+2. Power up the unit, wait a couple of minutes for the Pi to create a WiFi access point. Connect to the access point and then use the WiFi configuration interface to connect the unit to your home WiFi. See [Guide: Connect](https://guide.openenergymonitor.org/setup/connect/) for full details.
+
 
 
 ---
