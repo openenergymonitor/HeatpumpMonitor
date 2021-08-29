@@ -29,6 +29,8 @@ https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with
 
 ### Example EmonHub Configuration
 
+The following is a full */etc/emonhub/emonhub.conf* example that reads from any connected DS18B20 temperature sensors, an SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. Data is forwarded to the local emoncms installation using MQTT and the remote emoncms installation via HTTP.
+
 ```
 [hub]
 loglevel = DEBUG
