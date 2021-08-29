@@ -2,7 +2,9 @@
 
 This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.
 
-**Features**
+It is designed for monitoring heat pump electricity consumption, heat output and system temperatures for detailed performance analysis & troubleshooting.
+
+### Features
 
 - MBUS Reader (Reads from connected electricity and heat meters)
 - DS18B20 Temperature sensor connections
@@ -10,9 +12,16 @@ This is a new heat pump monitor board designed specifically for interfacing with
 - I2C connection (uses 2 of the 6 digital IO's)
 - RaspberryPi running the OpenEnergyMonitor emonSD image
 
-**Connection diagram**
+### Connection diagram
 
 ![images/connection_diagram.jpg](images/connection_diagram.jpg)
+
+### Setup
+
+1. Use the connection diagram above to connect MBUS meters, temperature sensors and power. There are two A and B MBUS terminals that can be used to simplify connecting two meters to the MBUS reader. Make sure that the power supply is capable of supplying 2A e.g [OpenEnergyMonitor Shop 5V USB Power Adapter](https://shop.openenergymonitor.com/5v-dc-usb-power-adapter-uk-plug).
+
+
+---
 
 **Example test setup:** Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. These, or similar meters would usually be installed as part of heat pump installation.
 
