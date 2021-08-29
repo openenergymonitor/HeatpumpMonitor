@@ -38,7 +38,35 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 5. Configure EmonHub MBUS settings. The default MBUS configuration settings below assume that an SDM120-MBUS meter is configured to use MBUS address 1 and the Qalcosonic E3 heat meter is configured to use address 2. You may need to adjust the MBUS address of either of the meters to ensure that they are not both on the same address. See instructions in the forum post here on how to do this: https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
 
+6. Changing the default example configuration with a Qalcosonic E3 heat meter to a Sontex 531:
 
+[[MBUS]]
+    Type = EmonHubMBUSInterfacer
+    [[[init_settings]]]
+        device = /dev/ttyAMA0
+        baud = 2400
+    [[[runtimesettings]]]
+        pubchannels = ToEmonCMS,
+        read_interval = 10
+        validate_checksum = False
+        nodename = mbus
+        [[[[meters]]]]
+            [[[[[sdm120]]]]]
+               address = 1
+               type = sdm120
+            [[[[[sontex]]]]]
+                address = 2
+                type = sontex531
+
+7. With the hardware connected up and the settings in place, data should now be coming in and be listed as inputs in Emoncms.
+
+### Using the EmonHub log to debug issues reading data from the meters
+
+...
+
+### Configuring Emoncms
+
+...
 
 
 ---
