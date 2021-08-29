@@ -24,6 +24,13 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 2. Power up the unit, wait a couple of minutes for the Pi to create a WiFi access point. Connect to the access point and then use the WiFi configuration interface to connect the unit to your home WiFi. See [Guide: Connect](https://guide.openenergymonitor.org/setup/connect/) for full details.
 
+3. If you have connected DS18B20 temperature sensors a couple of minor steps are required to enable reading from DS18B20 temperature sensors on the Pi. Follow steps 1 to 4 here [EmonHub Interfacers: Direct DS18B20 temperature sensing](https://guide.openenergymonitor.org/integrations/emonhub-interfacers/#direct-ds18b20-temperature-sensing).
+
+4. EmonHub is piece of software running on the Pi that reads from the connected MBUS meters and DS18B20 temperature sensors. It then forwards the data to a seperate piece of software called Emoncms for data storage and visualisation. EmonHub is configured using a configuration file located at: /etc/emonhub/emonhub.conf. A configuration example is included at the bottom of this page for reading from a SDM120-MBUS electricity meter, a Qalcosonic E3 heat meter and DS18B20 temperature sensors. Overwrite the existing default configuration with this configuration as it is a better starting point for our requirements.
+
+
+
+
 
 
 ---
