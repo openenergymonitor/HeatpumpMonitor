@@ -10,7 +10,7 @@ This is a new heat pump monitor board designed specifically for interfacing with
 - I2C connection (uses 2 of the 6 digital IO's)
 - RaspberryPi running the OpenEnergyMonitor emonSD image
 
-### Connection diagram
+**Connection diagram**
 
 ![images/connection_diagram.jpg](images/connection_diagram.jpg)
 
