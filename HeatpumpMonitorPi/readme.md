@@ -40,6 +40,7 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 6. Changing the default example configuration with a Qalcosonic E3 heat meter to a Sontex 531:
 
+```
 [[MBUS]]
     Type = EmonHubMBUSInterfacer
     [[[init_settings]]]
@@ -57,6 +58,7 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
             [[[[[sontex]]]]]
                 address = 2
                 type = sontex531
+```
 
 7. With the hardware connected up and the settings in place, data should now be coming in and be listed as inputs in Emoncms.
 
