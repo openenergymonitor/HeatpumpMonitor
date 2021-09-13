@@ -10,11 +10,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Diehl Metering Sharky 775
 
-
-<table>
-<tr>
-    <td><img src="images/heatmeters/sharky775.jpg"></td>
-    <td>
+<table><tr><td><img src="images/heatmeters/sharky775.jpg"></td><td>
 
 - Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
@@ -22,9 +18,11 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
 
-    </td></tr></table>
+</td></tr></table>
         
 ### Sontex Superstatic 440
+
+<table><tr><td><img src="images/heatmeters/superstatic440.jpg"></td><td>
 
 - Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
@@ -32,15 +30,23 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - **Glycol calibration available**
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
 
+</td></tr></table>
+    
 ### Axioma Qalcosonic E3
+
+<table><tr><td><img src="images/heatmeters/qalcosonice3.png"></td><td>
 
 - Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+    
+</td></tr></table>
 
 ### Kamstrup multical 403
+
+<table><tr><td><img src="images/heatmeters/kamstrup403.png"></td><td>
 
 - Tested at OpenEnergyMonitor: No, although original 402 was tested.
 - Class 2, MID approved
@@ -48,7 +54,11 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
 
+</td></tr></table>
+    
 ### Sontex Superstatic 749
+
+<table><tr><td><img src="images/heatmeters/superstatic749.jpg"></td><td>
 
 - Tested at OpenEnergyMonitor: No
 - Class 2, MID approved
@@ -56,13 +66,19 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - **Glycol calibration available**
 - Power supply: Battery powered only, 6 or 12 year battery life options.
 
+</td></tr></table>
+
 ### Kamstrup multical 302
+
+<table><tr><td><img src="images/heatmeters/kamstrup303.png"></td><td>
 
 - Tested at OpenEnergyMonitor: No
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: Battery powered only, 6 or 12 year battery life options.
+
+</td></tr></table>
 
 ---
 
