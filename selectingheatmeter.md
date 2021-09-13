@@ -98,3 +98,5 @@ Using the simple K value method the pressure drop in bar at any given flow rate 
 K values can ususally be obtained from the meter's datasheet. If the K value is not given but a nominal flow rate and pressure drop is present, the K-value can be calculated by re-arranging the above equation:
 
     Kv = nominal flow rate / sqrt(pressure drop)
+    
+The spread sheet used to generate the above pressure loss table can be downloaded here: [heat_meter_pressure_drops.ods](images/heat_meter_pressure_drops.ods)
