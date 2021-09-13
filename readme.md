@@ -19,7 +19,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 ### [New: RaspberryPi & MBUS based heat pump monitor](HeatpumpMonitorPi)
 
 <table>
-<tr><td>
+<tr><td style="width:40%">
 <img src="HeatpumpMonitorPi/images/heatpump_monitor_connected.jpg">
 </td><td>
 <p>This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.</p>
@@ -30,7 +30,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 ### [Original through-hole heat pump monitor](HeatpumpMonitorTH)
 
 <table>
-<tr><td>
+<tr><td style="width:40%">
 <img src="HeatpumpMonitorTH/images/HPgraphic.png">
 </td><td>
 <b>Main Features:</b><br>
