@@ -21,7 +21,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 **Electricity consumption and system temperatures**
 
 <table>
-<tr><td width="40%">
+<tr><td style="width:350px">
 <img src="images/config/hpmon_config_emonpi_ct_temps.png">
 </td><td>
 <p>Monitor electricity consumption and system temperatures using clip-on CT sensors and one-wire temperature sensors connected to an emonPi or emonTx. This provides the simplest solution for installation on existing systems.</p>
@@ -32,7 +32,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 **Using external MBUS reader module**
 
 <table>
-<tr><td style="width:40%">
+<tr><td style="width:350px">
 <img src="images/config/hpmon_config_emonpi_mbus.png">
 </td><td>
 <p>An external MBUS reader connected to the emonPi or emonBase can be used to read from high accuracy electricity and heat meters.</p>
@@ -43,7 +43,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 ### [New: RaspberryPi & MBUS based heat pump monitor](HeatpumpMonitorPi)
 
 <table>
-<tr><td style="width:40%">
+<tr><td style="width:350px">
 <img src="HeatpumpMonitorPi/images/heatpump_monitor_connected.jpg">
 </td><td>
 <p>This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.</p>
@@ -54,7 +54,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 ### [Original through-hole heat pump monitor](HeatpumpMonitorTH)
 
 <table>
-<tr><td style="width:40%">
+<tr><td style="width:350px">
 <img src="HeatpumpMonitorTH/images/HPgraphic.png">
 </td><td>
 <b>Main Features:</b><br>
