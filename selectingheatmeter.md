@@ -82,7 +82,7 @@ E.g. if your system flow is 1 cubic m / hour, your best low-pressure option migh
 
 The example chart  below show how the pressure drop can be very low if the meter is used at a flow-rate well below its maximum.   Note also that some meters are inherently more ‘restrictive’ than others.   The colours are my own opinion, and relate to adding a heat meter to a heat pump system.
 
-![heat-meter-pressure-drop-examples.JPG](HeatpumpMonitorTH/images/heat-meter-pressure-drop-examples.JPG)
+![heat_meter_pressure_loss.png](images/heat_meter_pressure_loss.png)
 
 The Vortex Flow Sensors have exactly the same issue, and there are fewer pressure ranges to choose from.  However, in the region of 25% of their rated capacity, the pressure drop is usually nice and low.
 The message here is – Don’t fit a meter without assessing the pressure drop at your expected flow rate.  Don’t necessarily trust the meter supplier since they don’t all understand the energy loss implications related to heat pumps, and may want to sell you the cheapest option.    It could be perfectly acceptable using a high/medium pressure drop heat meter  on a biomass district heating system feeding radiators, but for heat pump applications, we could be running into trouble unless the pressure drop is low.
