@@ -1,5 +1,29 @@
 # Selecting the right heat meter
 
+There are a number of different heat meter brands and models available that are both MID and RHI (UK Renewable Heat Incentive) approved. If you are in the UK, Stockshed provide a good range of these meters: [https://stockshed.com/pages/heat-meters-stockshed-uk](https://stockshed.com/pages/heat-meters-stockshed-uk).
+
+Most heat meters include an MBUS interface that can be used for reading the metering data. This usually includes, total heat delivered in kWh, real-time heating power in Watts, flow and return temperatures and flow rate in L/min of m3/hr. 
+
+Using an MBUS reader connected to an emonPi, emonBase or just a Raspberry Pi, it is possible to read in this data and then store and visualise it using emoncms.
+
+Combined with electricity data, this can provide a data rich, detailed view of the performance of a heat pump.
+
+So far, we have only tested our MBUS reader software with a subset of the following meters but they should all be compatible, if not out of the box, with a little modification of the code. Please email me at trystanlea @ openenergymonitor.org if you are having trouble reading from a particular MBUS meter.
+
+### Diehl Metering Sharky 775
+
+### Sontex Superstatic 440
+
+### Axioma Qalcosonic E3
+
+### Sontex Superstatic 749
+
+### Kamstrup multical 302
+
+### Kamstrup multical 403
+
+# Heat meter pressure loss
+
 Written by John Cantor, see [original blog post](http://johncantorheatpumps.blogspot.co.uk/2016/06/selecting-right-heat-meter.html)
 
 This topic is **VERY IMPORTANT**
