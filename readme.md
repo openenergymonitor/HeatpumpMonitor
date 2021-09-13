@@ -21,7 +21,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 **Electricity consumption and system temperatures**
 
 <table>
-<tr><td style="width:40%">
+<tr><td width="40%">
 <img src="images/config/hpmon_config_emonpi_ct_temps.png">
 </td><td>
 <p>Monitor electricity consumption and system temperatures using clip-on CT sensors and one-wire temperature sensors connected to an emonPi or emonTx. This provides the simplest solution for installation on existing systems.</p>
