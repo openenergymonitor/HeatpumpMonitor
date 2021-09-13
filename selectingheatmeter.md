@@ -14,7 +14,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 <table><tr><td><img src="images/heatmeters/sharky775.jpg"></td><td>
 
-- Tested at OpenEnergyMonitor: Yes
+- Tested at OpenEnergyMonitor: Yes, see [forum post](https://community.openenergymonitor.org/t/newbie-hardware-question/16242/31) 
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
