@@ -88,3 +88,13 @@ The example chart  below show how the pressure drop can be very low if the meter
 The Vortex Flow Sensors have exactly the same issue, and there are fewer pressure ranges to choose from.  However, in the region of 25% of their rated capacity, the pressure drop is usually nice and low.
 
 The message here is – Don’t fit a meter without assessing the pressure drop at your expected flow rate.  Don’t necessarily trust the meter supplier since they don’t all understand the energy loss implications related to heat pumps, and may want to sell you the cheapest option. It could be perfectly acceptable using a high/medium pressure drop heat meter on a biomass district heating system feeding radiators, but for heat pump applications, we could be running into trouble unless the pressure drop is low.
+
+**Calculating pressure drop at different flow rates**
+
+Using the simple K value method the pressure drop in bar at any given flow rate can be estimated with the following equation:
+
+    Pressure drop = (flow rate / Kv)^2
+    
+K values can ususally be obtained from the meter's datasheet. If the K value is not given but a nominal flow rate and pressure drop is present, the K-value can be calculated by re-arranging the above equation:
+
+    Kv = nominal flow rate / sqrt(pressure drop)
