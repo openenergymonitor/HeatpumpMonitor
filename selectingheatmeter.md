@@ -38,7 +38,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 <table><tr><td><img src="images/heatmeters/qalcosonice3.png"></td><td>
 
-- Tested at OpenEnergyMonitor: Yes
+- Tested at OpenEnergyMonitor: Yes, for Richard Boyd at [You Generate](https://www.yougenerate.co.uk/)
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
