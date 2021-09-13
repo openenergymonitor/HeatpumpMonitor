@@ -4,9 +4,7 @@ There are a number of different heat meter brands and models available that are 
 
 Most heat meters include an MBUS interface that can be used for reading the metering data. This usually includes, total heat delivered in kWh, real-time heating power in Watts, flow and return temperatures and flow rate in L/min of m3/hr. 
 
-Using an MBUS reader connected to an emonPi, emonBase or just a Raspberry Pi, it is possible to read in this data and then store and visualise it using emoncms.
-
-Combined with electricity data, this can provide a data rich, detailed view of the performance of a heat pump.
+Using an MBUS reader connected to an emonPi, emonBase or just a Raspberry Pi, it is possible to read in this data and then store and visualise it using emoncms. Combined with electricity data, this can provide a data rich, detailed view of the performance of a heat pump.
 
 So far, we have only tested our MBUS reader software with a subset of the following meters but they should all be compatible, if not out of the box, with a little modification of the code. Please email me at trystanlea @ openenergymonitor.org if you are having trouble reading from a particular MBUS meter.
 
