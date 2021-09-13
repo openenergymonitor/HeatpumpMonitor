@@ -83,7 +83,9 @@ Emoncms includes an application specific heat pump dashboard available in the Ap
 
 There's also a little feature shown briefly at the end that simulates the heat output and COP of the heat pump based on the Carnot COP equation.
 
-[![Heat pump dashboard](https://img.youtube.com/vi/jBY1Sx3LR2ojBY1Sx3LR2o/0.jpg)](https://www.youtube.com/watch?v=jBY1Sx3LR2o)
+[YouTube: Introduction to the Emoncms heat pump dashboard](https://www.youtube.com/watch?v=jBY1Sx3LR2o)
+
+![emoncms_hpmon_app_1.png](HeatpumpMonitorTH/images/emoncms_hpmon_app_1.png)
 
 It's also worth checking out David Bowen (@MyForest on the forum's) heat pump app, see forum post: [Heat Pump Experimentation App - Release News](https://community.openenergymonitor.org/t/heat-pump-experimentation-app-release-news/13423).
 
