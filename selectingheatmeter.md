@@ -10,6 +10,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Diehl Metering Sharky 775
 
+- Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
@@ -17,6 +18,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Sontex Superstatic 440
 
+- Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
 - Fluid oscillator, piezo electric
 - **Glycol calibration available**
@@ -24,6 +26,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Axioma Qalcosonic E3
 
+- Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
@@ -31,6 +34,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Kamstrup multical 403
 
+- Tested at OpenEnergyMonitor: No, although original 402 was tested.
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
@@ -38,6 +42,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Sontex Superstatic 749
 
+- Tested at OpenEnergyMonitor: No
 - Class 2, MID approved
 - Fluid oscillator, piezo electric
 - **Glycol calibration available**
@@ -45,12 +50,11 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Kamstrup multical 302
 
+- Tested at OpenEnergyMonitor: No
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: Battery powered only, 6 or 12 year battery life options.
-
-
 
 ---
 
