@@ -10,15 +10,47 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Diehl Metering Sharky 775
 
+- Class 2, MID approved
+- Ultrasonic
+- Not compatible with glycol (to our knowledge)
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+
 ### Sontex Superstatic 440
+
+- Class 2, MID approved
+- Fluid oscillator, piezo electric
+- **Glycol calibration available**
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
 
 ### Axioma Qalcosonic E3
 
+- Class 2, MID approved
+- Ultrasonic
+- Not compatible with glycol (to our knowledge)
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+
+### Kamstrup multical 403
+
+- Class 2, MID approved
+- Ultrasonic
+- Not compatible with glycol (to our knowledge)
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+
 ### Sontex Superstatic 749
+
+- Class 2, MID approved
+- Fluid oscillator, piezo electric
+- **Glycol calibration available**
+- Power supply: Battery powered only, 6 or 12 year battery life options.
 
 ### Kamstrup multical 302
 
-### Kamstrup multical 403
+- Class 2, MID approved
+- Ultrasonic
+- Not compatible with glycol (to our knowledge)
+- Power supply: Battery powered only, 6 or 12 year battery life options.
+
+
 
 ---
 
