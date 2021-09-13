@@ -23,14 +23,14 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 <img src="images/config/hpmon_config_emonpi_ct_temps.png">
 </td><td>
 <b>Electricity consumption and system temperatures</b><br>
-<p>Monitor electricity consumption and system temperatures using clip-on CT sensors and one-wire temperature sensors connected to an emonPi or emonTx. This provides the simplest solution for installation on existing systems. See <a href="https://guide.openenergymonitor.org/applications/heatpump">main guide for details]</a>.</p>
+<p>Monitor electricity consumption and system temperatures using clip-on CT sensors and one-wire temperature sensors connected to an emonPi or emonTx. This provides the simplest solution for installation on existing systems. See <a href="https://guide.openenergymonitor.org/applications/heatpump">main guide for details</a>.</p>
 </td>
 </tr>
 <tr><td>
 <img src="images/config/hpmon_config_emonpi_mbus.png">
 </td><td>
 <b>Using external MBUS reader module</b><br>
-<p>An external MBUS reader connected to the emonPi or emonBase can be used to read from high accuracy electricity and heat meters. See <a href="https://guide.openenergymonitor.org/applications/heatpump">main guide for details]</a>.</p>
+<p>An external MBUS reader connected to the emonPi or emonBase can be used to read from high accuracy electricity and heat meters. See <a href="https://guide.openenergymonitor.org/applications/heatpump">main guide for details</a>.</p>
 </td>
 </tr>
 </table>
@@ -77,11 +77,17 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 - [WiFi MBUS Reader v1 (Through-hole)](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v1_TH)
 - [WiFi MBUS Reader v1 SMT](https://github.com/openenergymonitor/HeatpumpMonitor/tree/master/Hardware/WiFi_MBUS_Reader/v1)
 
-## Heatpump Monitor dashboard
+## Heat pump monitoring dashboard
 
-Available in the Emoncms Apps module:
+Emoncms includes an application specific heat pump dashboard available in the Apps module. The following video gives a good overview of what this dashboard can do, how to access daily electricity consumption and heat output data as well as detailed system temperature and power data.
 
-![emoncms_hpmon_app_1.png](HeatpumpMonitorTH/images/emoncms_hpmon_app_1.png)
+There's also a little feature shown briefly at the end that simulates the heat output and COP of the heat pump based on the Carnot COP equation.
+
+<div class='videoWrapper'>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jBY1Sx3LR2o" frameborder="0" allowfullscreen></iframe>
+</div>
+
+It's also worth checking out David Bowen (@MyForest on the forum's) heat pump app, see forum post: [Heat Pump Experimentation App - Release News](https://community.openenergymonitor.org/t/heat-pump-experimentation-app-release-news/13423).
 
 ## Blogs and further reading
 
