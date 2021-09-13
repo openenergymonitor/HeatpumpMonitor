@@ -8,6 +8,8 @@ Using an MBUS reader connected to an emonPi, emonBase or just a Raspberry Pi, it
 
 So far, we have only tested our MBUS reader software with a subset of the following meters but they should all be compatible, if not out of the box, with a little modification of the code. Please email me at trystanlea @ openenergymonitor.org if you are having trouble reading from a particular MBUS meter.
 
+**Important:** We recommend using meter's with an AC power supply option as most battery powered options are not designed for requesting MBUS data at 10s frequency and so battery life may be much shorter than otherwise advertised. 
+
 ### Diehl Metering Sharky 775
 
 <table><tr><td><img src="images/heatmeters/sharky775.jpg"></td><td>
