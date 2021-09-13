@@ -16,6 +16,30 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 
 ## Hardware
 
+### EmonPi or EmonTx & emonBase based heat pump monitor
+
+**Electricity consumption and system temperatures**
+
+<table>
+<tr><td style="width:40%">
+<img src="images/config/hpmon_config_emonpi_ct_temps.png">
+</td><td>
+<p></p>
+</td>
+</tr>
+</table>
+
+**Using external MBUS reader module**
+
+<table>
+<tr><td style="width:40%">
+<img src="images/config/hpmon_config_emonpi_mbus.png">
+</td><td>
+<p> </p>
+</td>
+</tr>
+</table>
+
 ### [New: RaspberryPi & MBUS based heat pump monitor](HeatpumpMonitorPi)
 
 <table>
