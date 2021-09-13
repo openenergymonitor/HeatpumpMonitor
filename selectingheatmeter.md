@@ -10,7 +10,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Diehl Metering Sharky 775
 
-<img src="images/heatmeters/sharky775.jpg" />
+<img src="images/heatmeters/sharky775.jpg" style="float:left"/>
 
 - Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
