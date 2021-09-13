@@ -31,7 +31,7 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 
 <table>
 <tr><td>
-<img style="width:40%" src="HeatpumpMonitorTH/images/HPgraphic.png">
+<img src="HeatpumpMonitorTH/images/HPgraphic.png">
 </td><td>
 <b>Main Features:</b><br>
 <ul>
