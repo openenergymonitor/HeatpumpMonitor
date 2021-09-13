@@ -10,7 +10,11 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 ### Diehl Metering Sharky 775
 
-<img src="images/heatmeters/sharky775.jpg" style="float:left"/>
+
+<table>
+<tr>
+    <td><img src="images/heatmeters/sharky775.jpg"></td>
+    <td>
 
 - Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
@@ -18,6 +22,8 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
 
+    </td></tr></table>
+        
 ### Sontex Superstatic 440
 
 - Tested at OpenEnergyMonitor: Yes
