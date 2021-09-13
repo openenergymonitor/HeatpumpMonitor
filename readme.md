@@ -23,14 +23,14 @@ The heat pump monitoring application guide in the main OpenEnergyMonitor guide i
 <img src="images/config/hpmon_config_emonpi_ct_temps.png">
 </td><td>
 <b>Electricity consumption and system temperatures</b><br>
-<p>Monitor electricity consumption and system temperatures using clip-on CT sensors and one-wire temperature sensors connected to an emonPi or emonTx. This provides the simplest solution for installation on existing systems. See [main guide for details](https://guide.openenergymonitor.org/applications/heatpump).</p>
+<p>Monitor electricity consumption and system temperatures using clip-on CT sensors and one-wire temperature sensors connected to an emonPi or emonTx. This provides the simplest solution for installation on existing systems. See <a href="https://guide.openenergymonitor.org/applications/heatpump">main guide for details]</a>.</p>
 </td>
 </tr>
 <tr><td>
 <img src="images/config/hpmon_config_emonpi_mbus.png">
 </td><td>
 <b>Using external MBUS reader module</b><br>
-<p>An external MBUS reader connected to the emonPi or emonBase can be used to read from high accuracy electricity and heat meters. See [main guide for details](https://guide.openenergymonitor.org/applications/heatpump).</p>
+<p>An external MBUS reader connected to the emonPi or emonBase can be used to read from high accuracy electricity and heat meters. See <a href="https://guide.openenergymonitor.org/applications/heatpump">main guide for details]</a>.</p>
 </td>
 </tr>
 </table>
