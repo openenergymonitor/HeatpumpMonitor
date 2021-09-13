@@ -18,13 +18,9 @@ This hardware design combines in a single unit a:
 - [Heat pump monitoring baseboard](baseboard)
 - [USB to MBUS reader](../USB_MBUS_Reader)
 
-### Tested MBUS meters:
+### Selecting a heat meter
 
-- SDM120-MBUS electricity meter
-- Qalcosonic E3 heat meter
-- Sontex 531 (e.g part of Superstatic 440 range of heat meters)
-
-Should also work with Kamstrup 402, Sharky 775 (See [forum post on Sharky 775](https://community.openenergymonitor.org/t/newbie-hardware-question/16242/31)). Testing required to confirm that these meters continue to work with the latest MBUS reader software.
+Please read our guide on selecting the right heat meter here:<br>https://github.com/openenergymonitor/HeatpumpMonitor/blob/master/selectingheatmeter.md
 
 ### Connection diagram
 
