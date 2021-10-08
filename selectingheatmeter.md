@@ -19,7 +19,9 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
-
+- Flow measurement cycle: 1/8 s (mains), 1s (battery)
+- Temperature measurement cycle: 2s (mains), 4s (d-cell battery), 15s (a-cell battery)
+        
 </td></tr></table>
         
 ### Sontex Superstatic 440
@@ -30,7 +32,9 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Fluid oscillator, piezo electric
 - **Glycol calibration available**
-- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.  (M-Bus is not self-powered)
+- Flow measurement cycle: continuous
+- Temperature measurement cycle: 3s (mains), 20s (d-cell battery), 30s (c-cell battery)
 
 </td></tr></table>
     
@@ -55,7 +59,10 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+- Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
+- Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
 
+        
 </td></tr></table>
     
 ### Sontex Superstatic 749
@@ -66,7 +73,11 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Fluid oscillator, piezo electric
 - **Glycol calibration available**
-- Power supply: Battery powered only, 6 or 12 year battery life options.
+- Power supply: Battery powered (6 or 12 year battery life options). The M-Bus version is powered via the M-Bus line meaning high resolution 10s data does not impact the battery.
+- Flow measurement cycle: continuous
+- Temperature measurement cycle: 10s
+        
+_(The Superstatic 789 is a slightly cheaper version of the 749 with a plastic body)_
 
 </td></tr></table>
 
@@ -79,7 +90,9 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: Battery powered only, 6 or 12 year battery life options.
-
+- Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
+- Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
+        
 </td></tr></table>
 
 ---
