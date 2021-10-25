@@ -54,7 +54,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 <table><tr><td><img src="images/heatmeters/kamstrup403.png"></td><td>
 
-- Tested at OpenEnergyMonitor: No, although original 402 was tested.
+- Tested at OpenEnergyMonitor: Yes
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
