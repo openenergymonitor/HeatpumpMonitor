@@ -21,7 +21,8 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Power supply: Mains AC and battery powered options.
 - Technical description pdf does suggest long battery lifetimes with wired MBUS at 10s data rates (https://products.kamstrup.com/index.php#) "By using M-Bus, the meter obtains a battery lifetime of up to 16 years with meter readings via the module every 10 seconds.  "
 - Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
-- Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
+- Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive, appears to be default)
+- Standard configuration from stockshed is heating only, heating and cooling configuration is available.
         
 </td></tr></table>
         
