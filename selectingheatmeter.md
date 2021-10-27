@@ -24,6 +24,20 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
         
 </td></tr></table>
+        
+### Sontex Superstatic 440
+
+<table><tr><td><img src="images/heatmeters/superstatic440.jpg"></td><td>
+
+- Tested at OpenEnergyMonitor: Yes
+- Class 2, MID approved
+- Fluid oscillator, piezo electric
+- **Glycol calibration available**
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.  (M-Bus is not self-powered)
+- Flow measurement cycle: continuous
+- Temperature measurement cycle: 3s (mains), 20s (d-cell battery), 30s (c-cell battery)
+
+</td></tr></table>
 
 ### Diehl Metering Sharky 775
 
@@ -39,21 +53,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Max MBUS read interval: A-cell: 3 minutes, D-cell: 1 minute?, Mains supply: unlimited
         
 </td></tr></table>
-        
-### Sontex Superstatic 440
 
-<table><tr><td><img src="images/heatmeters/superstatic440.jpg"></td><td>
-
-- Tested at OpenEnergyMonitor: Yes
-- Class 2, MID approved
-- Fluid oscillator, piezo electric
-- **Glycol calibration available**
-- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.  (M-Bus is not self-powered)
-- Flow measurement cycle: continuous
-- Temperature measurement cycle: 3s (mains), 20s (d-cell battery), 30s (c-cell battery)
-
-</td></tr></table>
-    
 ### Axioma Qalcosonic E3
 
 <table><tr><td><img src="images/heatmeters/qalcosonice3.png"></td><td>
