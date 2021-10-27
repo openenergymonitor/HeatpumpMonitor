@@ -21,6 +21,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
 - Flow measurement cycle: 1/8 s (mains), 1s (battery)
 - Temperature measurement cycle: 2s (mains), 4s (d-cell battery), 15s (a-cell battery)
+- Max MBUS read interval: A-cell: 3 minutes, D-cell: 1 minute?, Mains supply: unlimited
         
 </td></tr></table>
         
