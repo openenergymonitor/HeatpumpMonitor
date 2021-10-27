@@ -10,6 +10,21 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 **Important:** We recommend using meter's with an AC power supply option as most battery powered options are not designed for requesting MBUS data at 10s frequency and so battery life may be much shorter than otherwise advertised. 
 
+### Kamstrup multical 403
+
+<table><tr><td><img src="images/heatmeters/kamstrup403.png"></td><td>
+
+- Tested at OpenEnergyMonitor: Yes
+- Class 2, MID approved
+- Ultrasonic
+- Not compatible with glycol (to our knowledge)
+- Power supply: **Mains AC** and battery powered options.
+- Technical description pdf does suggest long battery lifetimes with wired MBUS at 10s data rates (https://products.kamstrup.com/index.php#) "By using M-Bus, the meter obtains a battery lifetime of up to 16 years with meter readings via the module every 10 seconds.  "
+- Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
+- Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
+        
+</td></tr></table>
+
 ### Diehl Metering Sharky 775
 
 <table><tr><td><img src="images/heatmeters/sharky775.jpg"></td><td>
@@ -49,22 +64,6 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
     
-</td></tr></table>
-
-### Kamstrup multical 403
-
-<table><tr><td><img src="images/heatmeters/kamstrup403.png"></td><td>
-
-- Tested at OpenEnergyMonitor: Yes
-- Class 2, MID approved
-- Ultrasonic
-- Not compatible with glycol (to our knowledge)
-- Power supply: **Mains AC** and battery powered options.
-- Technical description pdf does suggest long battery lifetimes with wired MBUS at 10s data rates (https://products.kamstrup.com/index.php#) "By using M-Bus, the meter obtains a battery lifetime of up to 16 years with meter readings via the module every 10 seconds.  "
-- Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
-- Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
-
-        
 </td></tr></table>
     
 ### Sontex Superstatic 749
