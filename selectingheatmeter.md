@@ -64,8 +64,8 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
 - Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
-- Flow measurement cycle: 1s
-- Temperature measurement cycle: 10s    
+- Flow measurement cycle: 1s (0.125s test mode)
+- Temperature measurement cycle: 10s (1s test mode)    
         
 </td></tr></table>
     
