@@ -17,3 +17,13 @@ This board sits on top of a RaspberryPi and the very basic at this stage python 
 
 ![heatpump_controller.png](v1/heatpump_controller.png)
 
+## Alternative approach (better?)
+
+It looks like it is possible to issue commands directly via the CN105 connector on most Mitsubushi EcoDan controllers, which looks like a better and much cheaper approach than the above. Will be trying this myself soon:
+
+- https://github.com/SwiCago/HeatPump
+- https://www.geekzone.co.nz/forums.asp?forumid=73&topicid=265469
+- https://web.archive.org/web/20171007190023/https://nicegear.co.nz/blog/hacking-a-mitsubishi-heat-pump-air-conditioner/
+- https://gitter.im/Mitsubishi-CN105-Protocol-Decode/community
+- https://github.com/m000c400/Mitsubishi-CN105-Protocol-Decode
+- https://github.com/BartGijsbers/CN105Gateway
