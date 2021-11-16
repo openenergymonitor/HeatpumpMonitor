@@ -27,3 +27,4 @@ It looks like it is possible to issue commands directly via the CN105 connector 
 - https://gitter.im/Mitsubishi-CN105-Protocol-Decode/community
 - https://github.com/m000c400/Mitsubishi-CN105-Protocol-Decode
 - https://github.com/BartGijsbers/CN105Gateway
+- https://www.zakon.org/robert/projects/MiniSplitPi/
