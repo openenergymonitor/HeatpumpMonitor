@@ -1,12 +1,13 @@
-## RaspberryPi & MBUS based heat pump monitor
+## RaspberryPi, MBUS & Modbus based heat pump monitor
 
-This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.
+This is a new heat pump monitor board designed specifically for interfacing with MID standard electricity and heat meters via MBUS or/and Modbus. It has a RaspberryPi at it’s core running our emonSD image enabling local or/and remote logging and data visualisation.
 
 It is designed for monitoring heat pump electricity consumption, heat output and system temperatures for detailed performance analysis & troubleshooting.
 
 ### Features
 
-- MBUS Reader (Reads from connected electricity and heat meters)
+- MBUS Reader (Reads from heat meters and some electric meters, though the SDM120-MBUS is no longer recommended)
+- A Modbus Reader is recommended for reading from SDM120-Modbus electricity meters
 - DS18B20 Temperature sensor connections
 - 6 Digital input or outputs can be used for pulse counting
 - I2C connection (uses 2 of the 6 digital IO's)
@@ -38,9 +39,9 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 4. EmonHub is piece of software running on the Pi that reads from the connected MBUS meters and DS18B20 temperature sensors. It then forwards the data to a seperate piece of software called Emoncms for data storage and visualisation. EmonHub is configured using a configuration file located at: /etc/emonhub/emonhub.conf. A configuration example is included at the bottom of this page for reading from a SDM120-MBUS electricity meter, a Qalcosonic E3 heat meter and DS18B20 temperature sensors. Overwrite the existing default configuration with this configuration as it is a better starting point for our requirements.
 
-5. Configure EmonHub MBUS settings. The default MBUS configuration settings below assume that an SDM120-MBUS meter is configured to use MBUS address 1 and the Qalcosonic E3 heat meter is configured to use address 2. You may need to adjust the MBUS address of either of the meters to ensure that they are not both on the same address. See instructions in the forum post here on how to do this: https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
+5. Configure EmonHub MBUS settings. The default MBUS configuration settings below assumes that a suitable heat meter is connected on address 1. You may need to adjust the MBUS address of either of the meters to ensure that they are not both on the same address. See instructions in the forum post here on how to do this: https://community.openenergymonitor.org/t/reading-from-multiple-mbus-meters-with-the-emonhub-mbus-interfacer/18159
 
-6. Changing the default example configuration with a Qalcosonic E3 heat meter to a Sontex 531:
+6. Example configuration with a Sontex 531 heat meter:
 
 ```
 [[MBUS]]
@@ -54,11 +55,8 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
         validate_checksum = False
         nodename = mbus
         [[[[meters]]]]
-            [[[[[sdm120]]]]]
-               address = 1
-               type = sdm120
             [[[[[sontex]]]]]
-                address = 2
+                address = 1
                 type = sontex531
 ```
 
@@ -74,7 +72,9 @@ The following setup instructions assume an assembled heat pump monitor kit as sh
 
 ### Example test setup
 
-Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. These, or similar meters would usually be installed as part of heat pump installation.
+Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. These, or similar meters would usually be installed as part of heat pump installation. 
+
+**Note:** The SDM120-MBUS electricity meter is no longer recommended due to reliability issues. We now recommend to use a SDM120-Modbus meter with a seperate Modbus reader. See forum post: [https://community.openenergymonitor.org/t/sdm120-mbus-meter-freezing-drop-out/20765/2](https://community.openenergymonitor.org/t/sdm120-mbus-meter-freezing-drop-out/20765/2)
 
 ![images/heatpump_monitor_display.jpg](images/heatpump_monitor_display.jpg)
 
@@ -82,7 +82,7 @@ Reading from a SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. The
 
 ### Example EmonHub Configuration
 
-The following is a full */etc/emonhub/emonhub.conf* example that reads from any connected DS18B20 temperature sensors, an SDM120-MBUS electricity meter and a Qalcosonic E3 heat meter. Data is forwarded to the local emoncms installation using MQTT and the remote emoncms installation via HTTP.
+The following is a full */etc/emonhub/emonhub.conf* example that reads from any connected DS18B20 temperature sensors, a Sontex Superstatic 440 heat meter with Multical 531 integrator on MBUS and a SDM120-Modbus electricity meter. Data is forwarded to the local emoncms installation using MQTT and the remote emoncms installation via HTTP.
 
 ```
 [hub]
@@ -109,13 +109,19 @@ loglevel = DEBUG
         validate_checksum = False
         nodename = mbus
         [[[[meters]]]]
-            [[[[[sdm120]]]]]
-               address = 1
-               type = sdm120
-            [[[[[qalcosonic]]]]]
-                address = 2
-                type = qalcosonic_e3
+            [[[[[sontex]]]]]
+                address = 1
+                type = sontex531
 
+[[SDM120]]
+    Type = EmonHubSDM120Interfacer
+    [[[init_settings]]]
+        device = /dev/ttyUSB0
+        baud = 2400
+    [[[runtimesettings]]]
+        pubchannels = ToEmonCMS,
+        read_interval = 10
+        nodename = SDM120
 
 [[MQTT]]
     Type = EmonHubMqttInterfacer
