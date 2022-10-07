@@ -89,6 +89,8 @@ There's also a little feature shown briefly at the end that simulates the heat o
 
 It's also worth checking out David Bowen (@MyForest on the forum's) heat pump app, see forum post: [Heat Pump Experimentation App - Release News](https://community.openenergymonitor.org/t/heat-pump-experimentation-app-release-news/13423).
 
+The My Heatpump app includes a feature to simulate the COP and heat output of a heat pump from the flow temperature, outside temperature and electrical power input. The equations used are documented here: https://github.com/emoncms/dynamic/blob/master/docs/heatpumpmodel.md
+
 ## Blogs and further reading
 
 - **Blog post:** [Heatpumps in the ZeroCarbonBritain model by the Centre for Alternative Technology.](https://blog.openenergymonitor.org/2015/12/heatpumps-in-zerocarbonbritain-model-by)
