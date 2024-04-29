@@ -10,7 +10,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 
 **Important:** We recommend using meter's with an AC power supply option as most battery powered options are not designed for requesting MBUS data at 10s frequency and so battery life may be much shorter than otherwise advertised. 
 
-### Kamstrup multical 403
+### [Kamstrup MULTICAL 403](https://www.kamstrup.com/en-en/heat-solutions/meters-devices/meters/multical-403)
 
 <table><tr><td><img src="images/heatmeters/kamstrup403.png"></td><td>
 
@@ -18,8 +18,8 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
-- Power supply: Mains AC and battery powered options.
-- Technical description pdf does suggest long battery lifetimes with wired MBUS at 10s data rates (https://products.kamstrup.com/index.php#) "By using M-Bus, the meter obtains a battery lifetime of up to 16 years with meter readings via the module every 10 seconds.  "
+- Power supply: Mains AC and battery powered options
+- [Technical description pdf](https://documentation.kamstrup.com/docs/MULTICAL_403/en-GB/Data_sheet/CONT0B6D945665A843D6A9B8B14FC05A203B/) does suggest long battery lifetimes with wired M-Bus at 10s data rates - "By using M-Bus, the meter obtains a battery lifetime of up to 16 years with meter readings via the module every 10 seconds."
 - Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
 - Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive, appears to be default)
 - Standard configuration from stockshed is heating only, heating and cooling configuration is available.
@@ -34,7 +34,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Fluid oscillator, piezo electric
 - **Glycol calibration available**
-- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.  (M-Bus is not self-powered)
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data. (M-Bus is not self-powered)
 - Flow measurement cycle: continuous
 - Temperature measurement cycle: 3s (mains), 20s (d-cell battery), 30s (c-cell battery)
 
@@ -48,7 +48,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
-- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data
 - Flow measurement cycle: 1/8 s (mains), 1s (battery)
 - Temperature measurement cycle: 2s (mains), 4s (d-cell battery), 15s (a-cell battery)
 - Max MBUS read interval: A-cell: 3 minutes, D-cell: 1 minute?, Mains supply: unlimited
@@ -63,7 +63,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
-- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data.
+- Power supply: **Mains AC** and battery powered options. AC power is recommended for high resolution 10s data
 - Flow measurement cycle: 1s (0.125s test mode)
 - Temperature measurement cycle: 10s (1s test mode)    
         
@@ -77,7 +77,7 @@ So far, we have only tested our MBUS reader software with a subset of the follow
 - Class 2, MID approved
 - Fluid oscillator, piezo electric
 - **Glycol calibration available**
-- Power supply: Battery powered (6 or 12 year battery life options). The M-Bus version is powered via the M-Bus line meaning high resolution 10s data does not impact the battery.
+- Power supply: Battery powered (6 or 12 year battery life options). The M-Bus version is powered via the M-Bus line meaning high resolution 10s data does not impact the battery
 - Flow measurement cycle: continuous
 - Temperature measurement cycle: 10s
         
@@ -93,7 +93,7 @@ _(The Superstatic 789 is a slightly cheaper version of the 749 with a plastic bo
 - Class 2, MID approved
 - Ultrasonic
 - Not compatible with glycol (to our knowledge)
-- Power supply: Battery powered only, 6 or 12 year battery life options.
+- Power supply: Battery powered only, 6 or 12 year battery life options
 - Flow measurement cycle: 1s (fast), 4s (normal), 1-4s (adaptive)
 - Temperature measurement cycle: 4s (fast), 32s (normal), 4-64s (adaptive)
         
